@@ -763,49 +763,41 @@ function acceptCOPPA() {
 let parentGateQuestion = {};
 
 function showParentGate() {
-    console.log('showParentGate called!');
-    
-    // Show the modal first
-    const modal = document.getElementById('parentGate');
-    console.log('Modal element:', modal);
-    if (modal) {
-        modal.style.display = 'flex';
-        console.log('Modal display set to flex');
-    } else {
-        console.error('parentGate modal not found!');
-        return;
-    }
-    
     // Generate random numbers for the math question
     const num1 = Math.floor(Math.random() * 10) + 5;
     const num2 = Math.floor(Math.random() * 10) + 5;
+    
+    // Store the answer
     parentGateQuestion = {
         num1: num1,
         num2: num2,
         answer: num1 + num2
     };
     
-    console.log('Math question:', num1, '+', num2, '=', num1 + num2);
+    // Update the question text directly
+    const questionElement = document.getElementById('parentMathQuestion');
+    if (questionElement) {
+        questionElement.textContent = num1 + ' + ' + num2 + ' = ?';
+    }
     
-    // Use setTimeout to ensure DOM is ready
-    setTimeout(() => {
-        // Update the question text
-        const questionElement = document.getElementById('parentMathQuestion');
-        console.log('Question element:', questionElement);
-        if (questionElement) {
-            questionElement.innerHTML = `<strong>${num1} + ${num2} = ?</strong>`;
-            console.log('Question set to:', questionElement.innerHTML);
-        } else {
-            console.error('parentMathQuestion element not found!');
-        }
-        
-        // Clear any previous answer
-        const answerInput = document.getElementById('parentMathAnswer');
+    // Clear the input
+    const answerInput = document.getElementById('parentMathAnswer');
+    if (answerInput) {
+        answerInput.value = '';
+    }
+    
+    // Show the modal
+    const modal = document.getElementById('parentGate');
+    if (modal) {
+        modal.style.display = 'flex';
+    }
+    
+    // Focus the input after a brief delay
+    setTimeout(function() {
         if (answerInput) {
-            answerInput.value = '';
-            setTimeout(() => answerInput.focus(), 100);
+            answerInput.focus();
         }
-    }, 100);
+    }, 200);
 }
 
 function checkParentGate() {
