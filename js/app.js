@@ -763,6 +763,8 @@ function acceptCOPPA() {
 let parentGateQuestion = {};
 
 function showParentGate() {
+    console.log('showParentGate called!');
+    
     // Generate random numbers for the math question
     const num1 = Math.floor(Math.random() * 10) + 5;
     const num2 = Math.floor(Math.random() * 10) + 5;
@@ -772,10 +774,16 @@ function showParentGate() {
         answer: num1 + num2
     };
     
+    console.log('Math question:', num1, '+', num2, '=', num1 + num2);
+    
     // Update the question text
     const questionElement = document.getElementById('parentMathQuestion');
+    console.log('Question element:', questionElement);
     if (questionElement) {
         questionElement.textContent = `${num1} + ${num2} = ?`;
+        console.log('Question set to:', questionElement.textContent);
+    } else {
+        console.error('parentMathQuestion element not found!');
     }
     
     // Clear any previous answer
@@ -787,8 +795,12 @@ function showParentGate() {
     
     // Show the modal
     const modal = document.getElementById('parentGate');
+    console.log('Modal element:', modal);
     if (modal) {
         modal.style.display = 'flex';
+        console.log('Modal display set to flex');
+    } else {
+        console.error('parentGate modal not found!');
     }
 }
 
