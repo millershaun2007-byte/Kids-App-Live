@@ -760,61 +760,28 @@ function acceptCOPPA() {
 }
 
 // Parent Gate Functions
-let parentGateQuestion = {};
-
 function showParentGate() {
-    alert('Function called!'); // DEBUG
-    
-    // Generate random numbers for the math question
-    const num1 = Math.floor(Math.random() * 10) + 5;
-    const num2 = Math.floor(Math.random() * 10) + 5;
-    
-    alert('Numbers: ' + num1 + ' and ' + num2); // DEBUG
-    
-    // Store the answer
-    parentGateQuestion = {
-        num1: num1,
-        num2: num2,
-        answer: num1 + num2
-    };
-    
-    // Show the modal FIRST
+    // Show the modal
     const modal = document.getElementById('parentGate');
     if (modal) {
         modal.style.display = 'flex';
-        alert('Modal shown'); // DEBUG
-    } else {
-        alert('Modal not found!'); // DEBUG
     }
     
-    // Update the question text directly AFTER showing modal
-    const questionElement = document.getElementById('parentMathQuestion');
-    if (questionElement) {
-        const question = num1 + ' + ' + num2 + ' = ?';
-        questionElement.textContent = question;
-        alert('Question set to: ' + question); // DEBUG
-    } else {
-        alert('Question element not found!'); // DEBUG
-    }
-    
-    // Clear the input
+    // Clear and focus the input
     const answerInput = document.getElementById('parentMathAnswer');
     if (answerInput) {
         answerInput.value = '';
-    }
-    
-    // Focus the input after a brief delay
-    setTimeout(function() {
-        if (answerInput) {
+        setTimeout(function() {
             answerInput.focus();
-        }
-    }, 200);
+        }, 100);
+    }
 }
 
 function checkParentGate() {
     const userAnswer = parseInt(document.getElementById('parentMathAnswer').value);
     
-    if (userAnswer === parentGateQuestion.answer) {
+    // Answer to "What is 2 + 2?" is 4
+    if (userAnswer === 4) {
         closeParentGate();
         document.getElementById('accessibilityPanel').scrollIntoView({ behavior: 'smooth' });
         document.getElementById('panelContent').classList.add('open');
