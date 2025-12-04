@@ -632,6 +632,31 @@ h2 {
     font-size: 1.1em;
 }
 
+/* ===== Math Answer Buttons ===== */
+.answer-btn {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    border: none;
+    border-radius: 15px;
+    padding: 20px 30px;
+    font-size: 2em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    margin: 10px;
+    min-width: 100px;
+}
+
+.answer-btn:hover {
+    transform: translateY(-5px) scale(1.1);
+    box-shadow: 0 10px 25px rgba(147, 112, 219, 0.4);
+}
+
+.answer-btn:active {
+    transform: translateY(-2px) scale(1.05);
+}
+
 /* ===== Creature Designer ===== */
 .designer-container {
     background: var(--card-bg);
