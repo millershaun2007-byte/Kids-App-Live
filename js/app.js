@@ -839,3 +839,12 @@ function showTermsOfService() {
 function goHome() {
     navigateToSection('home');
 }
+
+// Make legal functions globally accessible
+window.showParentGate = showParentGate;
+window.checkParentGate = checkParentGate;
+window.closeParentGate = closeParentGate;
+window.showPrivacyPolicy = showPrivacyPolicy;
+window.showTermsOfService = showTermsOfService;
+window.goHome = goHome;
+window.acceptCOPPA = acceptCOPPA;
