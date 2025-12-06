@@ -1184,6 +1184,117 @@ select:focus {
     outline-offset: 2px;
 }
 
+/* ===== Calm Corner / Sensory Zone Styles ===== */
+.calm-activities-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.calm-activity-selector {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+}
+
+.calm-btn {
+    padding: 15px 30px;
+    font-size: 1.3em;
+    background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+    color: #333;
+    border: 3px solid transparent;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.calm-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
+
+.calm-btn.active {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-color: #FFD700;
+    transform: scale(1.05);
+}
+
+.calm-activity-content {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    min-height: 500px;
+}
+
+/* Breathing Circle Animation */
+@keyframes breatheIn {
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(1.4);
+    }
+}
+
+@keyframes breatheOut {
+    from {
+        transform: scale(1.4);
+    }
+    to {
+        transform: scale(1);
+    }
+}
+
+/* Bubble styles handled inline for dynamic creation */
+
+/* Music player button hover effects */
+.music-choice-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+.music-choice-btn:active {
+    transform: scale(0.98);
+}
+
+/* Calm drawing canvas */
+#calmCanvas {
+    touch-action: none; /* Prevents scrolling while drawing on mobile */
+}
+
+.calm-color-btn:hover {
+    transform: scale(1.1);
+}
+
+.calm-color-btn:active {
+    transform: scale(0.95);
+}
+
+/* Peaceful animations */
+@keyframes gentleFloat {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.calm-activity-content h3 {
+    animation: gentleFloat 3s ease-in-out infinite;
+}
+
+/* Reduce motion override for calm corner */
+body.reduce-motion .calm-activity-content h3 {
+    animation: none;
+}
+
 /* ===== Print Styles ===== */
 @media print {
     .accessibility-panel,
@@ -1192,3 +1303,4 @@ select:focus {
         display: none;
     }
 }
+

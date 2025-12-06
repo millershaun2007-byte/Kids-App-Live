@@ -423,6 +423,28 @@
                         <h3>🎨 Art Studio</h3>
                         <p>Draw, color, and create amazing artwork with magical brushes!</p>
                     </div>
+
+                    <div class="activity-card" data-goto="calmCorner">
+                        <div class="card-icon" style="font-size: 3em;">
+                            <svg width="80" height="80" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                <!-- Cloud shape -->
+                                <ellipse cx="35" cy="55" rx="18" ry="15" fill="#B0E0E6" opacity="0.8"/>
+                                <ellipse cx="50" cy="50" rx="22" ry="18" fill="#87CEEB" opacity="0.8"/>
+                                <ellipse cx="65" cy="55" rx="18" ry="15" fill="#B0E0E6" opacity="0.8"/>
+                                <!-- Stars -->
+                                <polygon points="25,30 27,35 32,35 28,38 30,43 25,40 20,43 22,38 18,35 23,35" fill="#FFD700"/>
+                                <polygon points="70,25 72,30 77,30 73,33 75,38 70,35 65,38 67,33 63,30 68,30" fill="#FFD700"/>
+                                <!-- Heart in center -->
+                                <path d="M 50,65 Q 45,55 40,58 Q 35,61 40,68 L 50,75 L 60,68 Q 65,61 60,58 Q 55,55 50,65" fill="#FFB6C1" stroke="#FF69B4" stroke-width="1"/>
+                                <!-- Musical note -->
+                                <ellipse cx="50" cy="40" rx="4" ry="3" fill="#9370DB"/>
+                                <line x1="54" y1="40" x2="54" y2="25" stroke="#9370DB" stroke-width="2"/>
+                                <path d="M 54,25 Q 60,23 62,27" stroke="#9370DB" stroke-width="2" fill="none"/>
+                            </svg>
+                        </div>
+                        <h3>🌈 Calm Corner</h3>
+                        <p>Relax with peaceful music, gentle bubbles, and breathing exercises!</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -680,6 +702,29 @@
                 </div>
             </div>
         </section>
+
+        <!-- Calm Corner Section -->
+        <section id="calmCorner" class="content-section">
+            <h2>🌈 Calm Corner 🌟</h2>
+            <p style="text-align: center; font-size: 1.3em; color: #9370DB; margin-bottom: 30px;">
+                A peaceful place to relax and recharge 💜
+            </p>
+
+            <div class="calm-activities-container">
+                <!-- Activity Selection Buttons -->
+                <div class="calm-activity-selector">
+                    <button class="calm-btn active" data-activity="breathing">🌬️ Breathing</button>
+                    <button class="calm-btn" data-activity="music">🎵 Music</button>
+                    <button class="calm-btn" data-activity="bubbles">🫧 Bubbles</button>
+                    <button class="calm-btn" data-activity="drawing">✏️ Draw</button>
+                </div>
+
+                <!-- Activity Content Area -->
+                <div id="calmActivity" class="calm-activity-content">
+                    <!-- Content loaded by JS -->
+                </div>
+            </div>
+        </section>
     </main>
 
     <!-- Footer -->
@@ -714,6 +759,7 @@
     <script src="js/literacy-activities.js?v=20251201161000"></script>
     <script src="js/writing.js"></script>
     <script src="js/art.js"></script>
+    <script src="js/sensory-zone.js"></script>
     
     <script>
         // Register Service Worker for PWA
