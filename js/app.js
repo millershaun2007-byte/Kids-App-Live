@@ -768,53 +768,55 @@ function acceptCOPPA() {
 
 // Parent Gate Functions
 function showParentGate() {
-    console.log('showParentGate called');
+    // Picture options with emojis
+    const challenges = [
+        { target: 'CAR', correct: '🚗', options: ['🚗', '🌳', '⚽'] },
+        { target: 'TREE', correct: '🌳', options: ['🚗', '🌳', '⚽'] },
+        { target: 'BALL', correct: '⚽', options: ['🚗', '🌳', '⚽'] },
+        { target: 'HOUSE', correct: '🏠', options: ['🏠', '🐶', '🍎'] },
+        { target: 'DOG', correct: '🐶', options: ['🏠', '🐶', '🍎'] },
+        { target: 'APPLE', correct: '🍎', options: ['🏠', '🐶', '🍎'] }
+    ];
     
-    // Generate random math problem
-    const num1 = Math.floor(Math.random() * 10) + 5;
-    const num2 = Math.floor(Math.random() * 10) + 5;
-    parentGateQuestion = {
-        num1: num1,
-        num2: num2,
-        answer: num1 + num2
-    };
+    // Pick random challenge
+    const challenge = challenges[Math.floor(Math.random() * challenges.length)];
+    parentGateQuestion = challenge;
     
-    console.log('Generated question:', num1, '+', num2, '=', parentGateQuestion.answer);
+    // Shuffle options
+    const shuffled = [...challenge.options].sort(() => Math.random() - 0.5);
     
-    const questionElement = document.getElementById('parentMathQuestion');
-    console.log('Question element:', questionElement);
+    // Update UI
+    document.getElementById('parentTargetObject').textContent = challenge.target;
+    document.getElementById('parentOption1').textContent = shuffled[0];
+    document.getElementById('parentOption2').textContent = shuffled[1];
+    document.getElementById('parentOption3').textContent = shuffled[2];
     
-    if (questionElement) {
-        questionElement.textContent = `${num1} + ${num2} = ?`;
-        console.log('Question text set to:', questionElement.textContent);
-    }
+    // Add click handlers
+    document.getElementById('parentOption1').onclick = () => checkParentPicture(shuffled[0]);
+    document.getElementById('parentOption2').onclick = () => checkParentPicture(shuffled[1]);
+    document.getElementById('parentOption3').onclick = () => checkParentPicture(shuffled[2]);
     
-    document.getElementById('parentMathAnswer').value = '';
+    // Show modal
     document.getElementById('parentGate').style.display = 'flex';
-    
-    // Focus on input after a short delay
-    setTimeout(() => {
-        document.getElementById('parentMathAnswer').focus();
-    }, 100);
 }
 
-function checkParentGate() {
-    const userAnswer = parseInt(document.getElementById('parentMathAnswer').value);
-    
-    // Check if answer matches either the random question or the default question (7 + 6 = 13)
-    const correctAnswer = parentGateQuestion.answer || 13;
-    
-    if (userAnswer === correctAnswer) {
+function checkParentPicture(selected) {
+    if (selected === parentGateQuestion.correct) {
         closeParentGate();
-        document.getElementById('accessibilityPanel').scrollIntoView({ behavior: 'smooth' });
         document.getElementById('panelContent').classList.add('open');
         playSound('success');
         showMessage('✅ Verified! Settings unlocked.', 'success');
     } else {
         playSound('error');
         showMessage('❌ Incorrect. Please try again.', 'error');
-        document.getElementById('parentMathAnswer').value = '';
+        // Generate new challenge
+        setTimeout(showParentGate, 1000);
     }
+}
+
+function checkParentGate() {
+    // Legacy function - redirect to picture check
+    checkParentPicture(parentGateQuestion.correct);
 }
 
 function closeParentGate() {

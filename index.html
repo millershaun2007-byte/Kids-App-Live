@@ -37,22 +37,27 @@
 
     <!-- Parent Gate Modal -->
     <div id="parentGate" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 99998; align-items: center; justify-content: center;">
-        <div style="background: white; padding: 40px; border-radius: 20px; max-width: 500px; margin: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.3);">
+        <div style="background: white; padding: 40px; border-radius: 20px; max-width: 600px; margin: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.3);">
             <h2 style="color: #9370DB; margin-bottom: 20px;">🔒 Parent Verification</h2>
-            <p style="font-size: 1.1em; margin-bottom: 20px;">
-                To protect your child, please solve this math problem to access settings:
+            <p style="font-size: 1.3em; margin-bottom: 30px; font-weight: bold; color: #333;">
+                To protect your child, please click the picture that shows a <span id="parentTargetObject" style="color: #9370DB;">CAR</span>:
             </p>
-            <div style="text-align: center; margin: 30px 0;">
-                <p id="parentMathQuestion" style="font-size: 2em; font-weight: bold; color: #333; min-height: 50px;">What is 7 + 6?</p>
-                <input type="number" id="parentMathAnswer" style="font-size: 1.5em; padding: 10px; width: 150px; border: 3px solid #9370DB; border-radius: 10px; text-align: center; margin-top: 15px;" placeholder="?">
-            </div>
-            <div style="text-align: center; display: flex; gap: 15px; justify-content: center;">
-                <button onclick="checkParentGate()" style="background: linear-gradient(135deg, #667eea, #764ba2); color: white; border: none; padding: 15px 30px; border-radius: 10px; font-size: 1.1em; cursor: pointer; font-weight: bold;">
-                    Submit
+            <div style="display: flex; gap: 20px; justify-content: center; margin: 30px 0;">
+                <button id="parentOption1" style="background: white; border: 4px solid #9370DB; border-radius: 15px; padding: 20px; cursor: pointer; font-size: 4em; transition: all 0.3s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+                    🚗
                 </button>
+                <button id="parentOption2" style="background: white; border: 4px solid #9370DB; border-radius: 15px; padding: 20px; cursor: pointer; font-size: 4em; transition: all 0.3s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+                    🌳
+                </button>
+                <button id="parentOption3" style="background: white; border: 4px solid #9370DB; border-radius: 15px; padding: 20px; cursor: pointer; font-size: 4em; transition: all 0.3s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+                    ⚽
+                </button>
+            </div>
+            <div style="text-align: center;">
                 <button onclick="closeParentGate()" style="background: #ccc; color: #333; border: none; padding: 15px 30px; border-radius: 10px; font-size: 1.1em; cursor: pointer; font-weight: bold;">
                     Cancel
                 </button>
+            </div>
             </div>
         </div>
     </div>
