@@ -29,7 +29,74 @@ document.addEventListener('DOMContentLoaded', () => {
     loadSettings();
     createFloatingParticles();
     initializeBackgroundMusic();
+    checkFirstVisit();
 });
+
+function checkFirstVisit() {
+    const welcomeModal = document.getElementById('welcomeModal');
+    const personalizedGreeting = document.getElementById('personalizedGreeting');
+    const welcomeHeader = document.getElementById('welcomeHeader');
+    const userName = localStorage.getItem('userName');
+
+    if (!userName) {
+        // First visit, or name not set
+        welcomeModal.style.display = 'flex';
+    } else {
+        // Return visit
+        welcomeHeader.textContent = `✨ Welcome back, ${userName}! ✨`;
+        personalizedGreeting.textContent = `What would you like to create today?`;
+        personalizedGreeting.style.display = 'block';
+    }
+}
+
+function handleNameSubmission() {
+    const nameInput = document.getElementById('nameInput');
+    const userName = nameInput.value.trim();
+    if (userName) {
+        localStorage.setItem('userName', userName);
+        document.getElementById('welcomeModal').style.display = 'none';
+        
+        const welcomeHeader = document.getElementById('welcomeHeader');
+        const personalizedGreeting = document.getElementById('personalizedGreeting');
+        
+        welcomeHeader.textContent = `✨ Welcome, ${userName}! ✨`;
+        personalizedGreeting.textContent = `What would you like to create today?`;
+        personalizedGreeting.style.display = 'block';
+    } else {
+        // Optional: Add a little shake animation if the name is empty
+        document.querySelector('.modal-content').style.animation = 'shake 0.5s';
+        setTimeout(() => {
+            document.querySelector('.modal-content').style.animation = '';
+        }, 500);
+    }
+}
+
+function setupEventListeners() {
+    // Nav buttons
+    const navButtons = document.querySelectorAll('.nav-btn');
+    navButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const section = btn.getAttribute('data-section');
+            navigateToSection(section);
+        });
+    });
+
+    // Activity cards on home page
+    const activityCards = document.querySelectorAll('.activity-card');
+    activityCards.forEach(card => {
+        card.addEventListener('click', () => {
+            const section = card.getAttribute('data-goto');
+            navigateToSection(section);
+        });
+    });
+
+    document.getElementById('submitNameBtn').addEventListener('click', handleNameSubmission);
+    document.getElementById('nameInput').addEventListener('keypress', function(event) {
+        if (event.key === 'Enter') {
+            handleNameSubmission();
+        }
+    });
+}
 
 // ===== Accessibility Controls =====
 function initializeAccessibility() {
@@ -211,46 +278,43 @@ function saveSettings() {
 }
 
 function loadSettings() {
-    const saved = localStorage.getItem('kidsAppSettings');
-    if (saved) {
-        const settings = JSON.parse(saved);
-        appState.settings = settings;
-        
-        // Apply saved settings
-        if (settings.fontSize) {
-            document.documentElement.style.setProperty('--font-size', `${settings.fontSize}px`);
-            document.getElementById('fontSizeSlider').value = settings.fontSize;
-            document.getElementById('fontSizeValue').textContent = `${settings.fontSize}px`;
-        }
-        
-        if (settings.fontFamily && settings.fontFamily !== 'default') {
-            document.body.classList.add(settings.fontFamily);
-            document.getElementById('fontSelect').value = settings.fontFamily;
-        }
-        
-        if (settings.colorTheme && settings.colorTheme !== 'default') {
-            document.body.classList.add(settings.colorTheme);
-            document.getElementById('colorTheme').value = settings.colorTheme;
-        }
-        
-        if (settings.reduceMotion) {
-            document.body.classList.add('reduce-motion');
-            document.getElementById('reduceMotion').checked = true;
-        }
+    const settings = getSettings();
+    appState.settings = settings;
+    
+    // Apply saved settings
+    if (settings.fontSize) {
+        document.documentElement.style.setProperty('--font-size', `${settings.fontSize}px`);
+        document.getElementById('fontSizeSlider').value = settings.fontSize;
+        document.getElementById('fontSizeValue').textContent = `${settings.fontSize}px`;
+    }
+    
+    if (settings.fontFamily && settings.fontFamily !== 'default') {
+        document.body.classList.add(settings.fontFamily);
+        document.getElementById('fontSelect').value = settings.fontFamily;
+    }
+    
+    if (settings.colorTheme && settings.colorTheme !== 'default') {
+        document.body.classList.add(settings.colorTheme);
+        document.getElementById('colorTheme').value = settings.colorTheme;
+    }
+    
+    if (settings.reduceMotion) {
+        document.body.classList.add('reduce-motion');
+        document.getElementById('reduceMotion').checked = true;
+    }
 
-        if (settings.focusMode) {
-            document.body.classList.add('focus-mode');
-            document.getElementById('focusMode').checked = true;
-        }
+    if (settings.focusMode) {
+        document.body.classList.add('focus-mode');
+        document.getElementById('focusMode').checked = true;
+    }
 
-        if (settings.visualRewards) {
-            document.getElementById('visualRewards').value = settings.visualRewards;
-        }
+    if (settings.visualRewards) {
+        document.getElementById('visualRewards').value = settings.visualRewards;
+    }
 
-        if (settings.breakReminders !== false) {
-            document.getElementById('breakReminders').checked = true;
-            startBreakReminders();
-        }
+    if (settings.breakReminders !== false) {
+        document.getElementById('breakReminders').checked = true;
+        startBreakReminders();
     }
 }
 
