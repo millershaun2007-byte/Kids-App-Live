@@ -1,3 +1,49 @@
+// === TIMER INTEGRATION ===
+let activityTimer = null;
+let activityTimeLeft = 0;
+let timerWarningPlayed = false;
+
+function startActivityTimer(durationSeconds, onTimeUp) {
+    clearActivityTimer();
+    activityTimeLeft = durationSeconds;
+    timerWarningPlayed = false;
+    updateTimerDisplay();
+    activityTimer = setInterval(() => {
+        activityTimeLeft--;
+        updateTimerDisplay();
+        if (activityTimeLeft === 10 && !timerWarningPlayed) {
+            if (window.playTimerWarning) playTimerWarning();
+            timerWarningPlayed = true;
+        }
+        if (activityTimeLeft <= 0) {
+            clearActivityTimer();
+            if (window.playTimerSiren) playTimerSiren();
+            if (typeof onTimeUp === 'function') onTimeUp();
+        }
+    }, 1000);
+}
+
+function clearActivityTimer() {
+    if (activityTimer) {
+        clearInterval(activityTimer);
+        activityTimer = null;
+    }
+    const timerEl = document.getElementById('activityTimer');
+    if (timerEl) timerEl.remove();
+}
+
+function updateTimerDisplay() {
+    let timerEl = document.getElementById('activityTimer');
+    if (!timerEl) {
+        timerEl = document.createElement('div');
+        timerEl.id = 'activityTimer';
+        timerEl.style.cssText = 'position: absolute; top: 10px; right: 20px; background: #222; color: #fff; font-size: 1.3em; padding: 8px 18px; border-radius: 12px; z-index: 10; opacity: 0.92; font-weight: bold;';
+        document.body.appendChild(timerEl);
+    }
+    timerEl.textContent = `⏰ ${activityTimeLeft}s`;
+    if (activityTimeLeft <= 10) timerEl.style.background = '#FF9800';
+    else timerEl.style.background = '#222';
+}
 // Math Activities Module - Simplified and Fixed
 
 const mathActivities = {
@@ -85,6 +131,17 @@ function loadMathActivity(activityType) {
     container.innerHTML = html;
     console.log('Activity HTML loaded');
     attachMathEventListeners();
+    // Start a 60-second timer for each activity
+    setTimeout(() => {
+        startActivityTimer(60, () => {
+            // Time's up: show message and reload activity
+            const feedback = document.getElementById('mathFeedback');
+            if (feedback) {
+                feedback.innerHTML = `<div style="background: #e53935; color: white; padding: 20px; border-radius: 15px; font-size: 1.5em; margin-top: 20px; animation: shake 0.5s;">⏰ Time's up! Try again!</div>`;
+            }
+            setTimeout(() => loadMathActivity(activityType), 2000);
+        });
+    }, 300); // slight delay to allow DOM to render
 }
 
 // ===== COUNTING ACTIVITY =====
@@ -427,6 +484,20 @@ function checkMathAnswer(userAnswer) {
     const correctAnswer = mathActivities.currentQuestion.answer.toString();
     
     if (userAnswer === correctAnswer) {
+        if (window.playCheer) playCheer();
+        // Load celebration sounds
+        window.addEventListener('DOMContentLoaded', function() {
+            const script = document.createElement('script');
+            script.src = 'js/celebration-sounds.js';
+            document.body.appendChild(script);
+        });
+        clearActivityTimer();
+        // Load timer sounds
+        window.addEventListener('DOMContentLoaded', function() {
+            const script = document.createElement('script');
+            script.src = 'js/timer-sounds.js';
+            document.body.appendChild(script);
+        });
         feedback.innerHTML = `
             <div style="background: #4CAF50; color: white; padding: 20px; border-radius: 15px; font-size: 1.5em; margin-top: 20px; animation: bounce 0.5s;">
                 🎉 Correct! Amazing work! 🌟

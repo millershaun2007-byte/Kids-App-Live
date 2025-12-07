@@ -8,9 +8,79 @@ const achievements = {
         lastVisit: null,
         badges: [],
         level: 1,
-        xp: 0
+        xp: 0,
+        unlocks: [], // e.g. ['avatar-unicorn', 'bg-space']
+        rewardChests: 0 // Number of unopened chests
     },
     badges: [
+            unlockables: [
+                { id: 'avatar-unicorn', name: 'Unicorn Avatar', desc: 'A magical unicorn to use as your profile!', type: 'avatar', requirement: 5 },
+                { id: 'avatar-dragon', name: 'Dragon Avatar', desc: 'A fierce dragon to use as your profile!', type: 'avatar', requirement: 15 },
+                { id: 'bg-space', name: 'Space Background', desc: 'Unlock a cosmic background!', type: 'background', requirement: 20 },
+                { id: 'mini-game-balloons', name: 'Balloon Pop Mini-Game', desc: 'Unlock a silly balloon popping game!', type: 'mini-game', requirement: 25 }
+            ],
+        // Fun animated reward popup
+        function showRewardPopup(reward) {
+            const popup = document.createElement('div');
+            popup.className = 'reward-popup';
+            popup.innerHTML = `
+                <div style="font-size: 3em;">🎁</div>
+                <div style="font-size: 1.3em; font-weight: bold; margin: 10px 0;">You unlocked:</div>
+                <div style="font-size: 1.1em; color: #9370DB;">${reward.name}</div>
+                <div style="font-size: 0.9em; margin-top: 5px;">${reward.desc}</div>
+            `;
+            popup.style.cssText = `
+                position: fixed; left: 50%; top: 20%; transform: translate(-50%, 0);
+                background: #fff; border-radius: 20px; box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+                padding: 30px 40px; z-index: 99999; text-align: center;
+                border: 3px solid #9370DB; animation: popIn 0.7s cubic-bezier(.68,-0.55,.27,1.55);
+            `;
+            document.body.appendChild(popup);
+            setTimeout(() => popup.remove(), 2500);
+        }
+
+        // Reward chest popup (for streaks or milestones)
+        function showRewardChest() {
+            const chest = document.createElement('div');
+            chest.className = 'reward-chest-popup';
+            chest.innerHTML = `
+                <div style="font-size: 4em;">🪙</div>
+                <div style="font-size: 1.2em; font-weight: bold; margin: 10px 0;">Reward Chest!</div>
+                <div style="font-size: 1em; color: #9370DB;">Open for a surprise reward!</div>
+            `;
+            chest.style.cssText = `
+                position: fixed; left: 50%; top: 25%; transform: translate(-50%, 0);
+                background: #fffbe7; border-radius: 18px; box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+                padding: 28px 36px; z-index: 99999; text-align: center;
+                border: 3px solid #FFD700; animation: popIn 0.7s cubic-bezier(.68,-0.55,.27,1.55);
+                cursor: pointer;
+            `;
+            chest.onclick = () => {
+                chest.remove();
+                // Pick a random unlockable or bonus
+                const locked = achievements.unlockables.filter(u => !achievements.data.unlocks.includes(u.id));
+                let reward;
+                if (locked.length > 0) {
+                    reward = locked[Math.floor(Math.random() * locked.length)];
+                    achievements.data.unlocks.push(reward.id);
+                    showRewardPopup(reward);
+                } else {
+                    reward = { name: 'Bonus Stars!', desc: 'You got 5 bonus stars!' };
+                    achievements.data.totalStars += 5;
+                    showRewardPopup(reward);
+                }
+                saveAchievements();
+            };
+            document.body.appendChild(chest);
+        }
+
+        // Add popIn animation to stylesheet if not present
+        if (!document.getElementById('popInKeyframes')) {
+            const style = document.createElement('style');
+            style.id = 'popInKeyframes';
+            style.innerHTML = `@keyframes popIn { 0% { transform: scale(0.7); opacity: 0; } 80% { transform: scale(1.1); opacity: 1; } 100% { transform: scale(1); opacity: 1; } }`;
+            document.head.appendChild(style);
+        }
         { id: 'first-star', name: 'First Star!', desc: 'Earn your first star', icon: 'star', requirement: 1 },
         { id: 'math-whiz', name: 'Math Whiz', desc: 'Complete 10 math activities', icon: 'math', requirement: 10 },
         { id: 'word-master', name: 'Word Master', desc: 'Complete 10 literacy activities', icon: 'book', requirement: 10 },

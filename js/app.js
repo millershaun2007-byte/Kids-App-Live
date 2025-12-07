@@ -23,40 +23,31 @@ let parentGateQuestion = {};
 
 // ===== Initialize App =====
 document.addEventListener('DOMContentLoaded', () => {
-    const coppaAccepted = localStorage.getItem('coppaAccepted');
-    if (coppaAccepted === 'true') {
-        checkFirstVisit();
-    } else {
-        document.getElementById('coppaModal').style.display = 'flex';
+    // BYPASS ALL MODALS FOR TESTING
+    document.getElementById('welcomeModal').style.display = 'none';
+    document.getElementById('coppaModal').style.display = 'none';
+    document.getElementById('parentGate').style.display = 'none';
+    // Show home section
+    document.querySelectorAll('.content-section').forEach(section => {
+        section.classList.remove('active');
+        section.style.display = 'none';
+    });
+    const homeSection = document.getElementById('home');
+    if (homeSection) {
+        homeSection.classList.add('active');
+        homeSection.style.display = '';
     }
 
     // Initial setup
     loadSettings();
     createFloatingParticles();
     initializeBackgroundMusic();
+    setupEventListeners(); // Ensure event listeners are attached
     checkFirstVisit();
 });
 
 function checkFirstVisit() {
-    const welcomeModal = document.getElementById('welcomeModal');
-    const personalizedGreeting = document.getElementById('personalizedGreeting');
-    const welcomeHeader = document.getElementById('welcomeHeader');
-    const userName = localStorage.getItem('userName');
-
-    if (!userName) {
-        // First visit, or name not set
-        welcomeModal.style.display = 'flex';
-        // Play the welcome audio
-        const welcomeAudio = new Audio('audio/welcome-greeting.wav');
-        welcomeAudio.play().catch(error => {
-            console.log("Could not play audio automatically, user may need to interact more.", error);
-        });
-    } else {
-        // Return visit
-        welcomeHeader.textContent = `✨ Welcome back, ${userName}! ✨`;
-        personalizedGreeting.textContent = `What would you like to create today?`;
-        personalizedGreeting.style.display = 'block';
-    }
+    // Welcome modal logic removed for testing
 }
 
 function handleNameSubmission() {
@@ -64,14 +55,32 @@ function handleNameSubmission() {
     const userName = nameInput.value.trim();
     if (userName) {
         localStorage.setItem('userName', userName);
-        document.getElementById('welcomeModal').style.display = 'none';
-        
+        // Force hide modal with !important in case of CSS issues
+        const welcomeModal = document.getElementById('welcomeModal');
+        if (welcomeModal) {
+            welcomeModal.style.display = 'none';
+            welcomeModal.style.setProperty('display', 'none', 'important');
+        }
+        // Show home section and update greeting
+        const homeSection = document.getElementById('home');
+        if (homeSection) {
+            // Hide all content sections
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.classList.remove('active');
+                section.style.display = 'none';
+            });
+            homeSection.classList.add('active');
+            homeSection.style.display = '';
+        }
         const welcomeHeader = document.getElementById('welcomeHeader');
         const personalizedGreeting = document.getElementById('personalizedGreeting');
-        
-        welcomeHeader.textContent = `✨ Welcome, ${userName}! ✨`;
-        personalizedGreeting.textContent = `What would you like to create today?`;
-        personalizedGreeting.style.display = 'block';
+        if (welcomeHeader) {
+            welcomeHeader.textContent = `✨ Welcome, ${userName}! ✨`;
+        }
+        if (personalizedGreeting) {
+            personalizedGreeting.textContent = `What would you like to create today?`;
+            personalizedGreeting.style.display = 'block';
+        }
     } else {
         // Optional: Add a little shake animation if the name is empty
         document.querySelector('.modal-content').style.animation = 'shake 0.5s';
@@ -397,9 +406,7 @@ function showBreakReminder() {
 }
 
 // ===== Background Music System =====
-let backgroundMusicContext = null;
-let musicOscillator = null;
-let musicGain = null;
+let backgroundMusicAudio = null;
 
 function initializeBackgroundMusic() {
     const musicSelect = document.getElementById('backgroundMusic');
@@ -410,76 +417,45 @@ function initializeBackgroundMusic() {
         if (e.target.value === 'off') {
             stopBackgroundMusic();
         } else {
-            playBackgroundMusic(e.target.value);
+            playBackgroundMusic();
         }
     });
-    
+
     volumeSlider.addEventListener('input', (e) => {
         const volume = e.target.value / 100;
         volumeValue.textContent = e.target.value + '%';
-        if (musicGain) {
-            musicGain.gain.value = volume * 0.3; // Keep it subtle
+        if (backgroundMusicAudio) {
+            backgroundMusicAudio.volume = volume * 0.3;
         }
     });
-    
-    // Auto-start calm music
+
+    // Auto-start music
     setTimeout(() => {
         if (musicSelect.value !== 'off') {
-            playBackgroundMusic(musicSelect.value);
+            playBackgroundMusic();
         }
     }, 1000);
 }
 
 function playBackgroundMusic(type) {
-    stopBackgroundMusic();
-    
-    backgroundMusicContext = new (window.AudioContext || window.webkitAudioContext)();
-    musicGain = backgroundMusicContext.createGain();
-    musicGain.connect(backgroundMusicContext.destination);
-    
-    const volume = document.getElementById('musicVolume').value / 100;
-    musicGain.gain.value = volume * 0.3;
-    
-    // Create a simple pleasant melody using oscillators
-    const notes = type === 'calm' ? [261.63, 293.66, 329.63, 349.23] : // C, D, E, F
-                  type === 'upbeat' ? [329.63, 392.00, 440.00, 523.25] : // E, G, A, C
-                  [220.00, 246.94, 293.66, 329.63]; // A, B, D, E (focus)
-    
-    let noteIndex = 0;
-    
-    function playNote() {
-        if (!backgroundMusicContext) return;
-        
-        const oscillator = backgroundMusicContext.createOscillator();
-        const noteGain = backgroundMusicContext.createGain();
-        
-        oscillator.connect(noteGain);
-        noteGain.connect(musicGain);
-        
-        oscillator.frequency.value = notes[noteIndex % notes.length];
-        oscillator.type = type === 'upbeat' ? 'square' : 'sine';
-        
-        noteGain.gain.setValueAtTime(0, backgroundMusicContext.currentTime);
-        noteGain.gain.linearRampToValueAtTime(0.1, backgroundMusicContext.currentTime + 0.1);
-        noteGain.gain.linearRampToValueAtTime(0, backgroundMusicContext.currentTime + 0.8);
-        
-        oscillator.start(backgroundMusicContext.currentTime);
-        oscillator.stop(backgroundMusicContext.currentTime + 1);
-        
-        noteIndex++;
-        
-        const delay = type === 'upbeat' ? 500 : type === 'focus' ? 1500 : 1000;
-        setTimeout(playNote, delay);
-    }
-    
-    playNote();
+        stopBackgroundMusic();
+        const musicSelect = document.getElementById('backgroundMusic');
+        if (musicSelect.value === 'off') return;
+        backgroundMusicAudio = new Audio('audio/hairy balls.mp3');
+        backgroundMusicAudio.loop = true;
+        const volume = document.getElementById('musicVolume').value / 100;
+        backgroundMusicAudio.volume = volume * 0.3;
+        backgroundMusicAudio.play().catch((e) => {
+            // Autoplay might be blocked until user interacts
+            console.log('Background music could not play automatically:', e);
+        });
 }
 
 function stopBackgroundMusic() {
-    if (backgroundMusicContext) {
-        backgroundMusicContext.close();
-        backgroundMusicContext = null;
-        musicGain = null;
+    if (backgroundMusicAudio) {
+        backgroundMusicAudio.pause();
+        backgroundMusicAudio.currentTime = 0;
+        backgroundMusicAudio = null;
     }
 }
 
