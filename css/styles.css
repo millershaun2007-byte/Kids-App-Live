@@ -3,17 +3,23 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 :root {
-    /* Default Color Theme */
-    --primary-color: #9370DB;
-    --secondary-color: #FF69B4;
-    --accent-color: #FFD700;
-    --bg-color: #FFF8DC;
-    --text-color: #333;
-    --card-bg: #FFFFFF;
-    --nav-bg: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    /* Modern Color Theme */
+    --primary-color: #8E44AD; /* Richer purple */
+    --secondary-color: #3498DB; /* Complementary blue */
+    --accent-color: #F1C40F; /* Vibrant yellow */
+    --bg-color: #f8f9fa; /* Clean off-white */
+    --text-color: #34495e; /* Softer dark grey-blue */
+    --card-bg: #ffffff;
+    --nav-bg: linear-gradient(135deg, #8E44AD 0%, #3498DB 100%);
     
     /* Spacing */
     --spacing-sm: 8px;
@@ -23,7 +29,7 @@
     
     /* Typography */
     --font-size: 16px;
-    --font-family: 'Comic Sans MS', 'Trebuchet MS', sans-serif;
+    --font-family: 'Poppins', sans-serif;
     
     /* Animations */
     --transition-speed: 0.3s;
@@ -53,8 +59,8 @@ body.soft {
 /* Dark Mode */
 body.dark {
     --primary-color: #BB86FC;
-    --secondary-color: #CF6679;
-    --accent-color: #FFB74D;
+    --secondary-color: #3700B3;
+    --accent-color: #03DAC6;
     --bg-color: #121212;
     --text-color: #E0E0E0;
     --card-bg: #1E1E1E;
@@ -148,49 +154,60 @@ body {
     font-size: 14px;
 }
 
-/* ===== Navigation ===== */
+/* ===== Modern Navigation ===== */
 .main-nav {
-    background: var(--nav-bg);
-    padding: var(--spacing-lg);
+    background: var(--card-bg);
+    padding: var(--spacing-md) var(--spacing-lg);
     text-align: center;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    border-bottom: 1px solid #e9ecef;
 }
 
 .main-nav h1 {
-    color: white;
-    font-size: 2.5em;
-    margin-bottom: var(--spacing-md);
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    color: var(--text-color);
+    font-size: 1.8em;
+    font-weight: 700;
+    margin-bottom: var(--spacing-lg);
 }
 
 .nav-buttons {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: var(--spacing-md);
+    gap: 12px;
 }
 
 .nav-btn {
-    padding: var(--spacing-md) var(--spacing-lg);
-    background: white;
-    color: var(--primary-color);
-    border: 3px solid var(--primary-color);
-    border-radius: 25px;
-    font-size: 1.1em;
-    font-weight: bold;
+    padding: 10px 20px;
+    background-color: #f1f3f5;
+    color: #495057;
+    border: none;
+    border-radius: 50px; /* Pill shape */
+    font-size: 1em;
+    font-weight: 600;
     cursor: pointer;
-    transition: all var(--transition-speed);
+    transition: all var(--transition-speed) ease;
+    text-decoration: none; /* For <a> tags */
+    display: inline-block; /* For <a> tags */
 }
 
 .nav-btn:hover {
-    transform: translateY(-3px) scale(1.05);
-    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
-    background: var(--accent-color);
+    transform: translateY(-2px);
+    background-color: #e9ecef;
+    color: #212529;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
 }
 
 .nav-btn:focus {
-    outline: 3px solid var(--accent-color);
+    outline: 3px solid var(--secondary-color);
     outline-offset: 3px;
+}
+
+/* Style for an "active" or "current page" button if needed later */
+.nav-btn.active {
+    background: var(--primary-color);
+    color: white;
+    box-shadow: 0 4px 12px rgba(142, 68, 173, 0.3);
 }
 
 /* ===== Main Content ===== */
