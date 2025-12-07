@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Collaborative Story</title>
+    <link rel="stylesheet" href="css/collaborative-story.css">
+</head>
+<body>
+    <header>
+        <h1>Collaborative Storytelling</h1>
+        <nav>
+            <a href="index.html">Home</a>
+        </nav>
+    </header>
+    <main>
+        <section id="story-board">
+            <h2>Let's Write a Story Together!</h2>
+            <div id="story-prompt-container">
+                <p><strong>Story Prompt:</strong> <span id="story-prompt">A brave knight and a friendly dragon...</span></p>
+                <button id="new-prompt-btn">Get New Prompt</button>
+            </div>
+            <div id="story-display">
+                <!-- Story content will be added here by JavaScript -->
+            </div>
+            <div id="turn-indicator">
+                <p>It's <span id="current-player">Player 1</span>'s turn to write!</p>
+            </div>
+            <div id="story-input-container">
+                <textarea id="story-input" placeholder="What happens next?"></textarea>
+                <button id="add-to-story-btn">Add to Story</button>
+            </div>
+        </section>
+        <section id="story-controls">
+            <button id="save-story-btn">Save Story</button>
+            <button id="new-story-btn">Start a New Story</button>
+        </section>
+    </main>
+    <script src="js/collaborative-story.js"></script>
+</body>
+</html>

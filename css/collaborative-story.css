@@ -1,0 +1,116 @@
+body {
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    background-color: #f0f8ff;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #87CEEB;
+    padding: 1rem;
+    text-align: center;
+    color: white;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 1rem;
+}
+
+main {
+    padding: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+section {
+    background-color: white;
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+h2 {
+    color: #87CEEB;
+    border-bottom: 2px solid #87CEEB;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+#story-prompt-container {
+    background-color: #e0f7fa;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    border-left: 5px solid #87CEEB;
+}
+
+#story-display {
+    height: 300px;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+#story-display p {
+    margin-bottom: 0.5rem;
+    padding: 0.5rem;
+    border-radius: 5px;
+}
+
+#story-display .player-1 {
+    background-color: #fff0f5;
+    text-align: left;
+}
+
+#story-display .player-2 {
+    background-color: #e6e6fa;
+    text-align: right;
+}
+
+#turn-indicator {
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    color: #555;
+}
+
+#story-input-container {
+    display: flex;
+    gap: 1rem;
+}
+
+textarea {
+    flex-grow: 1;
+    height: 80px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    font-family: inherit;
+    font-size: 1rem;
+}
+
+button {
+    background-color: #87CEEB;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+#story-controls {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
