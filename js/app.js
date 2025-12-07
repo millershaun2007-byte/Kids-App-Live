@@ -441,10 +441,11 @@ function playBackgroundMusic(type) {
         stopBackgroundMusic();
         const musicSelect = document.getElementById('backgroundMusic');
         if (musicSelect.value === 'off') return;
-        backgroundMusicAudio = new Audio('audio/hairy balls.mp3');
+        // Use new, better song (replace with your actual filename)
+        backgroundMusicAudio = new Audio("audio/new-better-song.mp3");
         backgroundMusicAudio.loop = true;
         const volume = document.getElementById('musicVolume').value / 100;
-        backgroundMusicAudio.volume = volume * 0.3;
+        backgroundMusicAudio.volume = volume * 0.7; // Upbeat and louder
         backgroundMusicAudio.play().catch((e) => {
             // Autoplay might be blocked until user interacts
             console.log('Background music could not play automatically:', e);
