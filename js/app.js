@@ -420,8 +420,7 @@ function initializeBackgroundMusic() {
             playBackgroundMusic();
         }
     });
-
-    volumeSlider.addEventListener('input', (e) => {
+                backgroundMusicAudio = new Audio("audio/new-better-song.mp3");
         const volume = e.target.value / 100;
         volumeValue.textContent = e.target.value + '%';
         if (backgroundMusicAudio) {
