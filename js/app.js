@@ -24,35 +24,56 @@ const appState = {
 document.addEventListener('DOMContentLoaded', () => {
             // Parent Gate Modal Button Listeners removed
         // Talking Unicorn Button
+        // Voice selection dropdown logic
+        const voiceSelect = document.getElementById('unicornVoiceSelect');
+        let unicornVoices = [];
+        function populateVoiceList() {
+            if (!('speechSynthesis' in window)) return;
+            unicornVoices = window.speechSynthesis.getVoices();
+            if (voiceSelect) {
+                voiceSelect.innerHTML = '<option value="">Default (Best Match)</option>';
+                unicornVoices.forEach((voice, idx) => {
+                    const option = document.createElement('option');
+                    option.value = idx;
+                    option.textContent = `${voice.name} (${voice.lang})${voice.default ? ' [default]' : ''}`;
+                    voiceSelect.appendChild(option);
+                });
+            }
+        }
+        if ('speechSynthesis' in window) {
+            populateVoiceList();
+            window.speechSynthesis.onvoiceschanged = populateVoiceList;
+        }
+
         const speakUnicornBtn = document.getElementById('speakUnicornBtn');
         if (speakUnicornBtn) {
             speakUnicornBtn.addEventListener('click', () => {
                 if ('speechSynthesis' in window) {
                     const unicornWelcome = new SpeechSynthesisUtterance("Hello, my name is Sparkels! Welcome to the Hip Hop Happening Groovy App");
-                    // Try to select a more realistic, child-like or female English voice
-                    const voices = window.speechSynthesis.getVoices();
                     let chosenVoice = null;
-                    // Prefer Google, Microsoft, or Apple female/child voices
-                    const preferredVoiceNames = [
-                        'Google UK English Female', 'Google US English', 'Microsoft Zira', 'Microsoft Aria', 'Microsoft Jenny', 'Microsoft Mia', 'Samantha', 'Karen', 'Susan', 'Victoria', 'Veena', 'Google UK English Child', 'Google US English Child'
-                    ];
-                    for (const name of preferredVoiceNames) {
-                        chosenVoice = voices.find(v => v.name.includes(name));
-                        if (chosenVoice) break;
-                    }
-                    // Fallback: pick any female/child English voice
-                    if (!chosenVoice) {
-                        chosenVoice = voices.find(v => v.lang.startsWith('en') && (v.name.toLowerCase().includes('female') || v.name.toLowerCase().includes('child') || v.name.toLowerCase().includes('girl')));
-                    }
-                    // Fallback: pick any English voice
-                    if (!chosenVoice) {
-                        chosenVoice = voices.find(v => v.lang.startsWith('en'));
+                    if (voiceSelect && voiceSelect.value !== "") {
+                        chosenVoice = unicornVoices[parseInt(voiceSelect.value)];
+                    } else {
+                        // Default best match logic
+                        const preferredVoiceNames = [
+                            'Google UK English Female', 'Google US English', 'Microsoft Zira', 'Microsoft Aria', 'Microsoft Jenny', 'Microsoft Mia', 'Samantha', 'Karen', 'Susan', 'Victoria', 'Veena', 'Google UK English Child', 'Google US English Child'
+                        ];
+                        for (const name of preferredVoiceNames) {
+                            chosenVoice = unicornVoices.find(v => v.name.includes(name));
+                            if (chosenVoice) break;
+                        }
+                        if (!chosenVoice) {
+                            chosenVoice = unicornVoices.find(v => v.lang.startsWith('en') && (v.name.toLowerCase().includes('female') || v.name.toLowerCase().includes('child') || v.name.toLowerCase().includes('girl')));
+                        }
+                        if (!chosenVoice) {
+                            chosenVoice = unicornVoices.find(v => v.lang.startsWith('en'));
+                        }
                     }
                     if (chosenVoice) {
                         unicornWelcome.voice = chosenVoice;
                     }
-                    unicornWelcome.rate = 1.0; // More natural speed
-                    unicornWelcome.pitch = 1.1; // Slightly higher for a friendly tone
+                    unicornWelcome.rate = 1.0;
+                    unicornWelcome.pitch = 1.1;
                     unicornWelcome.volume = 1.0;
                     window.speechSynthesis.speak(unicornWelcome);
                 }
