@@ -29,8 +29,31 @@ document.addEventListener('DOMContentLoaded', () => {
             speakUnicornBtn.addEventListener('click', () => {
                 if ('speechSynthesis' in window) {
                     const unicornWelcome = new SpeechSynthesisUtterance("Hello, my name is Sparkels! Welcome to the Hip Hop Happening Groovy App");
-                    unicornWelcome.rate = 1.05;
-                    unicornWelcome.pitch = 1.3;
+                    // Try to select a more realistic, child-like or female English voice
+                    const voices = window.speechSynthesis.getVoices();
+                    let chosenVoice = null;
+                    // Prefer Google, Microsoft, or Apple female/child voices
+                    const preferredVoiceNames = [
+                        'Google UK English Female', 'Google US English', 'Microsoft Zira', 'Microsoft Aria', 'Microsoft Jenny', 'Microsoft Mia', 'Samantha', 'Karen', 'Susan', 'Victoria', 'Veena', 'Google UK English Child', 'Google US English Child'
+                    ];
+                    for (const name of preferredVoiceNames) {
+                        chosenVoice = voices.find(v => v.name.includes(name));
+                        if (chosenVoice) break;
+                    }
+                    // Fallback: pick any female/child English voice
+                    if (!chosenVoice) {
+                        chosenVoice = voices.find(v => v.lang.startsWith('en') && (v.name.toLowerCase().includes('female') || v.name.toLowerCase().includes('child') || v.name.toLowerCase().includes('girl')));
+                    }
+                    // Fallback: pick any English voice
+                    if (!chosenVoice) {
+                        chosenVoice = voices.find(v => v.lang.startsWith('en'));
+                    }
+                    if (chosenVoice) {
+                        unicornWelcome.voice = chosenVoice;
+                    }
+                    unicornWelcome.rate = 1.0; // More natural speed
+                    unicornWelcome.pitch = 1.1; // Slightly higher for a friendly tone
+                    unicornWelcome.volume = 1.0;
                     window.speechSynthesis.speak(unicornWelcome);
                 }
             });
@@ -45,13 +68,32 @@ document.addEventListener('DOMContentLoaded', () => {
     if (homeSection) {
         homeSection.classList.add('active');
         homeSection.style.display = '';
-            // Unicorn verbal welcome
-            if ('speechSynthesis' in window) {
-                const unicornWelcome = new SpeechSynthesisUtterance("Hello, my name is Sparkels! Welcome to the Hip Hop Happening Groovy App");
-                unicornWelcome.rate = 1.05;
-                unicornWelcome.pitch = 1.3;
-                setTimeout(() => { window.speechSynthesis.speak(unicornWelcome); }, 800);
+        // Unicorn verbal welcome with more realistic voice
+        if ('speechSynthesis' in window) {
+            const unicornWelcome = new SpeechSynthesisUtterance("Hello, my name is Sparkels! Welcome to the Hip Hop Happening Groovy App");
+            const voices = window.speechSynthesis.getVoices();
+            let chosenVoice = null;
+            const preferredVoiceNames = [
+                'Google UK English Female', 'Google US English', 'Microsoft Zira', 'Microsoft Aria', 'Microsoft Jenny', 'Microsoft Mia', 'Samantha', 'Karen', 'Susan', 'Victoria', 'Veena', 'Google UK English Child', 'Google US English Child'
+            ];
+            for (const name of preferredVoiceNames) {
+                chosenVoice = voices.find(v => v.name.includes(name));
+                if (chosenVoice) break;
             }
+            if (!chosenVoice) {
+                chosenVoice = voices.find(v => v.lang.startsWith('en') && (v.name.toLowerCase().includes('female') || v.name.toLowerCase().includes('child') || v.name.toLowerCase().includes('girl')));
+            }
+            if (!chosenVoice) {
+                chosenVoice = voices.find(v => v.lang.startsWith('en'));
+            }
+            if (chosenVoice) {
+                unicornWelcome.voice = chosenVoice;
+            }
+            unicornWelcome.rate = 1.0;
+            unicornWelcome.pitch = 1.1;
+            unicornWelcome.volume = 1.0;
+            setTimeout(() => { window.speechSynthesis.speak(unicornWelcome); }, 800);
+        }
     }
 
     // Initial setup
@@ -817,14 +859,7 @@ window.app = {
 
 // ===== Legal Compliance Functions =====
 
-// COPPA Consent Check
-// COPPA modal fully removed
-
-function acceptCOPPA() {
-    document.getElementById('coppaModal').style.display = 'none';
-    localStorage.setItem('coppaAccepted', 'true');
-    checkFirstVisit(); // Check for the welcome modal after the user's first interaction
-}
+// COPPA Consent logic fully removed
 
 // Parent Gate Functions
 function showParentGate() {
@@ -920,4 +955,4 @@ window.closeParentGate = closeParentGate;
 window.showPrivacyPolicy = showPrivacyPolicy;
 window.showTermsOfService = showTermsOfService;
 window.goHome = goHome;
-window.acceptCOPPA = acceptCOPPA;
+// window.acceptCOPPA removed
