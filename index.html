@@ -14,59 +14,36 @@
     <meta name="description" content="Fun learning app for kids with math, reading, writing and creative design - neurodivergent friendly">
 </head>
 <body>
-    <!-- Welcome Modal Removed for Testing -->
-
-    <!-- COPPA Compliance Notice Modal -->
-    <div id="coppaModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 99999; display: flex; align-items: center; justify-content: center;">
-        <div style="background: white; padding: 40px; border-radius: 20px; max-width: 600px; margin: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.3);">
-            <h2 style="color: #9370DB; margin-bottom: 20px;">📝 Parent Notice</h2>
-            <p style="font-size: 1.1em; line-height: 1.6; margin-bottom: 15px;">
-                <strong>Welcome!</strong> This app is designed for children and complies with COPPA (Children's Online Privacy Protection Act).
-            </p>
-            <p style="font-size: 1em; line-height: 1.6; margin-bottom: 15px;">
-                <strong>Data Collection:</strong> This app stores learning progress and settings ONLY on your device. No personal information is collected or transmitted to any server.
-            </p>
-            <p style="font-size: 1em; line-height: 1.6; margin-bottom: 15px;">
-                <strong>Parental Consent:</strong> By clicking "I Agree" below, you confirm you are a parent or guardian giving permission for your child to use this app.
-            </p>
-            <p style="font-size: 0.9em; line-height: 1.6; margin-bottom: 20px;">
-                Review our <a href="#" onclick="showPrivacyPolicy(); return false;" style="color: #9370DB; text-decoration: underline;">Privacy Policy</a> and 
-                <a href="#" onclick="showTermsOfService(); return false;" style="color: #9370DB; text-decoration: underline;">Terms of Service</a>.
-            </p>
-            <div style="text-align: center;">
-                <button onclick="acceptCOPPA()" style="background: linear-gradient(135deg, #667eea, #764ba2); color: white; border: none; padding: 15px 40px; border-radius: 10px; font-size: 1.1em; cursor: pointer; font-weight: bold;">
-                    I Agree - Continue to App
-                </button>
-            </div>
-        </div>
+    <!-- Big Unicorn Welcome Intro -->
+    <div id="unicornIntro" style="width:100%; text-align:center; margin:40px 0 30px 0;">
+        <svg width="180" height="180" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="margin-bottom:18px;">
+            <ellipse cx="50" cy="60" rx="32" ry="36" fill="#FFE4E1"/>
+            <polygon points="50,20 46,44 54,44" fill="#FFD700" stroke="#FFA500" stroke-width="2"/>
+            <path d="M 30,45 Q 25,50 30,55" fill="#FF69B4" opacity="0.8"/>
+            <path d="M 70,45 Q 75,50 70,55" fill="#9370DB" opacity="0.8"/>
+            <circle cx="42" cy="58" r="5" fill="#000"/>
+            <circle cx="58" cy="58" r="5" fill="#000"/>
+            <ellipse cx="50" cy="80" rx="18" ry="10" fill="#FFD1DC"/>
+                         <!-- Chicken Legs -->
+                         <g>
+                             <line x1="40" y1="95" x2="38" y2="110" stroke="#F4A460" stroke-width="3" />
+                             <line x1="60" y1="95" x2="62" y2="110" stroke="#F4A460" stroke-width="3" />
+                             <line x1="38" y1="110" x2="36" y2="115" stroke="#F4A460" stroke-width="2" />
+                             <line x1="38" y1="110" x2="40" y2="115" stroke="#F4A460" stroke-width="2" />
+                             <line x1="62" y1="110" x2="60" y2="115" stroke="#F4A460" stroke-width="2" />
+                             <line x1="62" y1="110" x2="64" y2="115" stroke="#F4A460" stroke-width="2" />
+                             <ellipse cx="36" cy="116" rx="2" ry="1" fill="#FFD700" />
+                             <ellipse cx="40" cy="116" rx="2" ry="1" fill="#FFD700" />
+                             <ellipse cx="60" cy="116" rx="2" ry="1" fill="#FFD700" />
+                             <ellipse cx="64" cy="116" rx="2" ry="1" fill="#FFD700" />
+                         </g>
+        </svg>
+        <h1 style="font-size:2.2em; color:#9370DB; font-family:'Poppins',sans-serif; font-weight:700; margin-bottom:10px;">Hello, my name is Sparkels!</h1>
+        <div style="font-size:1.4em; color:#764ba2; font-family:'Poppins',sans-serif; font-weight:600; margin-bottom:10px;">Welcome to the Hip Hop Happening Groovy App</div>
+        <button id="speakUnicornBtn" style="background: linear-gradient(135deg, #667eea, #764ba2); color: white; border: none; padding: 14px 32px; border-radius: 12px; font-size: 1.2em; font-family:'Poppins',sans-serif; font-weight:600; cursor: pointer; margin-top:18px;">🔊 Hear Sparkels Speak!</button>
     </div>
 
-    <!-- Parent Gate Modal -->
-    <div id="parentGate" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 99998; align-items: center; justify-content: center;">
-        <div style="background: white; padding: 40px; border-radius: 20px; max-width: 600px; margin: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.3);">
-            <h2 style="color: #9370DB; margin-bottom: 20px;">🔒 Parent Verification</h2>
-            <p style="font-size: 1.3em; margin-bottom: 30px; font-weight: bold; color: #333;">
-                To protect your child, please click the picture that shows a <span id="parentTargetObject" style="color: #9370DB;">CAR</span>:
-            </p>
-            <div style="display: flex; gap: 20px; justify-content: center; margin: 30px 0;">
-                <button id="parentOption1" style="background: white; border: 4px solid #9370DB; border-radius: 15px; padding: 20px; cursor: pointer; font-size: 4em; transition: all 0.3s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
-                    🚗
-                </button>
-                <button id="parentOption2" style="background: white; border: 4px solid #9370DB; border-radius: 15px; padding: 20px; cursor: pointer; font-size: 4em; transition: all 0.3s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
-                    🌳
-                </button>
-                <button id="parentOption3" style="background: white; border: 4px solid #9370DB; border-radius: 15px; padding: 20px; cursor: pointer; font-size: 4em; transition: all 0.3s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
-                    ⚽
-                </button>
-            </div>
-            <div style="text-align: center;">
-                <button onclick="closeParentGate()" style="background: #ccc; color: #333; border: none; padding: 15px 30px; border-radius: 10px; font-size: 1.1em; cursor: pointer; font-weight: bold;">
-                    Cancel
-                </button>
-            </div>
-            </div>
-        </div>
-    </div>
+
 
     <!-- About Me Section -->
     <section id="aboutMe" class="info-section" style="display: none;">
@@ -81,6 +58,8 @@
                         I'm 43 years old. I've worked in <strong>crisis support for 6 years</strong> - as a crisis supporter, call coach, mentor, and shift supervisor. 
                         I have a Diploma of Community Services. But for most of my life, I navigated the world with <strong>undiagnosed ADHD</strong> - not understanding why things felt so hard, why I couldn't focus like others, why the world felt overwhelming.
                     </p>
+                <div style="background: #fff; color: #764ba2; border-radius: 12px; box-shadow: 0 2px 8px rgba(147,112,219,0.08); padding: 24px; margin: 30px 0; border-left: 6px solid #9370DB;">
+                </div>
                     <p style="font-size: 1.2em; line-height: 1.8; margin: 15px 0 0 0;">
                         Then I had kids. My daughter Mia is six years old. She has ADHD, ASD (Autism Spectrum Disorder), and a PDA (Pathological Demand Avoidance) profile. 
                         <strong>She's also the most creative, imaginative, brilliant kid I've ever met.</strong>
@@ -360,7 +339,6 @@
             </ul>
             
             <h3>3. COPPA Compliance</h3>
-            <p>This app complies with the Children's Online Privacy Protection Act (COPPA). We do not knowingly collect personal information from children under 13. All data remains on the user's device.</p>
             
             <h3>4. Data Security</h3>
             <p>Since all data is stored locally on your device, you control the data. Clearing your browser data will delete all app information.</p>
@@ -383,6 +361,7 @@
         <div style="max-width: 800px; margin: 0 auto; padding: 40px 20px;">
             <h2>📜 Terms of Service</h2>
             <p style="font-size: 0.9em; color: #666; margin-bottom: 30px;">Last Updated: December 2, 2025</p>
+            <!-- Parent Notice (COPPA Compliance) heading removed as modal is not used -->
             
             <h3>1. Acceptance of Terms</h3>
             <p>By using this app, you agree to these Terms of Service. If you do not agree, please do not use the app.</p>
@@ -435,7 +414,7 @@
         font-size: 1.1em;
         position: sticky;
         top: 0;
-        z-index: 9999;
+        /* z-index: 9999; (removed modal overlay z-index) */
         box-shadow: 0 2px 10px rgba(0,0,0,0.2);
         display: flex;
         justify-content: space-between;
@@ -1078,8 +1057,7 @@
             <a href="#" onclick="showTermsOfService(); return false;" style="color: #FFD700; text-decoration: none; font-weight: bold;">📜 Terms of Service</a>
             <span style="color: #FFD700;">|</span>
             <a href="parent-resources.html" style="color: #FFD700; text-decoration: none; font-weight: bold;">👨‍👩‍👧‍👦 Parent Resources</a>
-            <span style="color: #FFD700;">|</span>
-            <a href="#" onclick="showParentGate(); return false;" style="color: #FFD700; text-decoration: none; font-weight: bold;">🔒 Parent Settings</a>
+            <!-- Parent Settings link removed -->
         </div>
         
         <div id="feedback" style="margin-top: 20px; padding: 20px; background: rgba(255,255,255,0.1); border-radius: 15px;">

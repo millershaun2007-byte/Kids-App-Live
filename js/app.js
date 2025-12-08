@@ -18,15 +18,24 @@ const appState = {
     }
 };
 
-// Parent Gate question storage
-let parentGateQuestion = {};
+// Parent Gate logic removed
 
 // ===== Initialize App =====
 document.addEventListener('DOMContentLoaded', () => {
-    // BYPASS ALL MODALS FOR TESTING
-    document.getElementById('welcomeModal').style.display = 'none';
-    document.getElementById('coppaModal').style.display = 'none';
-    document.getElementById('parentGate').style.display = 'none';
+            // Parent Gate Modal Button Listeners removed
+        // Talking Unicorn Button
+        const speakUnicornBtn = document.getElementById('speakUnicornBtn');
+        if (speakUnicornBtn) {
+            speakUnicornBtn.addEventListener('click', () => {
+                if ('speechSynthesis' in window) {
+                    const unicornWelcome = new SpeechSynthesisUtterance("Hello, my name is Sparkels! Welcome to the Hip Hop Happening Groovy App");
+                    unicornWelcome.rate = 1.05;
+                    unicornWelcome.pitch = 1.3;
+                    window.speechSynthesis.speak(unicornWelcome);
+                }
+            });
+        }
+    // Modal and parent gate logic removed
     // Show home section
     document.querySelectorAll('.content-section').forEach(section => {
         section.classList.remove('active');
@@ -36,6 +45,13 @@ document.addEventListener('DOMContentLoaded', () => {
     if (homeSection) {
         homeSection.classList.add('active');
         homeSection.style.display = '';
+            // Unicorn verbal welcome
+            if ('speechSynthesis' in window) {
+                const unicornWelcome = new SpeechSynthesisUtterance("Hello, my name is Sparkels! Welcome to the Hip Hop Happening Groovy App");
+                unicornWelcome.rate = 1.05;
+                unicornWelcome.pitch = 1.3;
+                setTimeout(() => { window.speechSynthesis.speak(unicornWelcome); }, 800);
+            }
     }
 
     // Initial setup
@@ -47,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function checkFirstVisit() {
-    // Welcome modal logic removed for testing
+    // No modal logic needed
 }
 
 function handleNameSubmission() {
@@ -420,7 +436,7 @@ function initializeBackgroundMusic() {
             playBackgroundMusic();
         }
     });
-                backgroundMusicAudio = new Audio("audio/new-better-song.mp3");
+    volumeSlider.addEventListener('input', (e) => {
         const volume = e.target.value / 100;
         volumeValue.textContent = e.target.value + '%';
         if (backgroundMusicAudio) {
@@ -437,18 +453,18 @@ function initializeBackgroundMusic() {
 }
 
 function playBackgroundMusic(type) {
-        stopBackgroundMusic();
-        const musicSelect = document.getElementById('backgroundMusic');
-        if (musicSelect.value === 'off') return;
-        // Use new, better song (replace with your actual filename)
-        backgroundMusicAudio = new Audio("audio/new-better-song.mp3");
-        backgroundMusicAudio.loop = true;
-        const volume = document.getElementById('musicVolume').value / 100;
-        backgroundMusicAudio.volume = volume * 0.7; // Upbeat and louder
-        backgroundMusicAudio.play().catch((e) => {
-            // Autoplay might be blocked until user interacts
-            console.log('Background music could not play automatically:', e);
-        });
+    stopBackgroundMusic();
+    const musicSelect = document.getElementById('backgroundMusic');
+    if (musicSelect.value === 'off') return;
+    // Use new, better song (replace with your actual filename)
+    backgroundMusicAudio = new Audio("audio/new-better-song.mp3");
+    backgroundMusicAudio.loop = true;
+    const volume = document.getElementById('musicVolume').value / 100;
+    backgroundMusicAudio.volume = volume * 0.7; // Upbeat and louder
+    backgroundMusicAudio.play().catch((e) => {
+        // Autoplay might be blocked until user interacts
+        console.log('Background music could not play automatically:', e);
+    });
 }
 
 function stopBackgroundMusic() {
@@ -802,12 +818,7 @@ window.app = {
 // ===== Legal Compliance Functions =====
 
 // COPPA Consent Check
-function checkCOPPAConsent() {
-    const hasConsent = localStorage.getItem('coppaConsent');
-    if (!hasConsent) {
-        document.getElementById('coppaModal').style.display = 'flex';
-    }
-}
+// COPPA modal fully removed
 
 function acceptCOPPA() {
     document.getElementById('coppaModal').style.display = 'none';
@@ -817,59 +828,20 @@ function acceptCOPPA() {
 
 // Parent Gate Functions
 function showParentGate() {
-    // Picture options with emojis
-    const challenges = [
-        { target: 'CAR', correct: '🚗', options: ['🚗', '🌳', '⚽'] },
-        { target: 'TREE', correct: '🌳', options: ['🚗', '🌳', '⚽'] },
-        { target: 'BALL', correct: '⚽', options: ['🚗', '🌳', '⚽'] },
-        { target: 'HOUSE', correct: '🏠', options: ['🏠', '🐶', '🍎'] },
-        { target: 'DOG', correct: '🐶', options: ['🏠', '🐶', '🍎'] },
-        { target: 'APPLE', correct: '🍎', options: ['🏠', '🐶', '🍎'] }
-    ];
-    
-    // Pick random challenge
-    const challenge = challenges[Math.floor(Math.random() * challenges.length)];
-    parentGateQuestion = challenge;
-    
-    // Shuffle options
-    const shuffled = [...challenge.options].sort(() => Math.random() - 0.5);
-    
-    // Update UI
-    document.getElementById('parentTargetObject').textContent = challenge.target;
-    document.getElementById('parentOption1').textContent = shuffled[0];
-    document.getElementById('parentOption2').textContent = shuffled[1];
-    document.getElementById('parentOption3').textContent = shuffled[2];
-    
-    // Add click handlers
-    document.getElementById('parentOption1').onclick = () => checkParentPicture(shuffled[0]);
-    document.getElementById('parentOption2').onclick = () => checkParentPicture(shuffled[1]);
-    document.getElementById('parentOption3').onclick = () => checkParentPicture(shuffled[2]);
-    
-    // Show modal
-    document.getElementById('parentGate').style.display = 'flex';
+    // Show parent gate modal
+    // Parent gate modal removed; nothing to show
 }
 
 function checkParentPicture(selected) {
-    if (selected === parentGateQuestion.correct) {
-        closeParentGate();
-        document.getElementById('panelContent').classList.add('open');
-        playSound('success');
-        showMessage('✅ Verified! Settings unlocked.', 'success');
-    } else {
-        playSound('error');
-        showMessage('❌ Incorrect. Please try again.', 'error');
-        // Generate new challenge
-        setTimeout(showParentGate, 1000);
-    }
+    // Parent gate modal removed; no check needed
 }
 
 function checkParentGate() {
-    // Legacy function - redirect to picture check
-    checkParentPicture(parentGateQuestion.correct);
+    // Parent gate modal removed; nothing to check
 }
 
 function closeParentGate() {
-    document.getElementById('parentGate').style.display = 'none';
+    // Parent gate modal removed; nothing to close
 }
 
 // Legal Pages Navigation
