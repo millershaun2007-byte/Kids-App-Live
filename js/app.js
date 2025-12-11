@@ -127,19 +127,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function checkFirstVisit() {
     // No modal logic needed
-}
 
 function handleNameSubmission() {
     const nameInput = document.getElementById('nameInput');
     const userName = nameInput.value.trim();
     if (userName) {
         localStorage.setItem('userName', userName);
-        // Force hide modal with !important in case of CSS issues
-        const welcomeModal = document.getElementById('welcomeModal');
-        if (welcomeModal) {
-            welcomeModal.style.display = 'none';
-            welcomeModal.style.setProperty('display', 'none', 'important');
-        }
+        // Modal logic fully removed
         // Show home section and update greeting
         const homeSection = document.getElementById('home');
         if (homeSection) {
@@ -161,11 +155,7 @@ function handleNameSubmission() {
             personalizedGreeting.style.display = 'block';
         }
     } else {
-        // Optional: Add a little shake animation if the name is empty
-        document.querySelector('.modal-content').style.animation = 'shake 0.5s';
-        setTimeout(() => {
-            document.querySelector('.modal-content').style.animation = '';
-        }, 500);
+        // No modal shake animation; modal logic removed
     }
 }
 
@@ -316,6 +306,28 @@ function initializeNavigation() {
             navigateToSection(section);
         });
     });
+
+        // Math activity completion (example)
+        const mathActivity = document.getElementById('mathActivity');
+        if (mathActivity) {
+            mathActivity.addEventListener('activityComplete', () => {
+                if (window.achievements && window.achievements.addStar) {
+                    window.achievements.addStar();
+                    updateStarsDisplay('math');
+                }
+            });
+        }
+
+        // Literacy activity completion (example)
+        const literacyActivity = document.getElementById('literacyActivity');
+        if (literacyActivity) {
+            literacyActivity.addEventListener('activityComplete', () => {
+                if (window.achievements && window.achievements.addStar) {
+                    window.achievements.addStar();
+                    updateStarsDisplay('literacy');
+                }
+            });
+        }
 }
 
 function navigateToSection(sectionId) {
@@ -870,100 +882,60 @@ function showMessage(message, type = 'success') {
     }, 2000);
 }
 
+
+// Update stars display in progress sections
+function updateStarsDisplay(type) {
+    const data = window.achievements ? window.achievements.getData() : null;
+    if (!data) return;
+    if (type === 'math') {
+        const starsCount = document.getElementById('starsCount');
+        if (starsCount) starsCount.textContent = data.totalStars;
+    } else if (type === 'literacy') {
+        const literacyStars = document.getElementById('literacyStars');
+        if (literacyStars) literacyStars.textContent = data.totalStars;
+    }
+}
+
 // Export for use in other modules
 window.app = {
     state: appState,
     navigate: navigateToSection,
     playSound: playSound,
-    showMessage: showMessage
+    showMessage: showMessage,
+    updateStarsDisplay: updateStarsDisplay
 };
 
 // ===== Legal Compliance Functions =====
 
 // COPPA Consent logic fully removed
 
-// Parent Gate Functions
-function showParentGate() {
-    // Show parent gate modal
-    // Parent gate modal removed; nothing to show
-}
-
-function checkParentPicture(selected) {
-    // Parent gate modal removed; no check needed
-}
-
-function checkParentGate() {
-    // Parent gate modal removed; nothing to check
-}
-
-function closeParentGate() {
-    // Parent gate modal removed; nothing to close
-}
+// All parent gate and modal functions fully removed
 
 // Legal Pages Navigation
 function showAboutMe() {
-    // Hide all sections
-    document.querySelectorAll('.content-section, .info-section').forEach(section => {
-        section.classList.remove('active');
-        section.style.display = 'none';
-    });
-    
-    // Show about me
-    const aboutSection = document.getElementById('aboutMe');
-    aboutSection.style.display = 'block';
-    aboutSection.classList.add('active');
-    
-    // Scroll to top
-    window.scrollTo(0, 0);
-}
 
-function showBlog() {
-    // Hide all sections
-    document.querySelectorAll('.content-section, .info-section').forEach(section => {
-        section.classList.remove('active');
-        section.style.display = 'none';
-    });
-    
-    // Show blog
-    const blogSection = document.getElementById('blog');
-    blogSection.style.display = 'block';
-    blogSection.classList.add('active');
-    
-    // Scroll to top
-    window.scrollTo(0, 0);
-}
-
-function showPrivacyPolicy() {
-    // Hide all sections
-    document.querySelectorAll('.content-section, .info-section').forEach(section => {
-        section.classList.remove('active');
-        section.style.display = 'none';
-    });
-    
-    // Show privacy policy
-    const privacySection = document.getElementById('privacyPolicy');
-    privacySection.style.display = 'block';
-    privacySection.classList.add('active');
-    
-    // Scroll to top
-    window.scrollTo(0, 0);
-}
-
-function showTermsOfService() {
-    // Hide all sections
-    document.querySelectorAll('.content-section, .info-section').forEach(section => {
-        section.classList.remove('active');
-        section.style.display = 'none';
-    });
-    
-    // Show terms
-    const termsSection = document.getElementById('termsOfService');
-    termsSection.style.display = 'block';
-    termsSection.classList.add('active');
-    
-    // Scroll to top
-    window.scrollTo(0, 0);
-}
+// Avatar selection logic (unicorn, dinosaur, great big fella)
+document.addEventListener('DOMContentLoaded', function() {
+    const avatarGreeting = document.getElementById('avatarGreeting');
+    const unicornAvatar = document.getElementById('unicornAvatar');
+    const dinoAvatar = document.getElementById('dinoAvatar');
+    const bigFellaAvatar = document.getElementById('bigFellaAvatar');
+    if (unicornAvatar && avatarGreeting) {
+        unicornAvatar.addEventListener('click', function() {
+            avatarGreeting.textContent = "Hello, my name is Sparkels!";
+        });
+    }
+    if (dinoAvatar && avatarGreeting) {
+        dinoAvatar.addEventListener('click', function() {
+            avatarGreeting.textContent = "RAWR! You're a Dinosaur!";
+        });
+    }
+    if (bigFellaAvatar && avatarGreeting) {
+        bigFellaAvatar.addEventListener('click', function() {
+            avatarGreeting.textContent = "Hi! I'm the Great Big Fella!";
+        });
+    }
+});
 
 function goHome() {
     navigateToSection('home');
@@ -976,4 +948,257 @@ window.closeParentGate = closeParentGate;
 window.showPrivacyPolicy = showPrivacyPolicy;
 window.showTermsOfService = showTermsOfService;
 window.goHome = goHome;
-// window.acceptCOPPA removed
+// Voice Greeting Logic
+const playGreetingBtn = document.getElementById('playGreetingBtn');
+const customGreetingInput = document.getElementById('customGreetingInput');
+const recordGreetingBtn = document.getElementById('recordGreetingBtn');
+const recordingStatus = document.getElementById('recordingStatus');
+let mediaRecorder;
+let recordedChunks = [];
+
+// Play typed greeting using SpeechSynthesis
+if (playGreetingBtn) {
+    playGreetingBtn.onclick = () => {
+        const greeting = customGreetingInput.value.trim();
+        if (greeting) {
+            const utter = new window.SpeechSynthesisUtterance(greeting);
+            utter.rate = 1.1;
+            utter.pitch = 1.2;
+            window.speechSynthesis.speak(utter);
+        }
+    };
+}
+
+// Record voice greeting
+if (recordGreetingBtn) {
+    recordGreetingBtn.onclick = async () => {
+        if (mediaRecorder && mediaRecorder.state === 'recording') {
+            mediaRecorder.stop();
+            recordingStatus.textContent = 'Recording stopped.';
+            return;
+        }
+        try {
+            const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+            mediaRecorder = new MediaRecorder(stream);
+            recordedChunks = [];
+            mediaRecorder.ondataavailable = (e) => {
+                if (e.data.size > 0) recordedChunks.push(e.data);
+            };
+            mediaRecorder.onstop = () => {
+                const audioBlob = new Blob(recordedChunks, { type: 'audio/webm' });
+                const audioUrl = URL.createObjectURL(audioBlob);
+                const audio = new Audio(audioUrl);
+                audio.play();
+                recordingStatus.textContent = 'Playing your greeting!';
+            };
+            mediaRecorder.start();
+            recordingStatus.textContent = 'Recording...';
+        } catch (err) {
+            recordingStatus.textContent = 'Microphone access denied.';
+        }
+    };
+}
+
+// Welcome Song Logic (auto-play on load, optional)
+window.addEventListener('DOMContentLoaded', () => {
+    const welcomeSong = document.getElementById('welcomeSong');
+    if (welcomeSong) {
+        // Uncomment below to auto-play on load (may require user interaction)
+        // welcomeSong.play();
+    }
+});
+// Visual Break Timer Logic
+const timerDisplay = document.getElementById('timerDisplay');
+const startTimerBtn = document.getElementById('startTimerBtn');
+const breakReminder = document.getElementById('breakReminder');
+let timerInterval;
+let timerSeconds = 1800; // 30 minutes
+
+function updateTimerDisplay() {
+    const min = Math.floor(timerSeconds / 60).toString().padStart(2, '0');
+    const sec = (timerSeconds % 60).toString().padStart(2, '0');
+    if (timerDisplay) timerDisplay.textContent = `${min}:${sec}`;
+}
+
+function startBreakTimer() {
+    timerSeconds = 1800;
+    updateTimerDisplay();
+    if (breakReminder) breakReminder.style.display = 'none';
+    if (timerInterval) clearInterval(timerInterval);
+    timerInterval = setInterval(() => {
+        timerSeconds--;
+        updateTimerDisplay();
+        if (timerSeconds <= 0) {
+            clearInterval(timerInterval);
+            if (breakReminder) breakReminder.style.display = 'inline';
+            if (timerDisplay) timerDisplay.textContent = '00:00';
+        }
+    }, 1000);
+}
+
+if (startTimerBtn) {
+    startTimerBtn.onclick = startBreakTimer;
+}
+// Calming Animated Background: Fairies, Wizards, Princesses
+const animatedBackground = document.getElementById('animatedBackground');
+const characterTypes = [
+    { name: 'fairy', color: '#FFD1DC', emoji: '🧚' },
+    { name: 'wizard', color: '#9370DB', emoji: '🧙' },
+    { name: 'princess', color: '#FFB6C1', emoji: '👸' }
+];
+
+function createFloatingCharacter() {
+    if (!animatedBackground) return;
+    const type = characterTypes[Math.floor(Math.random() * characterTypes.length)];
+    const el = document.createElement('div');
+    el.textContent = type.emoji;
+    el.style.position = 'absolute';
+    el.style.left = Math.random() * 90 + 'vw';
+    el.style.top = '100vh';
+    el.style.fontSize = (Math.random() * 2 + 2) + 'em';
+    el.style.opacity = 0.85;
+    el.style.transition = 'top 18s linear, opacity 2s';
+    el.style.pointerEvents = 'none';
+    animatedBackground.appendChild(el);
+    setTimeout(() => {
+        el.style.top = Math.random() * 60 + 'vh';
+        el.style.opacity = 0.6;
+    }, 100);
+    setTimeout(() => {
+        el.style.top = '-10vh';
+        el.style.opacity = 0.2;
+    }, 9000);
+    setTimeout(() => {
+        if (el.parentNode) el.parentNode.removeChild(el);
+    }, 18000);
+}
+
+setInterval(createFloatingCharacter, 3500);
+for (let i = 0; i < 4; i++) createFloatingCharacter();
+// Customizable Color Theme Picker
+const colorThemePicker = document.getElementById('colorThemePicker');
+if (colorThemePicker) {
+    colorThemePicker.oninput = (e) => {
+        document.body.style.background = e.target.value;
+        if (animatedBackground) animatedBackground.style.background = e.target.value;
+    };
+}
+// Rainbow Star Jar Reward System
+const starJar = document.getElementById('starJar');
+const addStarBtn = document.getElementById('addStarBtn');
+const starJarCount = document.getElementById('starJarCount');
+const chimeSound = document.getElementById('chimeSound');
+const applauseSound = document.getElementById('applauseSound');
+let starCount = 0;
+const rainbowColors = ['#FFD700', '#FF69B4', '#32CD32', '#9370DB', '#FFB6C1', '#00BFFF', '#FF6347'];
+
+function playChime() {
+    if (chimeSound) {
+        chimeSound.currentTime = 0;
+        chimeSound.play();
+    }
+}
+function playApplause() {
+    if (applauseSound) {
+        applauseSound.currentTime = 0;
+        applauseSound.play();
+    }
+}
+
+function addStarToJar() {
+    if (!starJar) return;
+    starCount++;
+    if (starJarCount) starJarCount.textContent = `Stars: ${starCount}`;
+    const star = document.createElement('span');
+    star.textContent = '★';
+    star.style.fontSize = (Math.random() * 1.2 + 2) + 'em';
+    star.style.color = rainbowColors[starCount % rainbowColors.length];
+    star.style.margin = '0 2px';
+    star.style.transition = 'transform 0.5s';
+    starJar.appendChild(star);
+    setTimeout(() => { star.style.transform = 'scale(1.2)'; }, 100);
+    playChime();
+    if (starCount % 5 === 0) playApplause();
+}
+
+if (addStarBtn) {
+    addStarBtn.onclick = addStarToJar;
+}
+// Sensory Zone: Mindfulness Breathing Animation
+const breathingAnimation = document.getElementById('breathingAnimation');
+const startBreathingBtn = document.getElementById('startBreathingBtn');
+let breathingInterval;
+
+function animateBreathing() {
+    if (!breathingAnimation) return;
+    breathingAnimation.innerHTML = '';
+    const circle = document.createElement('div');
+    circle.style.width = '60px';
+    circle.style.height = '60px';
+    circle.style.borderRadius = '50%';
+    circle.style.background = 'radial-gradient(circle at 40% 40%, #9370DB 70%, #32CD32 100%)';
+    circle.style.margin = '30px auto';
+    circle.style.transition = 'width 4s, height 4s, opacity 1s';
+    breathingAnimation.appendChild(circle);
+    let phase = 0;
+    let cycles = 0;
+    function nextPhase() {
+        if (phase === 0) { // Breathe in
+            circle.style.width = '120px';
+            circle.style.height = '120px';
+            circle.style.opacity = '1';
+        } else if (phase === 1) { // Hold
+            // No change, just hold
+        } else if (phase === 2) { // Breathe out
+            circle.style.width = '60px';
+            circle.style.height = '60px';
+            circle.style.opacity = '0.7';
+        }
+        phase = (phase + 1) % 3;
+        if (phase === 0) cycles++;
+        if (cycles < 5) {
+            breathingInterval = setTimeout(nextPhase, 4000);
+        } else {
+            circle.style.opacity = '0.3';
+            setTimeout(() => { breathingAnimation.innerHTML = ''; }, 1200);
+        }
+    }
+    nextPhase();
+}
+
+if (startBreathingBtn) {
+    startBreathingBtn.onclick = () => {
+        if (breathingInterval) clearTimeout(breathingInterval);
+        animateBreathing();
+    };
+}
+// Feedback Button and Popup Form Logic
+const feedbackBtn = document.getElementById('feedbackBtn');
+const feedbackPopup = document.getElementById('feedbackPopup');
+const closeFeedbackBtn = document.getElementById('closeFeedbackBtn');
+const submitFeedbackBtn = document.getElementById('submitFeedbackBtn');
+const feedbackText = document.getElementById('feedbackText');
+const feedbackStatus = document.getElementById('feedbackStatus');
+
+if (feedbackBtn && feedbackPopup) {
+    feedbackBtn.onclick = () => {
+        feedbackPopup.style.display = 'block';
+        feedbackStatus.textContent = '';
+    };
+}
+if (closeFeedbackBtn && feedbackPopup) {
+    closeFeedbackBtn.onclick = () => {
+        feedbackPopup.style.display = 'none';
+    };
+}
+if (submitFeedbackBtn && feedbackText && feedbackStatus) {
+    submitFeedbackBtn.onclick = () => {
+        if (feedbackText.value.trim().length < 3) {
+            feedbackStatus.textContent = 'Please enter your feedback.';
+            return;
+        }
+        feedbackStatus.textContent = 'Thank you for your feedback!';
+        feedbackText.value = '';
+        setTimeout(() => { feedbackPopup.style.display = 'none'; }, 1800);
+    };
+}

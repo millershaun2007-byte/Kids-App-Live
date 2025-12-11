@@ -1,4 +1,4 @@
-<!-- Force rebuild for GitHub Pages -->
+https://millershaun2007-byte.github.io/Kids-App-Live/<!-- Force rebuild for GitHub Pages -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,32 +14,120 @@
     <meta name="description" content="Fun learning app for kids with math, reading, writing and creative design - neurodivergent friendly">
 </head>
 <body>
-    <!-- Big Unicorn Welcome Intro -->
+            <!-- Feedback Button and Popup Form -->
+            <button id="feedbackBtn" style="position:fixed; bottom:24px; right:24px; background: linear-gradient(135deg, #FFD700, #9370DB); color: white; border: none; padding: 16px 32px; border-radius: 16px; font-size: 1.2em; font-family:'Poppins',sans-serif; font-weight:600; cursor: pointer; z-index:1000; box-shadow: 0 4px 12px rgba(147,112,219,0.18);">💡 Send Feedback</button>
+            <div id="feedbackPopup" style="display:none; position:fixed; bottom:80px; right:32px; background:#fff; border-radius:16px; box-shadow:0 8px 24px rgba(147,112,219,0.18); padding:24px; max-width:340px; z-index:1001;">
+                <h3 style="color:#9370DB; margin-bottom:12px;">Share Your Ideas!</h3>
+                <textarea id="feedbackText" rows="4" style="width:100%; border-radius:8px; border:1.5px solid #9370DB; font-size:1em; margin-bottom:12px; padding:8px;"></textarea>
+                <button id="submitFeedbackBtn" style="background: linear-gradient(135deg, #32CD32, #FFD700); color: white; border: none; padding: 10px 24px; border-radius: 10px; font-size: 1em; font-family:'Poppins',sans-serif; font-weight:600; cursor: pointer;">Send</button>
+                <button id="closeFeedbackBtn" style="background: #eee; color: #9370DB; border: none; padding: 8px 18px; border-radius: 8px; font-size: 0.95em; font-family:'Poppins',sans-serif; font-weight:600; cursor: pointer; margin-left:8px;">Close</button>
+                <div id="feedbackStatus" style="margin-top:10px; color:#32CD32; font-size:1em;"></div>
+            </div>
+        <!-- Sensory Zone Section -->
+        <section id="sensoryZone" style="margin: 48px auto 32px auto; max-width: 600px; background: #F3F0FF; border-radius: 18px; box-shadow: 0 4px 16px rgba(147,112,219,0.08); padding: 32px; text-align: center;">
+            <h2 style="color: #9370DB; margin-bottom: 18px;">🧘 Sensory Zone: Mindfulness & Breathing</h2>
+            <div style="font-size: 1.15em; color: #764ba2; margin-bottom: 18px;">
+                <strong>Take a calming break! Try this gentle breathing exercise:</strong>
+            </div>
+            <div id="breathingAnimation" style="margin: 0 auto 18px auto; width: 120px; height: 120px;">
+                <!-- Animation will appear here -->
+            </div>
+            <div style="font-size: 1.1em; color: #333; margin-bottom: 12px;">
+                <ol style="text-align:left; display:inline-block; margin:0 auto;">
+                    <li>Breathe in slowly for 4 seconds as the circle grows.</li>
+                    <li>Hold your breath for 4 seconds.</li>
+                    <li>Breathe out slowly for 4 seconds as the circle shrinks.</li>
+                    <li>Repeat 3-5 times for a calm mind and body.</li>
+                </ol>
+            </div>
+            <button id="startBreathingBtn" style="background: linear-gradient(135deg, #32CD32, #9370DB); color: white; border: none; padding: 12px 28px; border-radius: 10px; font-size: 1.1em; font-family:'Poppins',sans-serif; font-weight:600; cursor: pointer;">Start Breathing Animation</button>
+        </section>
+    <!-- Calming Animated Background: Fairies, Wizards, Princesses -->
+    <div id="animatedBackground" style="position:fixed; top:0; left:0; width:100vw; height:100vh; z-index:-1; overflow:hidden;"></div>
+    <!-- Big Unicorn Welcome Intro (parent modal fully removed) -->
     <div id="unicornIntro" style="width:100%; text-align:center; margin:40px 0 30px 0;">
-        <svg width="180" height="180" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="margin-bottom:18px;">
-            <ellipse cx="50" cy="60" rx="32" ry="36" fill="#FFE4E1"/>
-            <polygon points="50,20 46,44 54,44" fill="#FFD700" stroke="#FFA500" stroke-width="2"/>
-            <path d="M 30,45 Q 25,50 30,55" fill="#FF69B4" opacity="0.8"/>
-            <path d="M 70,45 Q 75,50 70,55" fill="#9370DB" opacity="0.8"/>
-            <circle cx="42" cy="58" r="5" fill="#000"/>
-            <circle cx="58" cy="58" r="5" fill="#000"/>
-            <ellipse cx="50" cy="80" rx="18" ry="10" fill="#FFD1DC"/>
-                         <!-- Chicken Legs -->
-                         <g>
-                             <line x1="40" y1="95" x2="38" y2="110" stroke="#F4A460" stroke-width="3" />
-                             <line x1="60" y1="95" x2="62" y2="110" stroke="#F4A460" stroke-width="3" />
-                             <line x1="38" y1="110" x2="36" y2="115" stroke="#F4A460" stroke-width="2" />
-                             <line x1="38" y1="110" x2="40" y2="115" stroke="#F4A460" stroke-width="2" />
-                             <line x1="62" y1="110" x2="60" y2="115" stroke="#F4A460" stroke-width="2" />
-                             <line x1="62" y1="110" x2="64" y2="115" stroke="#F4A460" stroke-width="2" />
-                             <ellipse cx="36" cy="116" rx="2" ry="1" fill="#FFD700" />
-                             <ellipse cx="40" cy="116" rx="2" ry="1" fill="#FFD700" />
-                             <ellipse cx="60" cy="116" rx="2" ry="1" fill="#FFD700" />
-                             <ellipse cx="64" cy="116" rx="2" ry="1" fill="#FFD700" />
-                         </g>
-        </svg>
-        <h1 style="font-size:2.2em; color:#9370DB; font-family:'Poppins',sans-serif; font-weight:700; margin-bottom:10px;">Hello, my name is Sparkels!</h1>
+        <div id="avatarContainer">
+            <!-- Razzle Dazzle Section: Friendly Avatar Choices -->
+            <div id="avatarChoices" style="display: flex; gap: 18px; justify-content: center; align-items: flex-end;">
+                <svg id="unicornAvatar" width="120" height="120" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="cursor:pointer;">
+                    <ellipse cx="50" cy="60" rx="32" ry="36" fill="#FFE4E1"/>
+                    <polygon points="50,20 46,44 54,44" fill="#FFD700" stroke="#FFA500" stroke-width="2"/>
+                    <path d="M 30,45 Q 25,50 30,55" fill="#FF69B4" opacity="0.8"/>
+                    <path d="M 70,45 Q 75,50 70,55" fill="#9370DB" opacity="0.8"/>
+                    <circle cx="42" cy="58" r="5" fill="#000"/>
+                    <circle cx="58" cy="58" r="5" fill="#000"/>
+                    <ellipse cx="50" cy="80" rx="18" ry="10" fill="#FFD1DC"/>
+                </svg>
+                <svg id="dinoAvatar" width="120" height="120" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="cursor:pointer;">
+                    <ellipse cx="55" cy="65" rx="28" ry="22" fill="#32CD32" stroke="#228B22" stroke-width="3"/>
+                    <ellipse cx="40" cy="50" rx="15" ry="13" fill="#32CD32" stroke="#228B22" stroke-width="2"/>
+                    <polygon points="35,40 33,45 37,45" fill="#FFD700"/>
+                    <polygon points="45,40 43,45 47,45" fill="#FFD700"/>
+                    <circle cx="38" cy="48" r="3" fill="#FFD700"/>
+                    <circle cx="38" cy="48" r="1.5" fill="#000"/>
+                    <circle cx="32" cy="53" r="1" fill="#000"/>
+                    <path d="M 60,55 Q 75,45 70,65 Q 65,60 60,60" fill="#90EE90" stroke="#228B22" stroke-width="1.5"/>
+                </svg>
+                <svg id="gentleGiantAvatar" width="120" height="120" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="cursor:pointer;">
+                    <!-- Gentle giant: big friendly blue creature -->
+                    <ellipse cx="50" cy="65" rx="35" ry="30" fill="#87CEEB" stroke="#4682B4" stroke-width="3"/>
+                    <ellipse cx="50" cy="45" rx="20" ry="18" fill="#B0C4DE" stroke="#4682B4" stroke-width="2"/>
+                    <circle cx="40" cy="50" r="5" fill="#FFF"/>
+                    <circle cx="60" cy="50" r="5" fill="#FFF"/>
+                    <circle cx="40" cy="50" r="2.5" fill="#4682B4"/>
+                    <circle cx="60" cy="50" r="2.5" fill="#4682B4"/>
+                    <ellipse cx="50" cy="80" rx="12" ry="6" fill="#4682B4"/>
+                    <rect x="35" y="90" width="30" height="10" rx="5" fill="#B0C4DE" stroke="#4682B4" stroke-width="1"/>
+                    <text x="50" y="98" font-size="8" fill="#4682B4" text-anchor="middle" font-family="Poppins">Hi!</text>
+                </svg>
+            </div>
+            <div id="voiceGreetingSection" style="margin-top: 18px; text-align: center;">
+                <h3>Record or Type Your Greeting!</h3>
+                <input type="text" id="customGreetingInput" placeholder="Type your greeting here..." style="width: 60%; font-size: 1.1em; margin-bottom: 8px;" />
+                <button id="playGreetingBtn" style="margin-left: 8px; font-size: 1em;">Play Greeting</button>
+                <button id="recordGreetingBtn" style="margin-left: 8px; font-size: 1em;">Record Voice</button>
+                <span id="recordingStatus" style="margin-left: 12px; color: #32CD32;"></span>
+            </div>
+            <div id="welcomeSongSection" style="margin-top: 18px; text-align: center;">
+                <h3>Upbeat Welcome Song!</h3>
+                <audio id="welcomeSong" controls style="width: 60%;">
+                    <source src="js/upbeat-welcome-song.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+            </div>
+            <div id="breakTimerSection" style="margin-top: 24px; text-align: center;">
+                            <div id="colorThemeSection" style="margin-top: 24px; text-align: center;">
+                                            <div id="starJarSection" style="margin-top: 24px; text-align: center;">
+                                                            <audio id="chimeSound" src="js/chime.mp3" preload="auto"></audio>
+                                                            <audio id="applauseSound" src="js/applause.mp3" preload="auto"></audio>
+                                                <h3>🌈 Rainbow Star Jar</h3>
+                                                <div id="starJar" style="display: flex; align-items: flex-end; justify-content: center; gap: 6px; min-height: 80px; margin-bottom: 8px;">
+                                                    <!-- Stars will be added here -->
+                                                </div>
+                                                <button id="addStarBtn" style="background: linear-gradient(135deg, #FFD700, #FF69B4, #32CD32, #9370DB); color: white; border: none; padding: 10px 24px; border-radius: 10px; font-size: 1.1em; font-family:'Poppins',sans-serif; font-weight:600; cursor: pointer;">Add a Star!</button>
+                                                <span id="starJarCount" style="margin-left: 12px; font-size: 1.1em; color: #764ba2;">Stars: 0</span>
+                                            </div>
+                                <h3>🎨 Choose Your Background Color</h3>
+                                <input type="color" id="colorThemePicker" value="#FFE4E1" style="width: 60px; height: 40px; border-radius: 8px; border: 2px solid #9370DB; cursor: pointer;">
+                                <span style="margin-left: 12px; font-size: 1.1em; color: #764ba2;">Pick any color for your comfort!</span>
+                            </div
+                <h3>⏰ Visual Break Timer</h3>
+                <div style="display: flex; flex-direction: column; align-items: center;">
+                    <span id="timerDisplay" style="font-size: 2em; color: #764ba2; font-weight: bold; margin-bottom: 8px;">30:00</span>
+                    <button id="startTimerBtn" style="background: linear-gradient(135deg, #FFD700, #FF69B4); color: white; border: none; padding: 12px 28px; border-radius: 10px; font-size: 1.1em; font-family:'Poppins',sans-serif; font-weight:600; cursor: pointer;">Start 30-Minute Timer</button>
+                    <span id="breakReminder" style="display:none; margin-top: 12px; color: #32CD32; font-size: 1.15em; font-weight:600;">Time for a break! 🎉</span>
+                </div>
+            </div>
+        </div>
+        <h1 id="avatarGreeting" style="font-size:2.2em; color:#9370DB; font-family:'Poppins',sans-serif; font-weight:700; margin-bottom:10px;">Hello, my name is Sparkels!</h1>
         <div style="font-size:1.4em; color:#764ba2; font-family:'Poppins',sans-serif; font-weight:600; margin-bottom:10px;">Welcome to the Hip Hop Happening Groovy App</div>
+        <div style="font-size:1.15em; color:#764ba2; font-family:'Poppins',sans-serif; margin-bottom:10px;">
+            <strong>
+                Don't miss our <a href="#sensoryZone" style="color:#9370DB; text-decoration:underline; font-weight:600;">Sensory Zone area</a> for calming, sensory-friendly activities and breaks!
+            </strong><br>
+            <em>We recommend enjoying the app for no more than 30 minutes at a time to keep your experience healthy and balanced.</em><br>
+            <a href="https://kidshealth.org/en/kids/healthy-habits.html" target="_blank" style="color:#32CD32; text-decoration:underline; font-weight:600;">Learn about healthy habits in a fun way!</a>
+        </div>
         <button id="speakUnicornBtn" style="background: linear-gradient(135deg, #667eea, #764ba2); color: white; border: none; padding: 14px 32px; border-radius: 12px; font-size: 1.2em; font-family:'Poppins',sans-serif; font-weight:600; cursor: pointer; margin-top:18px;">🔊 Hear Sparkels Speak!</button>
         <div style="margin-top:18px;">
             <label for="unicornVoiceSelect" style="font-size:1em; color:#764ba2; font-weight:600; margin-right:8px;">Choose Sparkels' Voice:</label>
@@ -47,6 +135,8 @@
                 <option value="">Default (Best Match)</option>
             </select>
         </div>
+        <button id="becomeDinoBtn" style="background: linear-gradient(135deg, #32CD32, #228B22); color: white; border: none; padding: 20px 44px; border-radius: 18px; font-size: 1.6em; font-family:'Poppins',sans-serif; font-weight:700; cursor: pointer; margin-top:18px; margin-left:10px;">🦕 Become a Dinosaur!</button>
+        <button id="becomeUnicornBtn" style="background: linear-gradient(135deg, #667eea, #764ba2); color: white; border: none; padding: 20px 44px; border-radius: 18px; font-size: 1.6em; font-family:'Poppins',sans-serif; font-weight:700; cursor: pointer; margin-top:18px; margin-left:10px;">🦄 Switch Back to Unicorn!</button>
     </div>
 
 
@@ -1062,8 +1152,7 @@
             <span style="color: #FFD700;">|</span>
             <a href="#" onclick="showTermsOfService(); return false;" style="color: #FFD700; text-decoration: none; font-weight: bold;">📜 Terms of Service</a>
             <span style="color: #FFD700;">|</span>
-            <a href="parent-resources.html" style="color: #FFD700; text-decoration: none; font-weight: bold;">👨‍👩‍👧‍👦 Parent Resources</a>
-            <!-- Parent Settings link removed -->
+            <!-- Parent Resources link removed -->
         </div>
         
         <div id="feedback" style="margin-top: 20px; padding: 20px; background: rgba(255,255,255,0.1); border-radius: 15px;">
