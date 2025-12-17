@@ -1,0 +1,1191 @@
+https://millershaun2007-byte.github.io/Kids-App-Live/<!-- Force rebuild for GitHub Pages -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kids Groovy Hip Hop Happening Unicorn App - FREE BETA</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#9370DB">
+    <meta name="description" content="Fun learning app for kids with math, reading, writing and creative design - neurodivergent friendly">
+</head>
+<body>
+            <!-- Feedback Button and Popup Form -->
+            <button id="feedbackBtn" style="position:fixed; bottom:24px; right:24px; background: linear-gradient(135deg, #FFD700, #9370DB); color: white; border: none; padding: 16px 32px; border-radius: 16px; font-size: 1.2em; font-family:'Poppins',sans-serif; font-weight:600; cursor: pointer; z-index:1000; box-shadow: 0 4px 12px rgba(147,112,219,0.18);">💡 Send Feedback</button>
+            <div id="feedbackPopup" style="display:none; position:fixed; bottom:80px; right:32px; background:#fff; border-radius:16px; box-shadow:0 8px 24px rgba(147,112,219,0.18); padding:24px; max-width:340px; z-index:1001;">
+                <h3 style="color:#9370DB; margin-bottom:12px;">Share Your Ideas!</h3>
+                <textarea id="feedbackText" rows="4" style="width:100%; border-radius:8px; border:1.5px solid #9370DB; font-size:1em; margin-bottom:12px; padding:8px;"></textarea>
+                <button id="submitFeedbackBtn" style="background: linear-gradient(135deg, #32CD32, #FFD700); color: white; border: none; padding: 10px 24px; border-radius: 10px; font-size: 1em; font-family:'Poppins',sans-serif; font-weight:600; cursor: pointer;">Send</button>
+                <button id="closeFeedbackBtn" style="background: #eee; color: #9370DB; border: none; padding: 8px 18px; border-radius: 8px; font-size: 0.95em; font-family:'Poppins',sans-serif; font-weight:600; cursor: pointer; margin-left:8px;">Close</button>
+                <div id="feedbackStatus" style="margin-top:10px; color:#32CD32; font-size:1em;"></div>
+            </div>
+        <!-- Sensory Zone Section -->
+        <section id="sensoryZone" style="margin: 48px auto 32px auto; max-width: 600px; background: #F3F0FF; border-radius: 18px; box-shadow: 0 4px 16px rgba(147,112,219,0.08); padding: 32px; text-align: center;">
+            <h2 style="color: #9370DB; margin-bottom: 18px;">🧘 Sensory Zone: Mindfulness & Breathing</h2>
+            <div style="font-size: 1.15em; color: #764ba2; margin-bottom: 18px;">
+                <strong>Take a calming break! Try this gentle breathing exercise:</strong>
+            </div>
+            <div id="breathingAnimation" style="margin: 0 auto 18px auto; width: 120px; height: 120px;">
+                <!-- Animation will appear here -->
+            </div>
+            <div style="font-size: 1.1em; color: #333; margin-bottom: 12px;">
+                <ol style="text-align:left; display:inline-block; margin:0 auto;">
+                    <li>Breathe in slowly for 4 seconds as the circle grows.</li>
+                    <li>Hold your breath for 4 seconds.</li>
+                    <li>Breathe out slowly for 4 seconds as the circle shrinks.</li>
+                    <li>Repeat 3-5 times for a calm mind and body.</li>
+                </ol>
+            </div>
+            <button id="startBreathingBtn" style="background: linear-gradient(135deg, #32CD32, #9370DB); color: white; border: none; padding: 12px 28px; border-radius: 10px; font-size: 1.1em; font-family:'Poppins',sans-serif; font-weight:600; cursor: pointer;">Start Breathing Animation</button>
+        </section>
+    <!-- Calming Animated Background: Fairies, Wizards, Princesses -->
+    <div id="animatedBackground" style="position:fixed; top:0; left:0; width:100vw; height:100vh; z-index:-1; overflow:hidden;"></div>
+    <!-- Big Unicorn Welcome Intro (parent modal fully removed) -->
+    <div id="unicornIntro" style="width:100%; text-align:center; margin:40px 0 30px 0;">
+        <div id="avatarContainer">
+            <!-- Razzle Dazzle Section: Friendly Avatar Choices -->
+            <div id="avatarChoices" style="display: flex; gap: 18px; justify-content: center; align-items: flex-end;">
+                <svg id="unicornAvatar" width="120" height="120" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="cursor:pointer;">
+                    <ellipse cx="50" cy="60" rx="32" ry="36" fill="#FFE4E1"/>
+                    <polygon points="50,20 46,44 54,44" fill="#FFD700" stroke="#FFA500" stroke-width="2"/>
+                    <path d="M 30,45 Q 25,50 30,55" fill="#FF69B4" opacity="0.8"/>
+                    <path d="M 70,45 Q 75,50 70,55" fill="#9370DB" opacity="0.8"/>
+                    <circle cx="42" cy="58" r="5" fill="#000"/>
+                    <circle cx="58" cy="58" r="5" fill="#000"/>
+                    <ellipse cx="50" cy="80" rx="18" ry="10" fill="#FFD1DC"/>
+                </svg>
+                <svg id="dinoAvatar" width="120" height="120" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="cursor:pointer;">
+                    <ellipse cx="55" cy="65" rx="28" ry="22" fill="#32CD32" stroke="#228B22" stroke-width="3"/>
+                    <ellipse cx="40" cy="50" rx="15" ry="13" fill="#32CD32" stroke="#228B22" stroke-width="2"/>
+                    <polygon points="35,40 33,45 37,45" fill="#FFD700"/>
+                    <polygon points="45,40 43,45 47,45" fill="#FFD700"/>
+                    <circle cx="38" cy="48" r="3" fill="#FFD700"/>
+                    <circle cx="38" cy="48" r="1.5" fill="#000"/>
+                    <circle cx="32" cy="53" r="1" fill="#000"/>
+                    <path d="M 60,55 Q 75,45 70,65 Q 65,60 60,60" fill="#90EE90" stroke="#228B22" stroke-width="1.5"/>
+                </svg>
+                <svg id="gentleGiantAvatar" width="120" height="120" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="cursor:pointer;">
+                    <!-- Gentle giant: big friendly blue creature -->
+                    <ellipse cx="50" cy="65" rx="35" ry="30" fill="#87CEEB" stroke="#4682B4" stroke-width="3"/>
+                    <ellipse cx="50" cy="45" rx="20" ry="18" fill="#B0C4DE" stroke="#4682B4" stroke-width="2"/>
+                    <circle cx="40" cy="50" r="5" fill="#FFF"/>
+                    <circle cx="60" cy="50" r="5" fill="#FFF"/>
+                    <circle cx="40" cy="50" r="2.5" fill="#4682B4"/>
+                    <circle cx="60" cy="50" r="2.5" fill="#4682B4"/>
+                    <ellipse cx="50" cy="80" rx="12" ry="6" fill="#4682B4"/>
+                    <rect x="35" y="90" width="30" height="10" rx="5" fill="#B0C4DE" stroke="#4682B4" stroke-width="1"/>
+                    <text x="50" y="98" font-size="8" fill="#4682B4" text-anchor="middle" font-family="Poppins">Hi!</text>
+                </svg>
+            </div>
+            <div id="voiceGreetingSection" style="margin-top: 18px; text-align: center;">
+                <h3>Record or Type Your Greeting!</h3>
+                <input type="text" id="customGreetingInput" placeholder="Type your greeting here..." style="width: 60%; font-size: 1.1em; margin-bottom: 8px;" />
+                <button id="playGreetingBtn" style="margin-left: 8px; font-size: 1em;">Play Greeting</button>
+                <button id="recordGreetingBtn" style="margin-left: 8px; font-size: 1em;">Record Voice</button>
+                <span id="recordingStatus" style="margin-left: 12px; color: #32CD32;"></span>
+            </div>
+            <div id="welcomeSongSection" style="margin-top: 18px; text-align: center;">
+                <h3>Upbeat Welcome Song!</h3>
+                <audio id="welcomeSong" controls style="width: 60%;">
+                    <source src="js/upbeat-welcome-song.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+            </div>
+            <div id="breakTimerSection" style="margin-top: 24px; text-align: center;">
+                            <div id="colorThemeSection" style="margin-top: 24px; text-align: center;">
+                                            <div id="starJarSection" style="margin-top: 24px; text-align: center;">
+                                                            <audio id="chimeSound" src="js/chime.mp3" preload="auto"></audio>
+                                                            <audio id="applauseSound" src="js/applause.mp3" preload="auto"></audio>
+                                                <h3>🌈 Rainbow Star Jar</h3>
+                                                <div id="starJar" style="display: flex; align-items: flex-end; justify-content: center; gap: 6px; min-height: 80px; margin-bottom: 8px;">
+                                                    <!-- Stars will be added here -->
+                                                </div>
+                                                <button id="addStarBtn" style="background: linear-gradient(135deg, #FFD700, #FF69B4, #32CD32, #9370DB); color: white; border: none; padding: 10px 24px; border-radius: 10px; font-size: 1.1em; font-family:'Poppins',sans-serif; font-weight:600; cursor: pointer;">Add a Star!</button>
+                                                <span id="starJarCount" style="margin-left: 12px; font-size: 1.1em; color: #764ba2;">Stars: 0</span>
+                                            </div>
+                                <h3>🎨 Choose Your Background Color</h3>
+                                <input type="color" id="colorThemePicker" value="#FFE4E1" style="width: 60px; height: 40px; border-radius: 8px; border: 2px solid #9370DB; cursor: pointer;">
+                                <span style="margin-left: 12px; font-size: 1.1em; color: #764ba2;">Pick any color for your comfort!</span>
+                            </div
+                <h3>⏰ Visual Break Timer</h3>
+                <div style="display: flex; flex-direction: column; align-items: center;">
+                    <span id="timerDisplay" style="font-size: 2em; color: #764ba2; font-weight: bold; margin-bottom: 8px;">30:00</span>
+                    <button id="startTimerBtn" style="background: linear-gradient(135deg, #FFD700, #FF69B4); color: white; border: none; padding: 12px 28px; border-radius: 10px; font-size: 1.1em; font-family:'Poppins',sans-serif; font-weight:600; cursor: pointer;">Start 30-Minute Timer</button>
+                    <span id="breakReminder" style="display:none; margin-top: 12px; color: #32CD32; font-size: 1.15em; font-weight:600;">Time for a break! 🎉</span>
+                </div>
+            </div>
+        </div>
+        <h1 id="avatarGreeting" style="font-size:2.2em; color:#9370DB; font-family:'Poppins',sans-serif; font-weight:700; margin-bottom:10px;">Hello, my name is Sparkels!</h1>
+        <div style="font-size:1.4em; color:#764ba2; font-family:'Poppins',sans-serif; font-weight:600; margin-bottom:10px;">Welcome to the Hip Hop Happening Groovy App</div>
+        <div style="font-size:1.15em; color:#764ba2; font-family:'Poppins',sans-serif; margin-bottom:10px;">
+            <strong>
+                Don't miss our <a href="#sensoryZone" style="color:#9370DB; text-decoration:underline; font-weight:600;">Sensory Zone area</a> for calming, sensory-friendly activities and breaks!
+            </strong><br>
+            <em>We recommend enjoying the app for no more than 30 minutes at a time to keep your experience healthy and balanced.</em><br>
+            <a href="https://kidshealth.org/en/kids/healthy-habits.html" target="_blank" style="color:#32CD32; text-decoration:underline; font-weight:600;">Learn about healthy habits in a fun way!</a>
+        </div>
+        <button id="speakUnicornBtn" style="background: linear-gradient(135deg, #667eea, #764ba2); color: white; border: none; padding: 14px 32px; border-radius: 12px; font-size: 1.2em; font-family:'Poppins',sans-serif; font-weight:600; cursor: pointer; margin-top:18px;">🔊 Hear Sparkels Speak!</button>
+        <div style="margin-top:18px;">
+            <label for="unicornVoiceSelect" style="font-size:1em; color:#764ba2; font-weight:600; margin-right:8px;">Choose Sparkels' Voice:</label>
+            <select id="unicornVoiceSelect" style="font-size:1em; padding:6px 12px; border-radius:8px;">
+                <option value="">Default (Best Match)</option>
+            </select>
+        </div>
+        <button id="becomeDinoBtn" style="background: linear-gradient(135deg, #32CD32, #228B22); color: white; border: none; padding: 20px 44px; border-radius: 18px; font-size: 1.6em; font-family:'Poppins',sans-serif; font-weight:700; cursor: pointer; margin-top:18px; margin-left:10px;">🦕 Become a Dinosaur!</button>
+        <button id="becomeUnicornBtn" style="background: linear-gradient(135deg, #667eea, #764ba2); color: white; border: none; padding: 20px 44px; border-radius: 18px; font-size: 1.6em; font-family:'Poppins',sans-serif; font-weight:700; cursor: pointer; margin-top:18px; margin-left:10px;">🦄 Switch Back to Unicorn!</button>
+    </div>
+
+
+
+    <!-- About Me Section -->
+    <section id="aboutMe" class="info-section" style="display: none;">
+        <div class="info-content" style="max-width: 800px; margin: 0 auto;">
+            <h2 style="color: #9370DB; margin-bottom: 30px;">💜 About Me & Why I Built This App</h2>
+            
+            <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; border-radius: 20px; margin-bottom: 30px; box-shadow: 0 8px 20px rgba(0,0,0,0.2); display: flex; align-items: center; gap: 30px; flex-wrap: wrap;">
+                <img src="images/Shaun Image for App.png" alt="Shaun - Creator of Hip Hop Happening" style="width: 180px; height: 180px; border-radius: 50%; object-fit: cover; border: 5px solid rgba(255,255,255,0.3); box-shadow: 0 8px 20px rgba(0,0,0,0.3); flex-shrink: 0;">
+                <div style="flex: 1; min-width: 300px;">
+                    <h3 style="margin-bottom: 15px; font-size: 1.8em;">🌟 Hi, I'm Shaun</h3>
+                    <p style="font-size: 1.2em; line-height: 1.8; margin: 0;">
+                        I'm 43 years old. I've worked in <strong>crisis support for 6 years</strong> - as a crisis supporter, call coach, mentor, and shift supervisor. 
+                        I have a Diploma of Community Services. But for most of my life, I navigated the world with <strong>undiagnosed ADHD</strong> - not understanding why things felt so hard, why I couldn't focus like others, why the world felt overwhelming.
+                    </p>
+                <div style="background: #fff; color: #764ba2; border-radius: 12px; box-shadow: 0 2px 8px rgba(147,112,219,0.08); padding: 24px; margin: 30px 0; border-left: 6px solid #9370DB;">
+                </div>
+                    <p style="font-size: 1.2em; line-height: 1.8; margin: 15px 0 0 0;">
+                        Then I had kids. My daughter Mia is six years old. She has ADHD, ASD (Autism Spectrum Disorder), and a PDA (Pathological Demand Avoidance) profile. 
+                        <strong>She's also the most creative, imaginative, brilliant kid I've ever met.</strong>
+                    </p>
+                    <p style="font-size: 1.2em; line-height: 1.8; margin: 15px 0 0 0;">
+                        When I watch her, I see myself. The struggles. The meltdowns. But I also see something the world often misses: 
+                        <strong>the incredible creativity, the unique way she sees things, the talents that neurotypical kids don't have.</strong>
+                    </p>
+                    <p style="font-size: 1.15em; line-height: 1.8; margin: 15px 0 0 0; font-style: italic; opacity: 0.95;">
+                        I thought my years in mental health crisis support had taught me about neurodivergence. But lived experience - both my own and watching Mia - 
+                        taught me more than any training ever could.
+                    </p>
+                </div>
+            </div>
+
+            <div style="background: rgba(147, 112, 219, 0.1); padding: 25px; border-radius: 15px; margin-bottom: 25px; border-left: 5px solid #9370DB;">
+                <h3 style="color: #764ba2; margin-bottom: 15px;">🚫 Why Traditional Apps & Schools Fail Kids Like Mia</h3>
+                <p style="font-size: 1.1em; line-height: 1.7; color: #333;">
+                    The school system isn't designed for neurodivergent kids. The educational apps out there? Same story. 
+                    I tried everything - expensive platforms, "highly rated" apps, resources recommended by teachers. But here's what I found:
+                </p>
+                <ul style="font-size: 1.1em; line-height: 1.8; color: #333; margin: 15px 0 0 20px;">
+                    <li><strong>Too much sensory overload</strong> - flashing colors, loud sounds, chaotic interfaces that trigger meltdowns</li>
+                    <li><strong>No understanding of PDA</strong> - direct demands create instant resistance and shutdown</li>
+                    <li><strong>Rigid, inflexible paths</strong> - if Mia needed a break, there was nowhere safe to go</li>
+                    <li><strong>Zero accommodations for processing differences</strong> - everything moved too fast with unclear instructions</li>
+                    <li><strong>Punishing "wrong" answers</strong> - big red X marks and harsh sounds that destroy confidence</li>
+                    <li><strong>Constant ads and interruptions</strong> - breaking focus and adding more demands</li>
+                </ul>
+                <p style="font-size: 1.1em; line-height: 1.7; color: #333; margin-top: 15px;">
+                    Watching Mia struggle with these apps - watching her shut down, resist, and feel like she was "failing" - broke my heart.
+                </p>
+            </div>
+
+            <div style="background: rgba(254, 214, 227, 0.3); padding: 25px; border-radius: 15px; margin-bottom: 25px; border-left: 5px solid #FF69B4;">
+                <h3 style="color: #C71585; margin-bottom: 15px;">💡 So I Built What Mia Needed</h3>
+                <p style="font-size: 1.1em; line-height: 1.7; color: #333;">
+                    This app was born out of <strong>necessity</strong>, <strong>love</strong>, and <strong>frustration</strong> with a world that doesn't understand kids like Mia. 
+                    I wanted to create something that:
+                </p>
+                <ul style="font-size: 1.1em; line-height: 1.8; color: #333; margin: 15px 0 0 20px;">
+                    <li>✅ <strong>Respects sensory needs</strong> - calm colors, adjustable settings, a dedicated Calm Corner for regulation</li>
+                    <li>✅ <strong>Gives genuine choice</strong> - no forced demands (PDA-friendly), she picks what she wants to do</li>
+                    <li>✅ <strong>Celebrates her interests</strong> - unicorns, princesses, dragons, dinosaurs, creativity!</li>
+                    <li>✅ <strong>Builds confidence</strong> - positive reinforcement, gentle encouragement, no punishment</li>
+                    <li>✅ <strong>Provides safe breaks</strong> - when she's overwhelmed, the Calm Corner is always there</li>
+                    <li>✅ <strong>Is 100% safe</strong> - no data collection, no ads, no hidden agendas, no exploitation</li>
+                </ul>
+                <p style="font-size: 1.1em; line-height: 1.7; color: #333; margin-top: 15px;">
+                    <strong>And honestly?</strong> I also wanted to give myself and other parents a break. If Mia can use this app for even 30 minutes, 
+                    that's 30 minutes where she's learning, I'm not in crisis mode, and we both get to breathe.
+                </p>
+            </div>
+
+            <div style="background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%); padding: 30px; border-radius: 20px; margin-bottom: 30px; box-shadow: 0 8px 20px rgba(0,0,0,0.1);">
+                <h3 style="color: #D2691E; margin-bottom: 15px; font-size: 1.6em;">✨ The Creativity & Talent Neurodivergent Kids Have is Incredible</h3>
+                <p style="font-size: 1.15em; line-height: 1.8; color: #333;">
+                    Here's what people don't talk about enough: <strong>Neurodivergent kids are amazingly creative and talented.</strong> 
+                    Mia's imagination is off the charts. The stories she tells, the creatures she invents, the connections she makes that I'd never think of - it's breathtaking.
+                </p>
+                <p style="font-size: 1.15em; line-height: 1.8; color: #333; margin-top: 15px;">
+                    Kids with ADHD hyperfocus on what they love. Autistic kids see details and patterns others miss. Kids with PDA are incredible problem-solvers when given autonomy. 
+                    <strong>These aren't deficits - they're different kinds of brilliance.</strong>
+                </p>
+                <p style="font-size: 1.15em; line-height: 1.8; color: #333; margin-top: 15px;">
+                    But the world keeps trying to "fix" them instead of celebrating what makes them extraordinary. This app is designed to let their creativity <strong>shine</strong>, 
+                    not be crushed by rigid expectations.
+                </p>
+            </div>
+
+            <div style="background: rgba(147, 112, 219, 0.1); padding: 25px; border-radius: 15px; margin-bottom: 25px; border-left: 5px solid #9370DB;">
+                <h3 style="color: #764ba2; margin-bottom: 15px;">🌈 Everyone Deserves Respect, Love, Care & The Right to Learn</h3>
+                <p style="font-size: 1.1em; line-height: 1.7; color: #333;">
+                    I wanted the world to understand the day-to-day challenges that kids like Mia face. But more than that, I wanted to create a space where they can learn 
+                    <strong>without judgment</strong>, <strong>without pressure</strong>, <strong>without feeling broken</strong>.
+                </p>
+                <p style="font-size: 1.1em; line-height: 1.7; color: #333; margin-top: 15px;">
+                    Every child - whether they have ADHD, autism, PDA, dyslexia, sensory processing differences, anxiety, or just learn differently - 
+                    deserves the <strong>same respect</strong>, the <strong>same love</strong>, the <strong>same care</strong>, and the <strong>same rights to learn</strong> as any other child.
+                </p>
+                <p style="font-size: 1.1em; line-height: 1.7; color: #333; margin-top: 15px;">
+                    This app was made with Mia in mind. Tested with her. Improved because of her feedback. Shaped by her needs and her creativity. 
+                    Not as an afterthought - as the <em>entire foundation</em>.
+                </p>
+            </div>
+
+            <div style="text-align: center; padding: 30px; background: rgba(147, 112, 219, 0.1); border-radius: 15px;">
+                <h3 style="color: #9370DB; margin-bottom: 20px; font-size: 1.8em;">💜 We're In This Together</h3>
+                <p style="font-size: 1.2em; line-height: 1.8; color: #333; max-width: 600px; margin: 0 auto 20px;">
+                    This is still a <strong>work in progress</strong>, just like parenting. I'm constantly improving it based on what works for Mia - and what works for <em>your</em> kids too.
+                </p>
+                <p style="font-size: 1.1em; line-height: 1.8; color: #764ba2; max-width: 600px; margin: 0 auto;">
+                    Thank you for trusting me with your child's learning journey. Thank you for understanding that our kids deserve better. 
+                    Thank you for being part of this community.
+                </p>
+                <p style="font-size: 1.3em; margin-top: 25px; color: #9370DB;">
+                    <strong>With love, understanding, and solidarity,</strong><br>
+                    <span style="font-size: 1.5em; font-weight: bold; background: linear-gradient(135deg, #667eea, #764ba2); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Shaun ❤️</span><br>
+                    <span style="font-size: 0.9em; color: #666;">43, ADHD, and Mia's biggest advocate</span>
+                </p>
+            </div>
+
+            <button onclick="goHome()" class="action-btn" style="margin-top: 30px; font-size: 1.2em; padding: 15px 40px;">← Back to App</button>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section id="blog" class="info-section" style="display: none;">
+        <div class="info-content" style="max-width: 900px; margin: 0 auto;">
+            <h2 style="color: #9370DB; margin-bottom: 20px;">📝 ADHD & Neurodivergent Parenting Blog</h2>
+            <p style="font-size: 1.2em; color: #764ba2; text-align: center; margin-bottom: 40px;">
+                Real stories, practical tips, and honest conversations from a parent in the trenches 💜
+            </p>
+
+            <!-- Blog Post 1 -->
+            <article class="blog-post" style="background: white; padding: 30px; border-radius: 20px; margin-bottom: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border-left: 5px solid #9370DB;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; flex-wrap: wrap;">
+                    <h3 style="color: #764ba2; font-size: 1.8em; margin: 0;">Why I Built This App (And Why Mia Needed It)</h3>
+                    <span style="color: #999; font-size: 0.9em;">December 7, 2025</span>
+                </div>
+                
+                <div style="color: #9370DB; font-size: 0.95em; margin-bottom: 20px; font-weight: bold;">
+                    🏷️ ADHD | Autism | PDA Profile | Parent Advocacy
+                </div>
+
+                <div style="font-size: 1.1em; line-height: 1.8; color: #333;">
+                    <p style="margin-bottom: 20px; font-size: 1.3em; font-weight: bold; color: #764ba2;">
+                        I'm Shaun. I'm 43. I work in crisis support. And I spent most of my life not knowing I had ADHD.
+                    </p>
+                    
+                    <p style="margin-bottom: 20px;">
+                        For 6 years, I've been a crisis supporter, call coach, mentor, and shift supervisor helping people through their hardest moments. 
+                        I have a Diploma of Community Services. I thought I understood mental health and neurodivergence.
+                    </p>
+
+                    <p style="margin-bottom: 20px;">
+                        But for decades before my diagnosis, I didn't understand why everything felt harder for <em>me</em>. Why I couldn't focus like other people. 
+                        Why I'd get overwhelmed so easily. Why the world just felt... <em>too much</em>.
+                    </p>
+
+                    <p style="margin-bottom: 20px;">
+                        Then I had kids. And my daughter Mia - beautiful, brilliant, creative, six-year-old Mia - was diagnosed with ADHD, ASD, and has a PDA profile.
+                    </p>
+
+                    <p style="margin-bottom: 20px; background: rgba(147, 112, 219, 0.1); padding: 20px; border-radius: 10px; border-left: 4px solid #9370DB;">
+                        <strong>💡 Suddenly, everything made sense.</strong> I saw myself in her. But I also saw something incredible: 
+                        <strong>her imagination, her creativity, her unique way of seeing the world that neurotypical kids don't have.</strong> She's not broken. She's extraordinary.
+                    </p>
+
+                    <p style="margin-bottom: 20px;">
+                        I also have Summer, Mia's sister, who brings her own special light to our family. She's creative, funny, energetic - 
+                        the kind of kid who makes everyone laugh and lifts the mood in any room. <strong>Summer is so loved</strong>, and watching both my daughters 
+                        navigate the world in their own unique ways reminds me every day why this work matters.
+                    </p>
+
+                    <h4 style="color: #764ba2; margin-top: 30px; margin-bottom: 15px; font-size: 1.4em;">🌟 Neurodivergent Kids Are Creative Geniuses (And the World Misses It)</h4>
+
+                    <p style="margin-bottom: 20px;">
+                        Mia can hyperfocus on creating stories for hours. She sees patterns and details I'd never notice. She invents entire worlds in her head - 
+                        dragons with personalities, unicorns with backstories, adventures that rival anything I've read in books.
+                    </p>
+
+                    <p style="margin-bottom: 20px;">
+                        <strong>This is what ADHD and autism look like when you're not trying to "fix" kids.</strong> When you give them space to be creative. 
+                        When you let them explore what they love. When you stop demanding and start inviting.
+                    </p>
+
+                    <p style="margin-bottom: 20px; background: rgba(255, 215, 0, 0.2); padding: 20px; border-radius: 10px; border-left: 4px solid #FFD700;">
+                        <strong>✨ These kids aren't deficits waiting to be corrected. They're different kinds of brilliance waiting to be celebrated.</strong>
+                    </p>
+
+                    <h4 style="color: #764ba2; margin-top: 30px; margin-bottom: 15px; font-size: 1.4em;">🚫 But Schools & Apps Don't See It That Way</h4>
+
+                    <p style="margin-bottom: 20px;">
+                        I watch Mia navigate a school system that wasn't designed for her. I watch her use educational apps that trigger meltdowns. 
+                        The flashing screens. The timers counting down. The big red X marks when she gets something "wrong." The constant demands.
+                    </p>
+
+                    <p style="margin-bottom: 20px;">
+                        For kids with PDA (Pathological Demand Avoidance), every direct instruction feels like pressure. Every "you have to do this" creates resistance. 
+                        She's not being difficult - <strong>she's protecting herself from overwhelm</strong>.
+                    </p>
+
+                    <p style="margin-bottom: 20px;">
+                        But the educational apps out there? They don't get it. They demand. They pressure. They punish. They overstimulate. 
+                        And then parents are told <em>their kid</em> is the problem.
+                    </p>
+
+                    <h4 style="color: #764ba2; margin-top: 30px; margin-bottom: 15px; font-size: 1.4em;">🎨 So I Built a Space Where Creativity Can Flourish</h4>
+
+                    <p style="margin-bottom: 20px;">
+                        I wanted Mia to have an app where she could learn AND create. Where her imagination could run wild. Where she had:
+                    </p>
+                    <ul style="margin-bottom: 20px; margin-left: 20px;">
+                        <li style="margin-bottom: 10px;"><strong>Freedom to choose</strong> - No forced paths. She picks what interests her.</li>
+                        <li style="margin-bottom: 10px;"><strong>Creative outlets</strong> - Design creatures, write stories, make art.</li>
+                        <li style="margin-bottom: 10px;"><strong>A safe space to regulate</strong> - The Calm Corner for when she's overwhelmed.</li>
+                        <li style="margin-bottom: 10px;"><strong>Encouragement, not punishment</strong> - Gentle feedback that builds confidence.</li>
+                        <li style="margin-bottom: 10px;"><strong>Time to think</strong> - No timers. No rush. Process at her pace.</li>
+                        <li style="margin-bottom: 10px;"><strong>Sensory control</strong> - Adjustable colors, sounds, animations to match her needs.</li>
+                    </ul>
+
+                    <p style="margin-bottom: 20px;">
+                        <strong>This isn't about "fixing" neurodivergent kids.</strong> It's about giving them a space where their creativity, 
+                        their unique thinking, and their amazing talents can shine.
+                    </p>
+
+                    <p style="margin-bottom: 20px; background: rgba(254, 214, 227, 0.3); padding: 20px; border-radius: 10px; border-left: 4px solid #FF69B4;">
+                        <strong>💜 And honestly?</strong> I also wanted to give myself - and other parents - a break. If Mia can use this app for 30 minutes, 
+                        that's 30 minutes where we're both okay. Where she's learning. Where I'm not in crisis mode. Where we both get to breathe.
+                    </p>
+
+                    <h4 style="color: #764ba2; margin-top: 30px; margin-bottom: 15px; font-size: 1.4em;">💜 This is About More Than an App - It's About Changing How We See These Kids</h4>
+
+                    <p style="margin-bottom: 20px;">
+                        I built this because I wanted the world to see what I see in Mia: <strong>brilliance, creativity, talent, and potential.</strong> 
+                        Not a list of deficits. Not a kid who needs to be "fixed." A kid who deserves respect, love, and the right to learn in a way that works for her brain.
+                    </p>
+
+                    <p style="margin-bottom: 20px;">
+                        This app is still a work in progress. There are bugs to fix. Features to add. But you know what? <strong>Mia uses it. She asks to use it.</strong> 
+                        And when she's using it, she's creating. She's learning. She's thriving.
+                    </p>
+
+                    <p style="margin-bottom: 20px; background: rgba(254, 214, 227, 0.3); padding: 20px; border-radius: 10px; border-left: 4px solid #FF69B4;">
+                        <strong>🌈 If your child has that spark of creativity, that unique way of seeing things, that amazing talent the world doesn't always appreciate - 
+                        this app was built for them.</strong>
+                    </p>
+
+                    <p style="margin-top: 30px; font-size: 1.2em; color: #764ba2; text-align: center; font-weight: bold;">
+                        Your child isn't broken. They're extraordinary. Let's celebrate that together. 🌟
+                    </p>
+
+                    <p style="text-align: center; margin-top: 30px;">
+                        <a href="mailto:millershaun2007@gmail.com" style="display: inline-block; background: linear-gradient(135deg, #667eea, #764ba2); color: white; padding: 15px 30px; border-radius: 10px; text-decoration: none; font-weight: bold; font-size: 1.1em;">
+                            📧 Share Your Story With Me
+                        </a>
+                    </p>
+                </div>
+            </article>
+
+            <div style="text-align: center; padding: 30px; background: rgba(147, 112, 219, 0.1); border-radius: 15px; margin-bottom: 30px;">
+                <p style="font-size: 1.2em; color: #764ba2; margin-bottom: 20px;">
+                    🔔 <strong>Want updates when I post new articles?</strong>
+                </p>
+                <a href="mailto:millershaun2007@gmail.com?subject=Subscribe to Blog" style="display: inline-block; background: #FFD700; color: #333; padding: 12px 30px; border-radius: 10px; text-decoration: none; font-weight: bold;">
+                    ✉️ Subscribe for Updates
+                </a>
+            </div>
+
+            <button onclick="goHome()" class="action-btn" style="margin-top: 20px; font-size: 1.2em; padding: 15px 40px;">← Back to App</button>
+        </div>
+    </section>
+
+    <!-- Privacy Policy Section -->
+    <section id="privacyPolicy" class="content-section" style="display: none;">
+        <div style="max-width: 800px; margin: 0 auto; padding: 40px 20px;">
+            <h2>📜 Privacy Policy</h2>
+            <p style="font-size: 0.9em; color: #666; margin-bottom: 30px;">Last Updated: December 2, 2025</p>
+            
+            <h3>1. Information We Collect</h3>
+            <p>This app collects minimal information and stores it ONLY on your device:</p>
+            <ul>
+                <li>Learning progress (stars earned, activities completed)</li>
+                <li>User preferences (font size, color themes, sound settings)</li>
+                <li>Saved content (creature designs, stories, artwork)</li>
+            </ul>
+            
+            <h3>2. How We Use Information</h3>
+            <p>All data is stored locally using your browser's localStorage. We do NOT:</p>
+            <ul>
+                <li>Collect personal information (names, emails, addresses)</li>
+                <li>Transmit data to external servers</li>
+                <li>Use cookies or tracking technologies</li>
+                <li>Share information with third parties</li>
+                <li>Display advertisements</li>
+            </ul>
+            
+            <h3>3. COPPA Compliance</h3>
+            
+            <h3>4. Data Security</h3>
+            <p>Since all data is stored locally on your device, you control the data. Clearing your browser data will delete all app information.</p>
+            
+            <h3>5. Parental Rights</h3>
+            <p>Parents have the right to review and delete their child's data at any time by clearing the app's data through the device settings.</p>
+            
+            <h3>6. Contact Us</h3>
+            <p>If you have questions about this privacy policy, contact us at: <a href="mailto:millershaun2007@gmail.com">millershaun2007@gmail.com</a></p>
+            
+            <h3>7. Disclaimer</h3>
+            <p>This app is for educational and entertainment purposes only. It is not a replacement for professional therapy, medical advice, or individualized education plans. Always consult qualified professionals for your child's specific needs.</p>
+            
+            <button onclick="goHome()" class="action-btn" style="margin-top: 30px;">← Back to App</button>
+        </div>
+    </section>
+
+    <!-- Terms of Service Section -->
+    <section id="termsOfService" class="content-section" style="display: none;">
+        <div style="max-width: 800px; margin: 0 auto; padding: 40px 20px;">
+            <h2>📜 Terms of Service</h2>
+            <p style="font-size: 0.9em; color: #666; margin-bottom: 30px;">Last Updated: December 2, 2025</p>
+            <!-- Parent Notice (COPPA Compliance) heading removed as modal is not used -->
+            
+            <h3>1. Acceptance of Terms</h3>
+            <p>By using this app, you agree to these Terms of Service. If you do not agree, please do not use the app.</p>
+            
+            <h3>2. Educational Purpose</h3>
+            <p>This app is designed as an educational tool to support learning. It is NOT:</p>
+            <ul>
+                <li>A substitute for professional educational assessment</li>
+                <li>Medical or therapeutic advice</li>
+                <li>A guaranteed learning outcome</li>
+            </ul>
+            
+            <h3>3. Parental Supervision</h3>
+            <p>Parents and guardians are responsible for supervising their child's use of this app and ensuring age-appropriate content access.</p>
+            
+            <h3>4. Beta Testing</h3>
+            <p>This is a BETA version. Features may change, and the app may contain bugs. Use at your own discretion.</p>
+            
+            <h3>5. User Conduct</h3>
+            <p>Users agree to:</p>
+            <ul>
+                <li>Use the app for personal, non-commercial purposes</li>
+                <li>Not attempt to reverse-engineer or modify the app</li>
+                <li>Not share inappropriate content through app features</li>
+            </ul>
+            
+            <h3>6. Intellectual Property</h3>
+            <p>All content, design, and code in this app are protected by copyright. User-created content (stories, artwork) belongs to the user.</p>
+            
+            <h3>7. Limitation of Liability</h3>
+            <p>This app is provided "as is" without warranties. We are not liable for any damages arising from app use.</p>
+            
+            <h3>8. Changes to Terms</h3>
+            <p>We reserve the right to modify these terms. Continued use after changes constitutes acceptance.</p>
+            
+            <h3>9. Contact</h3>
+            <p>Questions about these terms? Contact: <a href="mailto:legal@kidslearningapp.com">legal@kidslearningapp.com</a></p>
+            
+            <button onclick="goHome()" class="action-btn" style="margin-top: 30px;">← Back to App</button>
+        </div>
+    </section>
+
+    <!-- Beta Notice Banner -->
+    <div id="betaBanner" style="
+        background: linear-gradient(135deg, #FF6B6B, #FFD93D);
+        color: #333;
+        text-align: center;
+        padding: 15px;
+        font-weight: bold;
+        font-size: 1.1em;
+        position: sticky;
+        top: 0;
+        /* z-index: 9999; (removed modal overlay z-index) */
+        box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 10px;
+    ">
+        <span style="flex: 1;">🎉 FREE BETA - Neurodivergent-Friendly Learning! 
+        <a href="#feedback" style="color: #fff; text-decoration: underline; margin-left: 10px;">Give Feedback</a></span>
+        <span id="breakReminder" style="background: rgba(255,255,255,0.3); padding: 8px 15px; border-radius: 10px; font-size: 0.9em;">⏱️ Remember to take breaks!</span>
+    </div>
+    <!-- Accessibility Controls Panel -->
+    <div class="accessibility-panel" id="accessibilityPanel" style="position: fixed !important; top: 70px !important; right: 10px !important; z-index: 10000 !important; display: block !important;">
+        <button class="panel-toggle" id="accessibilityToggle" aria-label="Toggle Accessibility Options" style="display: block !important;">
+            ⚙️ Accessibility
+        </button>
+        <div class="panel-content" id="panelContent">
+            <h3>Customize Your Experience</h3>
+            
+            <div class="control-group">
+                <label for="backgroundMusic">Background Music:</label>
+                <select id="backgroundMusic">
+                    <option value="off">Off</option>
+                    <option value="calm" selected>Calm & Peaceful</option>
+                    <option value="upbeat">Upbeat & Fun</option>
+                    <option value="focus">Focus Music</option>
+                </select>
+            </div>
+            
+            <div class="control-group">
+                <label for="musicVolume">Music Volume:</label>
+                <input type="range" id="musicVolume" min="0" max="100" value="30">
+                <span id="volumeValue">30%</span>
+            </div>
+            
+            <div class="control-group">
+                <label for="fontSelect">Font Style:</label>
+                <select id="fontSelect">
+                    <option value="default">Default</option>
+                    <option value="dyslexic">Dyslexia-Friendly</option>
+                    <option value="comic">Comic Sans</option>
+                </select>
+            </div>
+
+            <div class="control-group">
+                <label for="fontSizeSlider">Text Size:</label>
+                <input type="range" id="fontSizeSlider" min="12" max="24" value="16">
+                <span id="fontSizeValue">16px</span>
+            </div>
+
+            <div class="control-group">
+                <label for="colorTheme">Color Theme:</label>
+                <select id="colorTheme">
+                    <option value="default">Colorful (Default)</option>
+                    <option value="high-contrast">High Contrast</option>
+                    <option value="soft">Soft Colors</option>
+                    <option value="dark">Dark Mode</option>
+                </select>
+            </div>
+
+            <div class="control-group">
+                <label>
+                    <input type="checkbox" id="reduceMotion">
+                    Reduce Animations
+                </label>
+            </div>
+
+            <div class="control-group">
+                <label>
+                    <input type="checkbox" id="soundToggle" checked>
+                    Enable Sound Effects
+                </label>
+            </div>
+
+            <div class="control-group">
+                <label>
+                    <input type="checkbox" id="focusMode">
+                    Focus Mode (Hide Distractions)
+                </label>
+            </div>
+
+            <div class="control-group">
+                <label for="visualRewards">Celebration Style:</label>
+                <select id="visualRewards">
+                    <option value="full">Full Animations</option>
+                    <option value="simple">Simple (Less Stimulation)</option>
+                    <option value="none">Text Only</option>
+                </select>
+            </div>
+
+            <div class="control-group">
+                <label>
+                    <input type="checkbox" id="breakReminders" checked>
+                    Break Time Reminders
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Navigation -->
+    <nav class="main-nav">
+        <h1>🦄 Kids Learning Adventure (Live) 🦕</h1>
+        <div class="nav-buttons">
+            <button class="nav-btn" data-section="home">🏠 Home</button>
+            <button class="nav-btn" data-section="designer">🎨 Design Creatures</button>
+            <button class="nav-btn" data-section="math">🔢 Math Fun</button>
+            <button class="nav-btn" data-section="literacy">📚 Reading & Words</button>
+            <button class="nav-btn" data-section="writing">✍️ Creative Writing</button>
+            <button class="nav-btn" data-section="art">🖌️ Art Studio</button>
+            <a href="drama.html" class="nav-btn">🎭 Interactive Drama</a>
+            <a href="collaborative-story.html" class="nav-btn">✍️ Collaborative Story</a>
+        </div>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+        <!-- Home Section -->
+        <section id="home" class="content-section active">
+            <div class="floating-particles" id="particles"></div>
+            <div class="welcome-screen">
+                <h2 id="welcomeHeader" style="font-size: 2.8em; color: #8E44AD; text-align: center; margin: 30px auto 25px auto; max-width: 900px; line-height: 1.3; text-shadow: 2px 2px 4px rgba(0,0,0,0.1); font-weight: bold;">
+                    ✨ Welcome to Your Magical Learning Kingdom! 🏰
+                </h2>
+                <p id="personalizedGreeting" class="large-text" style="display: none; font-size: 1.8em; color: var(--primary-color); font-weight: 600;"></p>
+                <p class="large-text" style="font-size: 2.2em; margin: 25px 0; text-shadow: 1px 1px 2px rgba(0,0,0,0.1);">🧙‍♂️ 👸 🐉 🦄 ⚔️ 📚 ✨</p>
+                <div style="background: linear-gradient(135deg, #8E44AD 0%, #3498DB 100%); color: white; padding: 20px 25px; border-radius: 18px; margin: 25px auto; max-width: 650px; box-shadow: 0 10px 30px rgba(102,126,234,0.3); border: 3px solid rgba(255,255,255,0.2);">
+                    <p style="margin: 0; font-size: 1.2em; line-height: 1.6;">🧠 <strong>Neurodivergent-Friendly!</strong> 🌈<br>
+                    Designed with love for ADHD, Autism, Dyslexia & all learning styles!</p>
+                </div>
+
+                <!-- Creator Info Badge -->
+                <div style="background: linear-gradient(135deg, rgba(147, 112, 219, 0.2) 0%, rgba(102, 126, 234, 0.15) 100%); border: 3px solid #9370DB; padding: 25px; border-radius: 20px; margin: 25px auto; max-width: 650px; text-align: center; box-shadow: 0 8px 20px rgba(147, 112, 219, 0.2);">
+                    <div style="display: flex; align-items: center; justify-content: center; gap: 20px; flex-wrap: wrap;">
+                        <img src="images/Shaun Image for App.png" alt="Shaun - Creator" style="width: 80px; height: 80px; border-radius: 50%; border: 4px solid #9370DB; box-shadow: 0 4px 12px rgba(0,0,0,0.2);">
+                        <div style="text-align: left;">
+                            <p style="margin: 0; font-size: 1.25em; line-height: 1.6; color: #333; font-weight: bold;">
+                                💜 Designed by Shaun
+                            </p>
+                            <p style="margin: 5px 0 0 0; font-size: 1.05em; line-height: 1.5; color: #555;">
+                                Neurodivergent parent of 2 girls in a neurodivergent family
+                            </p>
+                        </div>
+                    </div>
+                    <a href="#" onclick="showAboutMe(); return false;" style="display: inline-block; margin-top: 15px; color: #764ba2; text-decoration: none; font-weight: bold; font-size: 1.1em; background: white; padding: 10px 25px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                        📖 Read My Story →
+                    </a>
+                </div>
+
+                <!-- Support Development Section -->
+                <div style="background: linear-gradient(135deg, #FFD93D 0%, #FF6B6B 50%, #FF8E53 100%); color: #333; padding: 35px; border-radius: 25px; margin: 40px auto; max-width: 750px; box-shadow: 0 15px 35px rgba(0,0,0,0.3), 0 5px 15px rgba(255,107,107,0.2); position: relative; overflow: hidden;">
+                    <!-- Decorative background element -->
+                    <div style="position: absolute; top: -50px; right: -50px; width: 200px; height: 200px; background: rgba(255,255,255,0.1); border-radius: 50%; pointer-events: none;"></div>
+                    <div style="position: absolute; bottom: -30px; left: -30px; width: 150px; height: 150px; background: rgba(255,255,255,0.1); border-radius: 50%; pointer-events: none;"></div>
+                    
+                    <h3 style="font-size: 2.2em; margin: 0 0 20px 0; color: #fff; text-shadow: 3px 3px 6px rgba(0,0,0,0.4); position: relative; z-index: 1;">☕ Love This App? Support Development!</h3>
+                    <p style="font-size: 1.15em; line-height: 1.7; margin: 15px 0; color: rgba(255,255,255,0.95); font-style: italic; position: relative; z-index: 1;">
+                        👨‍👧‍👧 Built by Shaun - neurodivergent dad of 2 amazing girls in a neurodivergent family
+                    </p>
+                    <p style="font-size: 1.2em; line-height: 1.8; margin: 20px 0; color: #fff; text-shadow: 1px 1px 3px rgba(0,0,0,0.3); position: relative; z-index: 1;">
+                        This app is <strong>100% free</strong> with no ads or data collection. I was inspired to build this by my beautiful daughters - 
+                        to create a space full of fun, creativity, and understanding that celebrates neurodivergent learners. 💜
+                    </p>
+                    <p style="font-size: 1.1em; line-height: 1.8; margin: 20px 0; color: rgba(255,255,255,0.95); font-style: italic; background: rgba(0,0,0,0.2); padding: 15px; border-radius: 12px; border-left: 4px solid rgba(255,255,255,0.5); position: relative; z-index: 1;">
+                        📖 Want to know more about my journey? Check out the <strong>Blog</strong> section to read about why I built this and what drives me every day.
+                    </p>
+                    <p style="font-size: 1.15em; line-height: 1.8; margin: 25px 0 15px 0; color: #fff; font-weight: bold; position: relative; z-index: 1;">
+                        If this app helps your child, consider supporting the project!
+                    </p>
+                    <ul style="font-size: 1.1em; line-height: 2; color: #fff; text-align: left; max-width: 550px; margin: 20px auto; background: rgba(0,0,0,0.15); padding: 25px 25px 25px 50px; border-radius: 15px; position: relative; z-index: 1;">
+                        <li style="margin-bottom: 10px;">✨ Add new activities & features</li>
+                        <li style="margin-bottom: 10px;">🛠️ Keep the app running & updated</li>
+                        <li style="margin-bottom: 10px;">🌈 Create more content for neurodivergent learners</li>
+                        <li>❤️ Continue this passion project</li>
+                    </ul>
+                    <div style="margin-top: 30px; display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; position: relative; z-index: 1;">
+                        <a href="https://www.paypal.com/donate/?hosted_button_id=&business=millershaun2007@gmail.com&item_name=Support+Hip+Hop+Happening+Kids+App&currency_code=AUD" target="_blank" style="display: inline-block; background: linear-gradient(135deg, #0070ba 0%, #003087 100%); color: white; padding: 18px 40px; border-radius: 15px; text-decoration: none; font-weight: bold; font-size: 1.3em; box-shadow: 0 8px 20px rgba(0,0,0,0.3), 0 3px 10px rgba(0,112,186,0.4); transition: all 0.3s; border: 3px solid rgba(255,255,255,0.3);" onmouseover="this.style.transform='scale(1.08) translateY(-3px)'; this.style.boxShadow='0 12px 30px rgba(0,0,0,0.4)'" onmouseout="this.style.transform='scale(1) translateY(0)'; this.style.boxShadow='0 8px 20px rgba(0,0,0,0.3)'">
+                            💳 Donate via PayPal
+                        </a>
+                    </div>
+                    <p style="font-size: 1em; margin-top: 25px; color: rgba(255,255,255,0.95); font-style: italic; position: relative; z-index: 1;">
+                        Every dollar helps! Even $3 makes a real difference. Thank you for believing in this project! 🙏✨
+                    </p>
+                    <p style="font-size: 0.9em; margin-top: 15px; color: rgba(255,255,255,0.85); position: relative; z-index: 1; border-top: 1px solid rgba(255,255,255,0.3); padding-top: 15px;">
+                        <em>Donations are voluntary and non-refundable. Your support helps maintain this free educational project for neurodivergent learners.</em>
+                    </p>
+                </div>
+
+                <p class="large-text">Choose your magical adventure:</p>
+                
+                <div class="activity-cards">
+                    <div class="activity-card" data-goto="designer">
+                        <div class="card-icon" style="font-size: 3em;">
+                            <svg width="80" height="80" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                <!-- Unicorn head -->
+                                <ellipse cx="50" cy="60" rx="25" ry="30" fill="#FFE4E1"/>
+                                <!-- Horn -->
+                                <polygon points="50,25 45,45 55,45" fill="#FFD700" stroke="#FFA500" stroke-width="1"/>
+                                <!-- Mane -->
+                                <path d="M 30,45 Q 25,50 30,55" fill="#FF69B4" opacity="0.8"/>
+                                <path d="M 35,40 Q 28,45 33,50" fill="#9370DB" opacity="0.8"/>
+                                <path d="M 70,45 Q 75,50 70,55" fill="#87CEEB" opacity="0.8"/>
+                                <path d="M 65,40 Q 72,45 67,50" fill="#FFB6C1" opacity="0.8"/>
+                                <!-- Eyes -->
+                                <circle cx="42" cy="58" r="3" fill="#000"/>
+                                <circle cx="58" cy="58" r="3" fill="#000"/>
+                                <circle cx="43" cy="57" r="1" fill="#FFF"/>
+                                <circle cx="59" cy="57" r="1" fill="#FFF"/>
+                                <!-- Nose -->
+                                <ellipse cx="50" cy="68" rx="4" ry="3" fill="#FFB6C1"/>
+                            </svg>
+                        </div>
+                        <h3>✨ Creature Designer</h3>
+                        <p>Create magical unicorns, beautiful princesses, and awesome dinosaurs!</p>
+                    </div>
+
+                    <div class="activity-card" data-goto="math">
+                        <div class="card-icon" style="font-size: 3em;">
+                            <svg width="80" height="80" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                <!-- Wizard hat -->
+                                <path d="M 50,15 L 30,55 L 70,55 Z" fill="#4B0082" stroke="#FFD700" stroke-width="2"/>
+                                <ellipse cx="50" cy="55" rx="25" ry="5" fill="#4B0082" stroke="#FFD700" stroke-width="2"/>
+                                <!-- Stars on hat -->
+                                <polygon points="50,25 48,30 43,30 47,33 45,38 50,35 55,38 53,33 57,30 52,30" fill="#FFD700"/>
+                                <!-- Head -->
+                                <circle cx="50" cy="65" r="15" fill="#FFE4C4"/>
+                                <!-- Eyes -->
+                                <circle cx="45" cy="63" r="2" fill="#000"/>
+                                <circle cx="55" cy="63" r="2" fill="#000"/>
+                                <!-- Beard -->
+                                <path d="M 40,70 Q 50,78 60,70" fill="#D3D3D3"/>
+                                <path d="M 42,73 Q 50,80 58,73" fill="#D3D3D3"/>
+                                <!-- Magic numbers -->
+                                <text x="20" y="90" font-size="12" fill="#9370DB" font-weight="bold">123</text>
+                                <text x="62" y="90" font-size="12" fill="#FF69B4" font-weight="bold">+−×</text>
+                            </svg>
+                        </div>
+                        <h3>🎯 Wizard's Math Quest</h3>
+                        <p>Help the wizard solve magical math puzzles and unlock spells!</p>
+                    </div>
+
+                    <div class="activity-card" data-goto="literacy">
+                        <div class="card-icon" style="font-size: 3em;">
+                            <svg width="80" height="80" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                <!-- Dragon body -->
+                                <ellipse cx="55" cy="65" rx="20" ry="18" fill="#32CD32" stroke="#228B22" stroke-width="2"/>
+                                <!-- Dragon head -->
+                                <ellipse cx="40" cy="50" rx="15" ry="13" fill="#32CD32" stroke="#228B22" stroke-width="2"/>
+                                <!-- Horns -->
+                                <polygon points="35,40 33,45 37,45" fill="#FFD700"/>
+                                <polygon points="45,40 43,45 47,45" fill="#FFD700"/>
+                                <!-- Eye -->
+                                <circle cx="38" cy="48" r="3" fill="#FFD700"/>
+                                <circle cx="38" cy="48" r="1.5" fill="#000"/>
+                                <!-- Nostril -->
+                                <circle cx="32" cy="53" r="1" fill="#000"/>
+                                <!-- Wings -->
+                                <path d="M 60,55 Q 75,45 70,65 Q 65,60 60,60" fill="#90EE90" stroke="#228B22" stroke-width="1.5"/>
+                                <path d="M 62,58 Q 72,50 68,63" fill="#32CD32" opacity="0.5"/>
+                                <!-- Spikes -->
+                                <polygon points="50,45 52,50 54,45" fill="#FFD700"/>
+                                <polygon points="55,48 57,53 59,48" fill="#FFD700"/>
+                                <polygon points="60,52 62,57 64,52" fill="#FFD700"/>
+                                <!-- Book -->
+                                <rect x="25" y="70" width="20" height="15" fill="#8B4513" stroke="#654321" stroke-width="1"/>
+                                <line x1="35" y1="70" x2="35" y2="85" stroke="#654321" stroke-width="1"/>
+                                <text x="28" y="80" font-size="8" fill="#FFD700" font-weight="bold">ABC</text>
+                            </svg>
+                        </div>
+                        <h3>🐲 Dragon's Library</h3>
+                        <p>Discover dragon stories, learn words, and unlock reading treasures!</p>
+                    </div>
+
+                    <div class="activity-card" data-goto="writing">
+                        <div class="card-icon" style="font-size: 3em;">
+                            <svg width="80" height="80" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                <!-- Castle -->
+                                <rect x="30" y="50" width="40" height="35" fill="#A9A9A9" stroke="#696969" stroke-width="2"/>
+                                <!-- Towers -->
+                                <rect x="25" y="40" width="12" height="25" fill="#A9A9A9" stroke="#696969" stroke-width="1.5"/>
+                                <rect x="63" y="40" width="12" height="25" fill="#A9A9A9" stroke="#696969" stroke-width="1.5"/>
+                                <!-- Tower tops -->
+                                <polygon points="31,40 26,35 36,35" fill="#FF69B4"/>
+                                <polygon points="69,40 64,35 74,35" fill="#FF69B4"/>
+                                <!-- Flags -->
+                                <line x1="31" y1="35" x2="31" y2="25" stroke="#696969" stroke-width="1"/>
+                                <polygon points="31,25 31,30 38,27.5" fill="#FFD700"/>
+                                <line x1="69" y1="35" x2="69" y2="25" stroke="#696969" stroke-width="1"/>
+                                <polygon points="69,25 69,30 76,27.5" fill="#FFD700"/>
+                                <!-- Door -->
+                                <rect x="43" y="65" width="14" height="20" rx="7" fill="#654321"/>
+                                <!-- Windows -->
+                                <rect x="35" y="55" width="8" height="8" fill="#87CEEB"/>
+                                <rect x="57" y="55" width="8" height="8" fill="#87CEEB"/>
+                                <!-- Quill -->
+                                <line x1="65" y1="75" x2="75" y2="60" stroke="#8B4513" stroke-width="2"/>
+                                <path d="M 75,60 Q 78,58 76,55 Q 74,58 75,60" fill="#FFF" stroke="#000" stroke-width="0.5"/>
+                            </svg>
+                        </div>
+                        <h3>🏰 Royal Story Castle</h3>
+                        <p>Write magical tales about princesses, knights, and epic adventures!</p>
+                    </div>
+
+                    <div class="activity-card" data-goto="art">
+                        <div class="card-icon" style="font-size: 3em;">
+                            <svg width="80" height="80" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                <!-- Palette -->
+                                <ellipse cx="55" cy="55" rx="35" ry="30" fill="#8B4513" stroke="#654321" stroke-width="2"/>
+                                <!-- Thumb hole -->
+                                <ellipse cx="72" cy="60" rx="10" ry="12" fill="#FFF" stroke="#654321" stroke-width="2"/>
+                                <!-- Paint colors -->
+                                <circle cx="40" cy="45" r="6" fill="#FF0000"/>
+                                <circle cx="55" cy="42" r="6" fill="#0000FF"/>
+                                <circle cx="45" cy="58" r="6" fill="#FFFF00"/>
+                                <circle cx="60" cy="55" r="6" fill="#00FF00"/>
+                                <circle cx="50" cy="70" r="6" fill="#FF69B4"/>
+                                <!-- Paintbrush -->
+                                <line x1="20" y1="80" x2="35" y2="65" stroke="#8B4513" stroke-width="3"/>
+                                <path d="M 35,65 Q 38,62 36,59 L 32,63 Z" fill="#A0522D" stroke="#654321" stroke-width="1"/>
+                                <path d="M 36,59 L 38,57 L 34,53 L 32,55 Z" fill="#4169E1"/>
+                            </svg>
+                        </div>
+                        <h3>🎨 Art Studio</h3>
+                        <p>Draw, color, and create amazing artwork with magical brushes!</p>
+                    </div>
+
+                    <div class="activity-card" data-goto="calmCorner">
+                        <div class="card-icon" style="font-size: 3em;">
+                            <svg width="80" height="80" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                <!-- Cloud shape -->
+                                <ellipse cx="35" cy="55" rx="18" ry="15" fill="#B0E0E6" opacity="0.8"/>
+                                <ellipse cx="50" cy="50" rx="22" ry="18" fill="#87CEEB" opacity="0.8"/>
+                                <ellipse cx="65" cy="55" rx="18" ry="15" fill="#B0E0E6" opacity="0.8"/>
+                                <!-- Stars -->
+                                <polygon points="25,30 27,35 32,35 28,38 30,43 25,40 20,43 22,38 18,35 23,35" fill="#FFD700"/>
+                                <polygon points="70,25 72,30 77,30 73,33 75,38 70,35 65,38 67,33 63,30 68,30" fill="#FFD700"/>
+                                <!-- Heart in center -->
+                                <path d="M 50,65 Q 45,55 40,58 Q 35,61 40,68 L 50,75 L 60,68 Q 65,61 60,58 Q 55,55 50,65" fill="#FFB6C1" stroke="#FF69B4" stroke-width="1"/>
+                                <!-- Musical note -->
+                                <ellipse cx="50" cy="40" rx="4" ry="3" fill="#9370DB"/>
+                                <line x1="54" y1="40" x2="54" y2="25" stroke="#9370DB" stroke-width="2"/>
+                                <path d="M 54,25 Q 60,23 62,27" stroke="#9370DB" stroke-width="2" fill="none"/>
+                            </svg>
+                        </div>
+                        <h3>🌈 Calm Corner</h3>
+                        <p>Relax with peaceful music, gentle bubbles, and breathing exercises!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Creature Designer Section -->
+        <section id="designer" class="content-section">
+            <h2>🎨 Magical Character Designer ✨</h2>
+            
+            <div class="designer-container">
+                <div class="creature-type-selector">
+                    <button class="type-btn active" data-creature="unicorn">🦄 Unicorn</button>
+                    <button class="type-btn" data-creature="dinosaur">🦕 Dinosaur</button>
+                    <button class="type-btn" data-creature="princess">👸 Princess</button>
+                </div>
+
+                <div class="design-workspace">
+                    <div class="canvas-area">
+                        <div id="creatureCanvas" class="creature-canvas">
+                            <!-- Creature will be built here -->
+                            <div class="creature-display" id="creatureDisplay">
+                                <p class="instruction-text">Choose colors and features to design your creature!</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="design-controls">
+                        <h3>Customize Your Creature</h3>
+                        
+                        <div class="control-section">
+                            <h4>Body Color:</h4>
+                            <div class="color-picker">
+                                <button class="color-btn" data-part="body" data-color="#FF69B4" style="background-color: #FF69B4;"></button>
+                                <button class="color-btn" data-part="body" data-color="#9370DB" style="background-color: #9370DB;"></button>
+                                <button class="color-btn" data-part="body" data-color="#87CEEB" style="background-color: #87CEEB;"></button>
+                                <button class="color-btn" data-part="body" data-color="#98FB98" style="background-color: #98FB98;"></button>
+                                <button class="color-btn" data-part="body" data-color="#FFD700" style="background-color: #FFD700;"></button>
+                                <button class="color-btn" data-part="body" data-color="#FF6347" style="background-color: #FF6347;"></button>
+                            </div>
+                        </div>
+
+                        <div class="control-section">
+                            <h4>Mane/Spikes Color:</h4>
+                            <div class="color-picker">
+                                <button class="color-btn" data-part="mane" data-color="#FF1493" style="background-color: #FF1493;"></button>
+                                <button class="color-btn" data-part="mane" data-color="#4B0082" style="background-color: #4B0082;"></button>
+                                <button class="color-btn" data-part="mane" data-color="#00CED1" style="background-color: #00CED1;"></button>
+                                <button class="color-btn" data-part="mane" data-color="#32CD32" style="background-color: #32CD32;"></button>
+                                <button class="color-btn" data-part="mane" data-color="#FFA500" style="background-color: #FFA500;"></button>
+                                <button class="color-btn" data-part="mane" data-color="#DC143C" style="background-color: #DC143C;"></button>
+                            </div>
+                        </div>
+
+                        <div class="control-section">
+                            <h4>Horn/Tail Style:</h4>
+                            <div class="style-picker">
+                                <button class="style-btn" data-style="spiral">Spiral ✨</button>
+                                <button class="style-btn" data-style="straight">Straight 📏</button>
+                                <button class="style-btn" data-style="curved">Curved 🌙</button>
+                            </div>
+                        </div>
+
+                        <div class="control-section">
+                            <h4>Pattern:</h4>
+                            <div class="pattern-picker">
+                                <button class="pattern-btn" data-pattern="solid">Solid</button>
+                                <button class="pattern-btn" data-pattern="spots">Spots 🔴</button>
+                                <button class="pattern-btn" data-pattern="stripes">Stripes 〰️</button>
+                                <button class="pattern-btn" data-pattern="stars">Stars ⭐</button>
+                            </div>
+                        </div>
+
+                        <button class="action-btn save-btn" id="saveCreature">💾 Save My Creature</button>
+                        <button class="action-btn random-btn" id="randomCreature">🎲 Random Design</button>
+                    </div>
+                </div>
+
+                <div class="saved-creatures">
+                    <h3>My Saved Creatures</h3>
+                    <div id="savedCreaturesGrid" class="creatures-grid">
+                        <p class="empty-message">You haven't saved any creatures yet!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Math Section -->
+        <section id="math" class="content-section">
+            <h2>🧙‍♂️ Wizard's Math Quest 🔢</h2>
+            
+            <div class="activity-selector">
+                <button class="activity-btn" data-activity="counting">Counting</button>
+                <button class="activity-btn" data-activity="addition">Addition ➕</button>
+                <button class="activity-btn" data-activity="subtraction">Subtraction ➖</button>
+                <button class="activity-btn" data-activity="multiplication">Multiplication ✖️</button>
+                <button class="activity-btn" data-activity="division">Division ➗</button>
+                <button class="activity-btn" data-activity="word-problems">Story Problems 📖</button>
+                <button class="activity-btn" data-activity="comparing">Comparing ⚖️</button>
+                <button class="activity-btn" data-activity="patterns">Patterns 🔄</button>
+                <button class="activity-btn" data-activity="time">Time ⏰</button>
+                <button class="activity-btn" data-activity="money">Money 💰</button>
+            </div>
+
+            <div class="math-workspace">
+                <div id="mathActivity" class="activity-content">
+                    <p class="instruction-text">Choose an activity above to start learning!</p>
+                </div>
+
+                <div class="progress-display">
+                    <h3>Your Progress 🌟</h3>
+                    <div class="stars-earned">
+                        <span id="starsCount">0</span> stars earned today!
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="mathProgress" style="width: 0%;"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Literacy Section -->
+        <section id="literacy" class="content-section">
+            <h2>🐉 Dragon's Library 📚</h2>
+            
+            <div class="activity-selector">
+                <button class="activity-btn" data-activity="letters">Letters 🔤</button>
+                <button class="activity-btn" data-activity="phonics">Phonics 🔊</button>
+                <button class="activity-btn" data-activity="spelling">Spelling 📝</button>
+                <button class="activity-btn" data-activity="vocabulary">Vocabulary 📖</button>
+                <button class="activity-btn" data-activity="sight-words">Sight Words 👁️</button>
+                <button class="activity-btn" data-activity="sentences">Sentences ✏️</button>
+                <button class="activity-btn" data-activity="rhyming">Rhyming 🎵</button>
+                <button class="activity-btn" data-activity="reading">Reading 📚</button>
+            </div>
+
+            <div class="literacy-workspace">
+                <div id="literacyActivity" class="activity-content">
+                    <p class="instruction-text">Choose an activity above to start learning!</p>
+                </div>
+
+                <div class="progress-display">
+                    <h3>Your Progress 🌟</h3>
+                    <div class="stars-earned">
+                                               <span id="literacyStars">0</span> stars earned today!
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="literacyProgress" style="width: 0%;"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Creative Writing Section -->
+        <section id="writing" class="content-section">
+            <h2>👸 Royal Story Castle ✍️</h2>
+            
+            <div class="writing-container">
+                <div class="prompt-section">
+                    <h3>Story Starters</h3>
+                    <div id="storyPrompt" class="story-prompt">
+                        Click "New Prompt" to get a fun story idea!
+                    </div>
+                    <button class="action-btn" id="newPrompt">🎲 New Prompt</button>
+                </div>
+
+                <div class="writing-area">
+                    <div class="writing-tools">
+                        <h3>Your Story Title:</h3>
+                        <input type="text" id="storyTitle" class="story-title-input" placeholder="My Amazing Story">
+                        
+                        <div class="tool-buttons">
+                            <button class="tool-btn" id="boldBtn"><strong>B</strong></button>
+                            <button class="tool-btn" id="italicBtn"><em>I</em></button>
+                            <button class="tool-btn" id="emojiBtn">😊</button>
+                        </div>
+                    </div>
+
+                    <textarea id="storyText" class="story-textarea" placeholder="Start writing your story here..."></textarea>
+
+                    <div class="word-bank">
+                        <h4>Word Bank 💡</h4>
+                        <div id="wordBankButtons" class="word-buttons">
+                            <!-- Words will be added based on prompt -->
+                        </div>
+                    </div>
+
+                    <div class="story-actions">
+                        <button class="action-btn" id="saveStory">💾 Save Story</button>
+                        <button class="action-btn" id="clearStory">🗑️ New Story</button>
+                        <div class="word-count">Words: <span id="wordCount">0</span></div>
+                    </div>
+                </div>
+
+                <div class="saved-stories">
+                    <h3>My Stories 📚</h3>
+                    <div id="savedStoriesGrid" class="stories-grid">
+                        <p class="empty-message">You haven't saved any stories yet!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Art Studio Section -->
+        <section id="art" class="content-section">
+            <h2>🎨 Art Studio 🖌️</h2>
+            
+            <div class="art-container">
+                <div class="art-tools">
+                    <h3>Drawing Tools</h3>
+                    <div class="tool-group">
+                        <label>Brush Size:</label>
+                        <input type="range" id="brushSize" min="1" max="20" value="5">
+                        <span id="brushSizeValue">5</span>px
+                    </div>
+                    
+                    <div class="tool-group">
+                        <label>Color:</label>
+                        <div class="color-palette">
+                            <button class="color-btn" data-color="#FF0000" style="background: #FF0000;"></button>
+                            <button class="color-btn" data-color="#FF69B4" style="background: #FF69B4;"></button>
+                            <button class="color-btn" data-color="#FFD700" style="background: #FFD700;"></button>
+                            <button class="color-btn" data-color="#00FF00" style="background: #00FF00;"></button>
+                            <button class="color-btn" data-color="#87CEEB" style="background: #87CEEB;"></button>
+                            <button class="color-btn" data-color="#0000FF" style="background: #0000FF;"></button>
+                            <button class="color-btn" data-color="#9370DB" style="background: #9370DB;"></button>
+                            <button class="color-btn" data-color="#000000" style="background: #000000;"></button>
+                            <button class="color-btn" data-color="#FFFFFF" style="background: #FFFFFF; border: 2px solid #000;"></button>
+                        </div>
+                    </div>
+                    
+                    <div class="tool-group">
+                        <button class="action-btn" id="clearCanvas">🗑️ Clear Canvas</button>
+                        <button class="action-btn" id="saveArt">💾 Save Art</button>
+                    </div>
+                    
+                    <div class="tool-group">
+                        <h4>Drawing Templates:</h4>
+                        <button class="template-btn" data-template="unicorn">🦄 Unicorn</button>
+                        <button class="template-btn" data-template="dragon">🐉 Dragon</button>
+                        <button class="template-btn" data-template="princess">👸 Princess</button>
+                        <button class="template-btn" data-template="castle">🏰 Castle</button>
+                        <button class="template-btn" data-template="rainbow">🌈 Rainbow</button>
+                    </div>
+                </div>
+
+                <div class="canvas-area">
+                    <canvas id="drawingCanvas" width="800" height="600"></canvas>
+                    <div class="canvas-hint">✨ Click and drag to draw! ✨</div>
+                </div>
+
+                <div class="saved-art">
+                    <h3>My Artwork 🖼️</h3>
+                    <div id="savedArtGrid" class="art-grid">
+                        <p class="empty-message">You haven't saved any artwork yet!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Calm Corner Section -->
+        <section id="calmCorner" class="content-section">
+            <h2>🌈 Calm Corner 🌟</h2>
+            <p style="text-align: center; font-size: 1.3em; color: #9370DB; margin-bottom: 30px;">
+                A peaceful place to relax and recharge 💜
+            </p>
+
+            <div class="calm-activities-container">
+                <!-- Activity Selection Buttons -->
+                <div class="calm-activity-selector">
+                    <button class="calm-btn active" data-activity="breathing">🌬️ Breathing</button>
+                    <button class="calm-btn" data-activity="music">🎵 Music</button>
+                    <button class="calm-btn" data-activity="bubbles">🫧 Bubbles</button>
+                    <button class="calm-btn" data-activity="drawing">✏️ Draw</button>
+                </div>
+
+                <!-- Activity Content Area -->
+                <div id="calmActivity" class="calm-activity-content">
+                    <!-- Content loaded by JS -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="app-footer">
+        <p>Keep learning and having fun! 🌟</p>
+        
+        <div style="margin: 20px 0; display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+            <a href="#" onclick="showAboutMe(); return false;" style="color: #FFD700; text-decoration: none; font-weight: bold;">💜 About Me</a>
+            <span style="color: #FFD700;">|</span>
+            <a href="#" onclick="showBlog(); return false;" style="color: #FFD700; text-decoration: none; font-weight: bold;">📝 Blog</a>
+            <span style="color: #FFD700;">|</span>
+            <a href="#" onclick="showPrivacyPolicy(); return false;" style="color: #FFD700; text-decoration: none; font-weight: bold;">📝 Privacy Policy</a>
+            <span style="color: #FFD700;">|</span>
+            <a href="#" onclick="showTermsOfService(); return false;" style="color: #FFD700; text-decoration: none; font-weight: bold;">📜 Terms of Service</a>
+            <span style="color: #FFD700;">|</span>
+            <!-- Parent Resources link removed -->
+        </div>
+        
+        <div id="feedback" style="margin-top: 20px; padding: 20px; background: rgba(255,255,255,0.1); border-radius: 15px;">
+            <h3>📧 Beta Feedback</h3>
+            <p style="margin: 10px 0;">We'd love your thoughts! Email us at:</p>
+            <a href="mailto:millershaun2007@gmail.com?subject=Beta Feedback" 
+               style="color: #FFD700; font-size: 1.2em; text-decoration: none; font-weight: bold;">
+                millershaun2007@gmail.com
+            </a>
+            <p style="font-size: 0.9em; margin-top: 15px; opacity: 0.8;">
+                Beta Version 1.0 | COPPA Compliant | For Testing Only
+            </p>
+        </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+    <script src="js/achievements.js"></script>
+    <script src="js/designer.js"></script>
+    <script src="js/math-activities.js?v=20251130153500"></script>
+    <script src="js/literacy-activities.js?v=20251201161000"></script>
+    <script src="js/writing.js"></script>
+    <script src="js/art.js"></script>
+    <script src="js/sensory-zone.js"></script>
+    
+    <script>
+        // Register Service Worker for PWA
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('./service-worker.js')
+                .then(reg => console.log('Service Worker registered'))
+                .catch(err => console.log('Service Worker registration failed'));
+        }
+    </script>
+</body>
+</html>
+
+

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Drama</title>
+    <link rel="stylesheet" href="css/drama.css">
+</head>
+<body>
+    <header>
+        <h1>Interactive Drama</h1>
+        <nav>
+            <a href="index.html">Home</a>
+        </nav>
+    </header>
+    <main>
+        <section id="story-creator">
+            <h2>Create Your Story</h2>
+            <p>You can write your story in the box, or record your voice to tell it out loud!</p>
+            
+            <div class="creation-choice-container">
+                <!-- Writing Section -->
+                <div class="creation-box" id="write-story-box">
+                    <h3>✍️ Write Your Story</h3>
+                    <textarea id="story-text" placeholder="What happens in your adventure?"></textarea>
+                    <button id="save-text-story-btn">Save Written Story</button>
+                </div>
+
+                <!-- Recording Section -->
+                <div class="creation-box" id="record-story-box">
+                    <h3>🎤 Tell Your Story</h3>
+                    <div id="recorder-controls">
+                        <button id="record-btn">Start Recording</button>
+                        <button id="stop-btn" disabled>Stop Recording</button>
+                    </div>
+                    <audio id="audio-playback" controls></audio>
+                    <button id="save-audio-story-btn" disabled>Save Recorded Story</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="saved-stories">
+            <h2>Your Saved Stories</h2>
+            <div id="stories-grid"></div>
+        </section>
+
+        <section id="character-gallery">
+            <h2>Imaginative Characters</h2>
+            <div class="character-card">
+                <img src="images/captain_starfire.png" alt="Captain Starfire">
+                <p>Captain Starfire</p>
+            </div>
+            <div class="character-card">
+                <img src="images/princess_glimmer.png" alt="Princess Glimmer">
+                <p>Princess Glimmer</p>
+            </div>
+            <div class="character-card">
+                <img src="images/sir_reginald_the_brave.png" alt="Sir Reginald the Brave">
+                <p>Sir Reginald the Brave</p>
+            </div>
+        </section>
+    </main>
+    <script src="js/drama.js"></script>
+</body>
+</html>

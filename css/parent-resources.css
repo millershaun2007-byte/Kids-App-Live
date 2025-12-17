@@ -1,0 +1,98 @@
+/* CSS for Parent Resources Page */
+
+body {
+    font-family: 'Trebuchet MS', 'Comic Sans MS', sans-serif;
+    background-color: #f4f7f6;
+    color: #333;
+    line-height: 1.7;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2em;
+}
+
+header a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+    margin-top: 0.5rem;
+    background: rgba(255,255,255,0.2);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    transition: background-color 0.3s;
+}
+
+header a:hover {
+    background: rgba(255,255,255,0.4);
+}
+
+main {
+    padding: 2rem;
+}
+
+.resource-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.intro-box {
+    background: #e9eefe;
+    border-left: 5px solid #667eea;
+    padding: 1.5rem 2rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+}
+
+.intro-box h2 {
+    color: #667eea;
+    margin-top: 0;
+}
+
+.resource-article {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.resource-article h3 {
+    color: #764ba2;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.resource-article ul, .resource-article ol {
+    padding-left: 20px;
+}
+
+.resource-article li {
+    margin-bottom: 0.8rem;
+}
+
+.final-note {
+    text-align: center;
+    background: #fff9e6;
+    border: 2px dashed #FFD700;
+    padding: 2rem;
+    border-radius: 8px;
+}
+
+.final-note h4 {
+    margin-top: 0;
+    color: #D2691E;
+    font-size: 1.5em;
+}

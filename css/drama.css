@@ -1,0 +1,108 @@
+body {
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    background-color: #f0f8ff;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #ff69b4;
+    padding: 1rem;
+    text-align: center;
+    color: white;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 1rem;
+}
+
+main {
+    padding: 2rem;
+}
+
+section {
+    background-color: white;
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+h2 {
+    color: #ff69b4;
+    border-bottom: 2px solid #ff69b4;
+    padding-bottom: 0.5rem;
+}
+
+button {
+    background-color: #ff69b4;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-right: 10px;
+}
+
+button:disabled {
+    background-color: #cccccc;
+}
+
+audio {
+    width: 100%;
+    margin-top: 1rem;
+}
+
+textarea {
+    width: 100%;
+    height: 150px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    font-family: inherit;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+
+#character-gallery {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.character-card {
+    text-align: center;
+    margin: 1rem;
+}
+
+.character-card img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 5px solid #ff69b4;
+}
+
+.character-card p {
+    margin-top: 0.5rem;
+    font-weight: bold;
+    color: #333;
+}
+
+#stories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.story-card {
+    background-color: #fff0f5;
+    border-radius: 10px;
+    padding: 1rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    border-left: 5px solid #ff69b4;
+}

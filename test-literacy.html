@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Literacy Test</title>
+    <style>
+        body { font-family: Arial; padding: 20px; }
+        .activity-btn { padding: 15px; margin: 10px; font-size: 18px; cursor: pointer; }
+        #literacyActivity { margin-top: 20px; border: 2px solid blue; padding: 20px; }
+        .letter-btn, .word-btn { padding: 20px; margin: 10px; font-size: 24px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <h1>Literacy Test Page</h1>
+    
+    <div id="literacy">
+        <button class="activity-btn" data-activity="letters">Letters</button>
+        <button class="activity-btn" data-activity="phonics">Phonics</button>
+        <button class="activity-btn" data-activity="spelling">Spelling</button>
+    </div>
+    
+    <div id="literacyActivity">
+        <p>Click a button above</p>
+    </div>
+    
+    <div>
+        <p id="literacyStars">0</p>
+        <div id="literacyProgress" style="width: 0%; height: 20px; background: green;"></div>
+    </div>
+
+    <script src="js/literacy-activities.js"></script>
+</body>
+</html>
