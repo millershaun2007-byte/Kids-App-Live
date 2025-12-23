@@ -1,12 +1,15 @@
 // js/flying-unicorns.js
+Merge branch 'main' of https://github.com/millershaun2007-byte/Kids-App-Live
 
 // Interactive flying unicorn section with educational storytelling, memory, and dinosaur/zoo tour
 // Premium feature: 3D/animated visuals, story prompts, memory challenges
-
+Merge branch 'main' of https://github.com/millershaun2007-byte/Kids-App-Live
+git push origin main
+git push orignn main
 // --- CONFIG ---
 const unicornStories = [
   {
-    title: "The Lost Dino Egg"
+    title: "The Lost Dino Egg",
     story: "While flying over the ancient lands, your unicorn finds a mysterious egg. Can you remember the clues to return it to its dinosaur family?",
     memoryQuiz: [
       { q: "What color was the egg?", a: "Blue" },
@@ -92,9 +95,5 @@ function nextUnicornStory() {
 }
 
 // --- INTEGRATION ---
-window.showUnicornSection = showUnicornSection;
-
-
-
-
+window.showUnicornSection = showUnicornSection;cd "C:\Users\mille\OneDrive\Desktop\Kids Groovy Hip Hop Happening Unicorn App\CProjectskids_learning_app"
 
