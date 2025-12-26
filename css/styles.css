@@ -1,3 +1,86 @@
+/* ===== Mountain Climb Game Styles ===== */
+#mountain-climb {
+    background: linear-gradient(180deg, #e3ffe7 0%, #fffbe7 100%);
+    min-height: 420px;
+    border-radius: 18px;
+    box-shadow: 0 4px 24px #FFD70022;
+    margin-bottom: 32px;
+    position: relative;
+    overflow: hidden;
+}
+
+#mountain-game-container {
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 24px 0 32px 0;
+    position: relative;
+}
+
+.mountain-bg {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 220px;
+    height: 180px;
+    background: linear-gradient(180deg, #8ED6FF 0%, #FFD700 100%);
+    border-radius: 0 0 120px 120px / 0 0 100px 100px;
+    z-index: 0;
+    opacity: 0.18;
+}
+
+.mountain-climber {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2.5em;
+    z-index: 2;
+    transition: bottom 0.5s;
+}
+
+.mountain-peak {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2.2em;
+    z-index: 3;
+}
+
+.mountain-progress-bar {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 220px;
+    background: linear-gradient(180deg, #fffbe7 0%, #e3ffe7 100%);
+    border-radius: 18px;
+    border: 2px solid #FFD700;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.mountain-progress-fill {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(180deg,#FFD700 0%,#8ED6FF 100%);
+    border-radius: 12px;
+    transition: height 0.5s;
+    z-index: 1;
+}
+
+.mountain-certificate {
+    background: #fffbe7;
+    border: 2px solid #FFD700;
+    border-radius: 18px;
+    padding: 32px;
+    max-width: 420px;
+    margin: 32px auto;
+    text-align: center;
+    box-shadow: 0 4px 16px #FFD70033;
+}
 /* ===== Base Styles & Accessibility ===== */
 * {
     margin: 0;

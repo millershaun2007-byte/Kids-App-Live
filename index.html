@@ -28,6 +28,7 @@
             <button class="nav-btn" data-section="literacy" aria-label="Reading & Words" tabindex="0" style="font-size:1.2em; min-width:120px; min-height:48px;">📚 Reading & Words</button>
             <button class="nav-btn" data-section="writing" aria-label="Creative Writing" tabindex="0" style="font-size:1.2em; min-width:120px; min-height:48px;">✍️ Creative Writing</button>
             <button class="nav-btn" data-section="art" aria-label="Art Studio" tabindex="0" style="font-size:1.2em; min-width:120px; min-height:48px;">🖌️ Art Studio</button>
+            <button class="nav-btn" data-section="mountain-climb" aria-label="Mountain Climb Word Game" tabindex="0" style="font-size:1.2em; min-width:120px; min-height:48px;">⛰️ Mountain Climb</button>
             <a href="drama.html" class="nav-btn" aria-label="Interactive Drama" tabindex="0" style="font-size:1.2em; min-width:120px; min-height:48px;">🎭 Interactive Drama</a>
             <a href="collaborative-story.html" class="nav-btn" aria-label="Collaborative Story" tabindex="0" style="font-size:1.2em; min-width:120px; min-height:48px;">✍️ Collaborative Story</a>
             <a href="resources.html" class="nav-btn" aria-label="Helpful Resources" tabindex="0" style="font-size:1.2em; min-width:120px; min-height:48px;">🌐 Helpful Resources</a>
@@ -41,6 +42,11 @@
     <main class="main-content">
         <!-- Home Section -->
         <section id="home" class="content-section active">
+        <!-- Mountain Climb Word Game Section -->
+        <section id="mountain-climb" class="content-section">
+            <h2>⛰️ Mountain Climb Word Game</h2>
+            <div id="mountain-game-container"></div>
+        </section>
                                                             <!-- Launch Checklist Section -->
                                                             <div style="margin: 36px 0; background: #fffbe7; border-radius: 14px; padding: 24px; max-width: 540px; margin-left:auto; margin-right:auto; border:2px solid #FFD700; box-shadow:0 2px 10px #FFD70022;">
                                                                 <h3 style="color:#D2691E; font-size:1.2em;">🚀 Launch & Growth Checklist</h3>
@@ -266,6 +272,20 @@
     <script src="js/achievements.js"></script>
     <script src="js/timer-sounds.js"></script>
     <script src="service-worker.js"></script>
+    </main>
+    <script src="js/mountain-climb.js"></script>
+    <script src="js/mountain-climb-effects.js"></script>
+    <script>
+    // Show the mountain climb game when navigating to the section
+    document.addEventListener('DOMContentLoaded', function() {
+        const navBtns = document.querySelectorAll('.nav-btn[data-section="mountain-climb"]');
+        navBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                if (window.showMountainClimbGame) window.showMountainClimbGame();
+            });
+        });
+    });
+    </script>
 </body>
 </html>
 
