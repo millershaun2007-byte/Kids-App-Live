@@ -15,7 +15,8 @@ function startWordMazeGame() {
     wordMazeState.path = [];
     wordMazeState.found = false;
     renderWordMaze();
-}
+cd "C:\Users\mille\OneDrive\Desktop\Kids Groovy Hip Hop Happening Unicorn App"
+
 
 function generateWordMazeGrid(word) {
     // 6x6 grid, word placed randomly in a path

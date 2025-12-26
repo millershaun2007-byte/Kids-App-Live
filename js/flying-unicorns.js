@@ -1,12 +1,10 @@
 // js/flying-unicorns.js
-
 // Interactive flying unicorn section with educational storytelling, memory, and dinosaur/zoo tour
 // Premium feature: 3D/animated visuals, story prompts, memory challenges
-
 // --- CONFIG ---
 const unicornStories = [
   {
-    title: "The Lost Dino Egg"
+    title: "The Lost Dino Egg",
     story: "While flying over the ancient lands, your unicorn finds a mysterious egg. Can you remember the clues to return it to its dinosaur family?",
     memoryQuiz: [
       { q: "What color was the egg?", a: "Blue" },
@@ -92,9 +90,7 @@ function nextUnicornStory() {
 }
 
 // --- INTEGRATION ---
+
+// Expose the main function for integration
 window.showUnicornSection = showUnicornSection;
-
-
-
-
 

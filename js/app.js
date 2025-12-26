@@ -160,13 +160,27 @@ function handleNameSubmission() {
 }
 
 function setupEventListeners() {
-    // Nav buttons
+    // Nav buttons (support both <button> and <a> with data-section)
     const navButtons = document.querySelectorAll('.nav-btn');
     navButtons.forEach(btn => {
-        btn.addEventListener('click', () => {
-            const section = btn.getAttribute('data-section');
-            navigateToSection(section);
-        });
+        // Only attach navigation if data-section is present
+        const section = btn.getAttribute('data-section');
+        if (section) {
+            btn.addEventListener('click', function(e) {
+                // Prevent default for <a> tags to avoid page reload
+                if (btn.tagName.toLowerCase() === 'a') {
+                    e.preventDefault();
+                }
+                navigateToSection(section);
+            });
+            // Touch event support for mobile (extra reliability)
+            btn.addEventListener('touchend', function(e) {
+                if (btn.tagName.toLowerCase() === 'a') {
+                    e.preventDefault();
+                }
+                navigateToSection(section);
+            });
+        }
     });
 
     // Activity cards on home page
@@ -289,13 +303,24 @@ function initializeAccessibility() {
 
 // ===== Navigation =====
 function initializeNavigation() {
-    // Nav buttons
+    // Nav buttons (support both <button> and <a> with data-section)
     const navButtons = document.querySelectorAll('.nav-btn');
     navButtons.forEach(btn => {
-        btn.addEventListener('click', () => {
-            const section = btn.getAttribute('data-section');
-            navigateToSection(section);
-        });
+        const section = btn.getAttribute('data-section');
+        if (section) {
+            btn.addEventListener('click', function(e) {
+                if (btn.tagName.toLowerCase() === 'a') {
+                    e.preventDefault();
+                }
+                navigateToSection(section);
+            });
+            btn.addEventListener('touchend', function(e) {
+                if (btn.tagName.toLowerCase() === 'a') {
+                    e.preventDefault();
+                }
+                navigateToSection(section);
+            });
+        }
     });
 
     // Activity cards on home page
