@@ -3,28 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A magical, inclusive, and creative learning app for kids and families. Play, create, and learn with unicorns, music, art, and more!">
     <title>Kids Groovy Hip Hop Happening Unicorn App - FREE BETA</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="preload" href="css/styles.css" as="style">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#9370DB">
-    <meta name="description" content="Fun learning app for kids with math, reading, writing and creative design - neurodivergent friendly">
 </head>
 <body>
+        <!-- Support/Donate Banner -->
+        <div style="background:linear-gradient(90deg,#FFD700 0%,#FF69B4 100%);color:#764ba2;padding:18px 0;text-align:center;font-size:1.25em;font-weight:700;letter-spacing:0.5px;box-shadow:0 2px 12px rgba(255,215,0,0.12);z-index:1001;position:relative;">
+            💖 Love this app? <a href="https://www.buymeacoffee.com/YOURNAME" target="_blank" style="color:#fff;background:#764ba2;padding:8px 18px;border-radius:8px;margin:0 10px;text-decoration:none;font-weight:800;">Support Us / Donate</a> — Help us keep it free for kids!
+        </div>
     <!-- Main Navigation -->
     <nav class="main-nav">
         <h1>🦄 Kids Learning Adventure (Live) 🦕</h1>
         <div class="nav-buttons">
-            <button class="nav-btn" data-section="home">🏠 Home</button>
-            <button class="nav-btn" data-section="designer">🎨 Design Creatures</button>
-            <button class="nav-btn" data-section="math">🔢 Math Fun</button>
-            <button class="nav-btn" data-section="literacy">📚 Reading & Words</button>
-            <button class="nav-btn" data-section="writing">✍️ Creative Writing</button>
-            <button class="nav-btn" data-section="art">🖌️ Art Studio</button>
-            <a href="drama.html" class="nav-btn">🎭 Interactive Drama</a>
-            <a href="collaborative-story.html" class="nav-btn">✍️ Collaborative Story</a>
+            <button class="nav-btn" data-section="home" aria-label="Home" tabindex="0" style="font-size:1.2em; min-width:120px; min-height:48px;">🏠 Home</button>
+            <button class="nav-btn" data-section="designer" aria-label="Design Creatures" tabindex="0" style="font-size:1.2em; min-width:120px; min-height:48px;">🎨 Design Creatures</button>
+            <button class="nav-btn" data-section="math" aria-label="Math Fun" tabindex="0" style="font-size:1.2em; min-width:120px; min-height:48px;">🔢 Math Fun</button>
+            <button class="nav-btn" data-section="literacy" aria-label="Reading & Words" tabindex="0" style="font-size:1.2em; min-width:120px; min-height:48px;">📚 Reading & Words</button>
+            <button class="nav-btn" data-section="writing" aria-label="Creative Writing" tabindex="0" style="font-size:1.2em; min-width:120px; min-height:48px;">✍️ Creative Writing</button>
+            <button class="nav-btn" data-section="art" aria-label="Art Studio" tabindex="0" style="font-size:1.2em; min-width:120px; min-height:48px;">🖌️ Art Studio</button>
+            <a href="drama.html" class="nav-btn" aria-label="Interactive Drama" tabindex="0" style="font-size:1.2em; min-width:120px; min-height:48px;">🎭 Interactive Drama</a>
+            <a href="collaborative-story.html" class="nav-btn" aria-label="Collaborative Story" tabindex="0" style="font-size:1.2em; min-width:120px; min-height:48px;">✍️ Collaborative Story</a>
+            <a href="resources.html" class="nav-btn" aria-label="Helpful Resources" tabindex="0" style="font-size:1.2em; min-width:120px; min-height:48px;">🌐 Helpful Resources</a>
         </div>
     </nav>
 
@@ -35,8 +41,160 @@
     <main class="main-content">
         <!-- Home Section -->
         <section id="home" class="content-section active">
+                                                            <!-- Launch Checklist Section -->
+                                                            <div style="margin: 36px 0; background: #fffbe7; border-radius: 14px; padding: 24px; max-width: 540px; margin-left:auto; margin-right:auto; border:2px solid #FFD700; box-shadow:0 2px 10px #FFD70022;">
+                                                                <h3 style="color:#D2691E; font-size:1.2em;">🚀 Launch & Growth Checklist</h3>
+                                                                <ol style="font-size:1.05em; color:#34495e; margin-bottom:10px;">
+                                                                    <li>Update all payment/donation links with your real info</li>
+                                                                    <li>Insert your real app link in the share/marketing section</li>
+                                                                    <li>Test on mobile, tablet, and desktop for bugs or layout issues</li>
+                                                                    <li>Add a cookie/consent banner if you use analytics or tracking</li>
+                                                                    <li>Test accessibility with a screen reader</li>
+                                                                    <li>Add more testimonials or reviews for trust</li>
+                                                                    <li>Prepare a launch announcement (social, email, school newsletters)</li>
+                                                                    <li>Set up analytics (update privacy notice if needed)</li>
+                                                                    <li>If collecting user data, add parental consent and age verification</li>
+                                                                    <li>Regularly update privacy/terms as features grow</li>
+                                                                </ol>
+                                                                <div style="font-size:0.98em;color:#0288D1;">Need help with any step? Ask for a detailed guide!</div>
+                                                            </div>
+                                                <!-- Premium Features Teaser -->
+                                                <div style="margin: 32px 0; background: #fffbe7; border-radius: 14px; padding: 22px; max-width: 480px; margin-left:auto; margin-right:auto; border:2px solid #FFD700; box-shadow:0 2px 10px #FFD70022;">
+                                                    <h3 style="color:#D32F2F; font-size:1.2em;">🔒 Unlock Premium Magic!</h3>
+                                                    <ul style="font-size:1.05em; color:#764ba2; margin-bottom:10px;">
+                                                        <li>3D Creature Creator: advanced parts & export</li>
+                                                        <li>Movie Maker: extra effects & music</li>
+                                                        <li>Exclusive art, games, and more!</li>
+                                                    </ul>
+                                                    <button onclick="window.open('https://www.buymeacoffee.com/YOURNAME','_blank')" style="background:#FFD700;color:#D32F2F;border:none;border-radius:8px;padding:10px 28px;font-size:1.1em;font-weight:700;cursor:pointer;">Upgrade to Premium</button>
+                                                    <div style="margin-top:8px;font-size:0.95em;color:#0288D1;">One-time or monthly support keeps us growing!</div>
+                                                </div>
+                                                <!-- School/Group License Info -->
+                                                <div style="margin: 32px 0; background: #e3ffe7; border-radius: 14px; padding: 22px; max-width: 480px; margin-left:auto; margin-right:auto; border:2px solid #32CD32; box-shadow:0 2px 10px #32CD3222;">
+                                                    <h3 style="color:#388e3c; font-size:1.2em;">🏫 For Schools & Groups</h3>
+                                                    <p style="font-size:1.05em; color:#388e3c;">Want to use this app in your classroom or program? <br>Email <a href="mailto:your@email.com" style="color:#0288D1;">your@email.com</a> for affordable group licensing and custom features!</p>
+                                                </div>
+                                    <!-- Marketing/Share Section -->
+                                    <div style="margin: 36px 0; background: linear-gradient(90deg,#e3f7ff 60%,#FFD700 100%); border-radius: 14px; padding: 24px; max-width: 480px; margin-left:auto; margin-right:auto; box-shadow:0 2px 10px #FFD70022;">
+                                        <h3 style="color:#3498DB; font-size:1.2em;">🌟 Share the Magic!</h3>
+                                        <p style="font-size:1.08em; font-weight:600; color:#764ba2;">Help us grow! Share with friends, family, and your school community:</p>
+                                        <input type="text" value="https://your-app-link-here.com" readonly style="width:90%;padding:8px;border-radius:8px;border:1.5px solid #FFD700;font-size:1.08em;margin-bottom:8px;box-shadow:0 2px 8px #FFD70033;" onclick="this.select()">
+                                        <button onclick="navigator.clipboard.writeText('https://your-app-link-here.com');this.textContent='Copied!';setTimeout(()=>this.textContent='Copy Link',1500);" style="background:#FFD700;color:#3498DB;border:none;border-radius:8px;padding:8px 22px;font-size:1.08em;font-weight:700;cursor:pointer;">Copy Link</button>
+                                        <div style="margin-top:10px;font-size:1em;color:#764ba2;">Or share on:
+                                            <a href="https://www.facebook.com/sharer/sharer.php?u=https://your-app-link-here.com" target="_blank" style="margin:0 6px;font-weight:700;">Facebook</a>|
+                                            <a href="https://twitter.com/intent/tweet?url=https://your-app-link-here.com&text=Check%20out%20this%20amazing%20kids%20learning%20app!" target="_blank" style="margin:0 6px;font-weight:700;">Twitter/X</a>|
+                                            <a href="mailto:?subject=Try%20this%20Kids%20Learning%20App!&body=Check%20out%20this%20magical%20app:%20https://your-app-link-here.com" style="margin:0 6px;font-weight:700;">Email</a>
+                                        </div>
+                                    </div>
+                                    <!-- Testimonials Section -->
+                                    <div style="margin: 36px 0; background: #f3eaff; border-radius: 14px; padding: 24px; max-width: 480px; margin-left:auto; margin-right:auto; border:2px solid #764ba2; box-shadow:0 2px 10px #764ba222;">
+                                        <h3 style="color:#764ba2; font-size:1.2em;">💬 Why Parents & Teachers Love Us</h3>
+                                        <ul style="font-size:1.05em; color:#34495e;">
+                                            <li>“My child is obsessed with the unicorn games and Movie Maker!”</li>
+                                            <li>“Finally, an app that’s fun, creative, and neurodiversity-friendly.”</li>
+                                            <li>“Our class uses it every week—so easy and engaging!”</li>
+                                        </ul>
+                                    </div>
+                        <!-- User Feedback Form -->
+                        <div style="margin: 36px 0; background: #f3eaff; border-radius: 14px; padding: 24px; max-width: 480px; margin-left:auto; margin-right:auto;">
+                            <h3 style="color:#764ba2; font-size:1.2em;">💬 We Value Your Feedback!</h3>
+                            <form id="feedbackForm" aria-label="User Feedback Form">
+                                <label for="feedbackText" style="font-size:1.05em;">Tell us what you love or what could be better:</label><br>
+                                <textarea id="feedbackText" name="feedbackText" rows="3" style="width:100%; border-radius:8px; margin:10px 0; font-size:1em;" aria-label="Your feedback"></textarea><br>
+                                <button type="submit" style="background:#FFD700; color:#764ba2; border:none; border-radius:8px; padding:10px 28px; font-size:1.1em; font-weight:600; cursor:pointer;">Send Feedback</button>
+                            </form>
+                            <div id="feedbackThanks" style="display:none; color:#388e3c; font-weight:bold; margin-top:10px;">Thank you for your feedback!</div>
+                        </div>
+                        <script>
+                        document.addEventListener('DOMContentLoaded', function() {
+                            var form = document.getElementById('feedbackForm');
+                            var thanks = document.getElementById('feedbackThanks');
+                            if(form && thanks) {
+                                form.onsubmit = function(e) {
+                                    e.preventDefault();
+                                    form.style.display = 'none';
+                                    thanks.style.display = 'block';
+                                };
+                            }
+                        });
+                        </script>
             <h2>Welcome to the Kids Groovy Hip Hop Happening Unicorn App!</h2>
             <p>Explore fun activities in math, reading, writing, art, and more. Designed for all kids, especially neurodivergent learners!</p>
+            <!-- Subscription/Unlock All Teaser -->
+            <div style="margin: 32px 0; text-align: center;">
+                <button style="background: linear-gradient(90deg, #32CD32 0%, #FFD700 100%); color: #fff; border: none; border-radius: 14px; padding: 18px 48px; font-size: 1.3em; font-weight: bold; cursor: pointer; box-shadow: 0 4px 16px rgba(147,112,219,0.10);">🔓 Subscribe / Unlock All Features (Coming Soon)</button>
+                <p style="margin-top: 10px; color: #444; font-size: 1.05em;">Get unlimited access to all premium activities, creative tools, and rewards with a future subscription. Stay tuned for launch!</p>
+            </div>
+
+            <!-- In-App Purchase Info Section -->
+            <div style="margin: 32px 0; background: #e7ffe7; border: 2px solid #32CD32; border-radius: 16px; padding: 24px; text-align: center;">
+                <h3 style="color: #388e3c; margin-bottom: 10px; font-size: 1.2em;">🛒 In-App Purchases (Coming Soon)</h3>
+                <p style="color: #333; font-size: 1.05em;">Soon you’ll be able to buy special activity packs, art tools, and more—right inside the app! All purchases will be safe, secure, and family-friendly.</p>
+            </div>
+            <!-- Interactive Movie-Style Trailer -->
+            <div id="trailer-section" style="margin: 36px 0; text-align: center;">
+                <h3 style="color: #764ba2; font-size: 1.4em; margin-bottom: 10px;">🎬 Interactive Movie Trailer: What’s Coming Soon!</h3>
+                <button id="playTrailerBtn" style="background: linear-gradient(90deg, #FFD700 0%, #FF69B4 100%); color: #fff; border: none; border-radius: 12px; padding: 14px 36px; font-size: 1.2em; font-weight: bold; cursor: pointer; margin-bottom: 18px; box-shadow: 0 4px 16px rgba(147,112,219,0.10);">▶️ Play Trailer</button>
+                <div id="trailerModal" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(30,16,60,0.92); z-index:9999; align-items:center; justify-content:center; flex-direction:column;">
+                    <div style="max-width: 90vw; max-height: 70vh; margin: 40px auto; background: #222; border-radius: 18px; box-shadow: 0 8px 32px rgba(147,112,219,0.18); padding: 24px; position: relative; text-align: center;">
+                        <button id="closeTrailerBtn" style="position:absolute; top:12px; right:18px; background:none; border:none; color:#fff; font-size:2em; cursor:pointer;">✖️</button>
+                        <!-- Placeholder video (replace src with your own trailer later) -->
+                        <video id="trailerVideo" width="480" height="270" controls style="border-radius: 12px; background: #000; max-width: 100%;">
+                            <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <div id="trailerFeatures" style="margin-top: 24px; color: #FFD700; font-size: 1.2em; font-family: 'Poppins', sans-serif;">
+                            <div class="trailer-feature" style="margin-bottom: 10px; animation: trailerFadeIn 1s forwards;">🌟 New Premium Activities</div>
+                            <div class="trailer-feature" style="margin-bottom: 10px; animation: trailerFadeIn 2s forwards;">🎤 Music Video Maker</div>
+                            <div class="trailer-feature" style="margin-bottom: 10px; animation: trailerFadeIn 3s forwards;">🦄 3D Flying Unicorns</div>
+                            <div class="trailer-feature" style="margin-bottom: 10px; animation: trailerFadeIn 4s forwards;">🧩 Brain Games & Challenges</div>
+                            <div class="trailer-feature" style="margin-bottom: 10px; animation: trailerFadeIn 5s forwards;">🏆 Achievements & Rewards</div>
+                            <div class="trailer-feature" style="margin-bottom: 10px; animation: trailerFadeIn 6s forwards;">👨‍👩‍👧‍👦 Family & School Accounts</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <style>
+                @keyframes trailerFadeIn {
+                    from { opacity: 0; transform: translateY(30px); }
+                    to { opacity: 1; transform: translateY(0); }
+                }
+            </style>
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    var playBtn = document.getElementById('playTrailerBtn');
+                    var modal = document.getElementById('trailerModal');
+                    var closeBtn = document.getElementById('closeTrailerBtn');
+                    var video = document.getElementById('trailerVideo');
+                    if(playBtn && modal && closeBtn && video) {
+                        playBtn.onclick = function() {
+                            modal.style.display = 'flex';
+                            video.currentTime = 0;
+                            video.play();
+                        };
+                        closeBtn.onclick = function() {
+                            modal.style.display = 'none';
+                            video.pause();
+                        };
+                    }
+                });
+            </script>
+            <!-- Donation Button -->
+            <div style="margin: 24px 0; text-align: center;">
+                <a href="https://www.paypal.com/donate/?hosted_button_id=&business=millershaun2007@gmail.com&item_name=Support+Hip+Hop+Happening+Kids+App&currency_code=AUD" target="_blank" style="display: inline-block; background: linear-gradient(90deg, #FFD700 0%, #FF69B4 50%, #32CD32 100%); color: #fff; padding: 18px 48px; border-radius: 20px; text-decoration: none; font-weight: bold; font-size: 1.4em; box-shadow: 0 8px 32px rgba(147,112,219,0.18), 0 3px 10px rgba(0,112,186,0.18); border: 3px solid #fff; transition: transform 0.2s;">💖 Support This App (Donate)</a>
+            </div>
+
+            <!-- Premium Features Teaser -->
+            <div style="margin: 32px 0; background: #fffbe7; border: 2px dashed #FFD700; border-radius: 16px; padding: 24px; text-align: center;">
+                <h3 style="color: #D2691E; margin-bottom: 10px; font-size: 1.3em;">✨ Coming Soon: Premium Features!</h3>
+                <p style="color: #444; font-size: 1.1em;">Unlock extra activities, advanced creative tools, and special rewards with a future premium upgrade. Stay tuned!</p>
+            </div>
+
+            <!-- School/Group Licenses -->
+            <div style="margin: 32px 0; background: #e7f7ff; border: 2px solid #32CD32; border-radius: 16px; padding: 24px; text-align: center;">
+                <h3 style="color: #0288D1; margin-bottom: 10px; font-size: 1.2em;">🏫 School & Group Licenses</h3>
+                <p style="color: #333; font-size: 1.05em;">Want to use this app in your classroom or organization? <a href="mailto:millershaun2007@gmail.com?subject=School%20or%20Group%20License%20Inquiry" style="color: #0288D1; text-decoration: underline;">Contact Shaun for special access & pricing</a>.</p>
+            </div>
             <div style="margin: 32px 0; display: flex; flex-wrap: wrap; gap: 24px; justify-content: center;">
                 <!-- Unicorn Activity Card -->
                 <div style="background: linear-gradient(135deg, #aeefff 0%, #ffd1fa 100%); border-radius: 18px; box-shadow: 0 4px 16px rgba(147,112,219,0.10); padding: 32px 24px; max-width: 340px; text-align: center; cursor: pointer; transition: transform 0.2s;" onclick="showUnicornSection()" tabindex="0" aria-label="Flying Unicorns Adventure">
@@ -89,6 +247,11 @@
     <!-- Footer -->
     <footer>
         <p>&copy; 2025 Kids Groovy Hip Hop Happening Unicorn App. All rights reserved.</p>
+        <div style="margin-top:10px;">
+            <a href="privacy.html" style="color:#764ba2; margin:0 12px; text-decoration:underline;">Privacy Policy</a>
+            |
+            <a href="terms.html" style="color:#764ba2; margin:0 12px; text-decoration:underline;">Terms of Use</a>
+        </div>
     </footer>
 
     <!-- Main App Scripts -->

@@ -1,11 +1,6 @@
 // js/flying-unicorns.js
-Merge branch 'main' of https://github.com/millershaun2007-byte/Kids-App-Live
-
 // Interactive flying unicorn section with educational storytelling, memory, and dinosaur/zoo tour
 // Premium feature: 3D/animated visuals, story prompts, memory challenges
-Merge branch 'main' of https://github.com/millershaun2007-byte/Kids-App-Live
-git push origin main
-git push orignn main
 // --- CONFIG ---
 const unicornStories = [
   {
@@ -95,5 +90,7 @@ function nextUnicornStory() {
 }
 
 // --- INTEGRATION ---
-window.showUnicornSection = showUnicornSection;cd "C:\Users\mille\OneDrive\Desktop\Kids Groovy Hip Hop Happening Unicorn App\CProjectskids_learning_app"
+
+// Expose the main function for integration
+window.showUnicornSection = showUnicornSection;
 
